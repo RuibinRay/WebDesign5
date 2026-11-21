@@ -700,6 +700,204 @@
       "file": "higgsfield/renders/store-look.png",
       "seconds": 42,
       "at": "2026-11-21T02:49:09.894Z"
+    },
+    "redshift-front": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [],
+      "job_id": "49b7e4f1-783f-48e6-9c63-41e2fa0e6903",
+      "file": "higgsfield/renders/redshift-front.png",
+      "seconds": 35,
+      "at": "2026-11-21T03:08:50.991Z"
+    },
+    "royal-front": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [],
+      "job_id": "c89e59ca-6afe-4cc8-869b-9e7b6fac6585",
+      "file": "higgsfield/renders/royal-front.png",
+      "seconds": 36,
+      "at": "2026-11-21T03:08:51.418Z"
+    },
+    "coolant-front": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [],
+      "job_id": "6bf2d8a7-dd4d-482e-8ade-fa1a24c78253",
+      "file": "higgsfield/renders/coolant-front.png",
+      "seconds": 36,
+      "at": "2026-11-21T03:08:51.548Z"
+    },
+    "redshift-back": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "redshift-front"
+      ],
+      "job_id": "988abf16-e092-459a-931a-077e38d409d5",
+      "file": "higgsfield/renders/redshift-back.png",
+      "seconds": 49,
+      "at": "2026-11-21T03:09:40.822Z"
+    },
+    "coolant-back": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "coolant-front"
+      ],
+      "job_id": "9cd78811-4c2e-4227-8101-859b00b96aa8",
+      "file": "higgsfield/renders/coolant-back.png",
+      "seconds": 50,
+      "at": "2026-11-21T03:09:41.087Z"
+    },
+    "coolant-city": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "coolant-front"
+      ],
+      "job_id": "0987c353-350d-4131-a225-78ddcce1e4b1",
+      "file": "higgsfield/renders/coolant-city.png",
+      "seconds": 55,
+      "at": "2026-11-21T03:09:46.566Z"
+    },
+    "redshift-city": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "redshift-front"
+      ],
+      "job_id": "de7fb84c-24a6-4567-a426-ba1815c24dde",
+      "file": "higgsfield/renders/redshift-city.png",
+      "seconds": 65,
+      "at": "2026-11-21T03:09:56.252Z"
+    },
+    "coolant-fit": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "coolant-front"
+      ],
+      "job_id": "42ff5148-22d4-4346-b4d5-0220476b4d92",
+      "file": "higgsfield/renders/coolant-fit.png",
+      "seconds": 37,
+      "at": "2026-11-21T03:10:23.074Z"
+    },
+    "royal-back": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "royal-front"
+      ],
+      "job_id": "e31a7d99-021e-4f13-b89e-3f85dbc7001c",
+      "file": "higgsfield/renders/royal-back.png",
+      "seconds": 52,
+      "at": "2026-11-21T03:10:32.871Z"
+    },
+    "royal-city": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "royal-front"
+      ],
+      "job_id": "7ce5160f-f817-4555-bb39-7781102ce795",
+      "file": "higgsfield/renders/royal-city.png",
+      "seconds": 53,
+      "at": "2026-11-21T03:10:34.175Z"
+    },
+    "redshift-fit": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "redshift-front"
+      ],
+      "job_id": "941862dd-911b-4a99-9455-879892a0bc37",
+      "file": "higgsfield/renders/redshift-fit.png",
+      "seconds": 39,
+      "at": "2026-11-21T03:10:35.659Z"
+    },
+    "royal-fit": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "royal-front"
+      ],
+      "job_id": "b4839d87-e8db-4e8a-9579-9fbec4c63422",
+      "file": "higgsfield/renders/royal-fit.png",
+      "seconds": 40,
+      "at": "2026-11-21T03:11:03.124Z"
     }
   }
 }
