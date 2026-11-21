@@ -2042,6 +2042,60 @@
       "file": "higgsfield/renders/item-tote-worn.png",
       "seconds": 43,
       "at": "2026-11-21T03:34:02.725Z"
+    },
+    "about-start": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "16:9",
+      "inputs": [
+        "hex-charm"
+      ],
+      "job_id": "a67ad564-d5d9-49ec-8902-df03be656b84",
+      "file": "higgsfield/renders/about-start.png",
+      "seconds": 51,
+      "at": "2026-11-21T14:54:30.870Z"
+    },
+    "about-end": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "16:9",
+      "inputs": [
+        "about-start",
+        "hex-charm"
+      ],
+      "job_id": "769f2a5e-939f-4794-9ee5-5e3934d12871",
+      "file": "higgsfield/renders/about-end.png",
+      "seconds": 55,
+      "at": "2026-11-21T14:55:25.843Z"
+    },
+    "film-about": {
+      "status": "done",
+      "kind": "film",
+      "model": "kling4_0",
+      "params": {
+        "mode": "image-to-video",
+        "duration": 10,
+        "resolution": "1080p"
+      },
+      "aspect": "16:9",
+      "inputs": [
+        "about-start",
+        "about-end"
+      ],
+      "job_id": "19553dac-6ad3-4577-a081-a9ea99e79913",
+      "file": "higgsfield/renders/film-about.mp4",
+      "seconds": 272,
+      "at": "2026-11-21T15:00:20.430Z"
     }
   }
 }
