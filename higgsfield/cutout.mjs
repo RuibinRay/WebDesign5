@@ -23,7 +23,9 @@ const OUT = path.join(ROOT, 'assets/img');
 const PALS = ['pink', 'blue', 'acid', 'sodium', 'static', 'coolant', 'redshift', 'royal'];
 const want = process.argv.slice(2);
 const ITEMS = ['tee', 'shell', 'varsity', 'pants', 'socks', 'cap', 'beanie', 'tote'].map((i) => 'item-' + i);
-const ids = want.length ? want : PALS.flatMap((p) => [p + '-front', p + '-back']).concat(ITEMS.filter((i) => !SKIP.includes(i)));
+const VARIANTS = ITEMS.flatMap((i) => PALS.map((p) => i + '-' + p));
+const skipped = (id) => SKIP.some((s) => id === s || id.startsWith(s + '-'));
+const ids = want.length ? want : PALS.flatMap((p) => [p + '-front', p + '-back']).concat(ITEMS, VARIANTS).filter((i) => !skipped(i));
 
 const STEP = 7;      /* max colour change between neighbouring backdrop pixels */
 const GLOBAL = 70;   /* max distance from the backdrop's mean colour */

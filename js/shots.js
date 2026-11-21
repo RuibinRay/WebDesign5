@@ -255,6 +255,52 @@
         ' The product: ' + ITEM_DESC[it.id](p) + '. ' + LOGO + ' Backdrop: ' + BACKDROP[p.id] + '. ' + NEG,
     }));
   });
+  /* every item in every other palette: the same product as its master (first reference), recoloured,
+     with that palette's logo badge (second reference). Ids: item-<id>-<palette>. */
+  var LOGO2 = 'The logo on it is exactly the pixel-art badge in the second reference image: a round badge of a cartoon chameleon head in a tall pointed hood inside a coloured ring, ' +
+    'made of crisp square pixels. Keep its shape, its pixels and its colours; do not add any letters to it.';
+  K.ITEMS.forEach(function (it) {
+    K.PALETTES.forEach(function (p) {
+      if (p.id === it.pal) return;
+      shots.push(gpt({
+        id: 'item-' + it.id + '-' + p.id, stage: 2, aspect: '4:5', pal: p.id, art: 'item', item: it.id,
+        refs: [ref('item-' + it.id), 'assets/logo/hex-badge-' + p.id + '.png'],
+        brief: it.name + ' in ' + p.name + ': the same piece as its master, recoloured.',
+        alt: 'The Kalypt ' + it.name + ' in ' + p.name + '.',
+        used: ['Store · card in ' + p.name, 'Item page · ' + p.name],
+        prompt: STUDIO.replace('The hoodie is shown on an invisible ghost mannequin, standing upright, perfectly centred and symmetrical, sleeves hanging slightly away from the body. ',
+          it.cat === 'accessories' ? 'The product is shown alone, centred, as a clean catalogue still life. ' : 'The garment is shown on an invisible ghost mannequin, upright, centred and symmetrical. ') +
+          ' The product is exactly the product in the first reference image: identical cut, shape, construction, framing and logo placement. Only its colours change: ' +
+          ITEM_DESC[it.id](p) + '. ' + LOGO2 + ' Backdrop: ' + BACKDROP[p.id] + '. ' + NEG,
+      }));
+    });
+  });
+
+  /* each item worn on its own by a real person, framed for the piece. Ids: item-<id>-worn. */
+  var WORN = {
+    tee: ['a man in his twenties, about 178 cm tall, light-brown skin, short dreadlocks', 'Full length, facing the camera, hands relaxed at his sides. He wears the T-shirt with plain black straight-leg trousers and white chunky trainers.'],
+    shell: ['a woman in her twenties, about 170 cm tall, East Asian, a sleek black ponytail', 'Full length, three-quarter view, the jacket zipped half way over a plain black T-shirt, plain black trousers and white chunky trainers, one hand in a jacket pocket.'],
+    varsity: ['a woman in her thirties, about 174 cm tall, dark-brown skin, braids tied up', 'Full length, facing the camera, the varsity jacket open over a plain black T-shirt, plain black trousers and white chunky trainers.'],
+    pants: ['a man in his twenties, about 182 cm tall, olive skin, curly dark hair', 'Full length, facing the camera, the pants worn with a plain black T-shirt and white chunky trainers, so the pixel fade above the ankle is clearly visible.'],
+    socks: ['a person sitting on a low block, legs only', 'Framed from the knees down, side-on: the socks pulled up, worn with plain black shorts and white chunky trainers, one foot forward so the cuff badge faces the camera.'],
+    cap: ['a woman in her twenties, about 165 cm tall, light skin, short platinum hair', 'Head and shoulders, three-quarter view, the cap worn forwards, a plain black hoodie with no print, a calm look past the camera.'],
+    beanie: ['a man in his thirties, pale skin, a short red beard', 'Head and shoulders, facing the camera, the beanie worn with its cuff folded up so the woven badge sits on the front, a plain black hoodie with no print.'],
+    tote: ['a woman in her twenties, about 168 cm tall, South Asian, long dark wavy hair', 'From the knees up, three-quarter view, the tote carried on one shoulder with the badge facing the camera, a plain black T-shirt and black trousers.'],
+  };
+  K.ITEMS.forEach(function (it) {
+    var p = K.byId[it.pal], w = WORN[it.id];
+    shots.push(gpt({
+      id: 'item-' + it.id + '-worn', stage: 2, aspect: '4:5', pal: it.pal, art: 'item', item: it.id, refs: [ref('item-' + it.id)],
+      brief: it.name + ' worn by a real person, on its own.',
+      alt: 'A person wearing the Kalypt ' + it.name + ' in ' + p.name + '.',
+      used: ['Item page · on a real person'],
+      prompt: 'Photoreal fashion e-commerce photography, medium-format camera, 85mm lens, f/8, natural skin texture, nothing retouched smooth. ' +
+        'One real person on a seamless matte paper backdrop and floor in one flat colour, one large soft key light from above and slightly camera-left. Colour-accurate neutral grade, fine grain. ' +
+        'The person: ' + w[0] + '. ' + w[1] + ' The ' + ({ tee: 'T-shirt', shell: 'jacket', varsity: 'varsity jacket', pants: 'pants', socks: 'socks', cap: 'cap', beanie: 'beanie', tote: 'tote bag' })[it.id] + ' is exactly the product in the reference image: identical colours, pixel fade and pixel-art logo badge. ' +
+        'Everything else they wear is plain and unbranded, so the piece is the only thing that stands out. Backdrop: ' + BACKDROP[p.id] + '. ' + NEG,
+    }));
+  });
+
   /* one person wearing the set: the look the store opens with */
   shots.push(gpt({
     id: 'store-look', stage: 2, aspect: '4:5', pal: 'pink', art: 'person', refs: [ref('item-varsity'), ref('item-pants')],

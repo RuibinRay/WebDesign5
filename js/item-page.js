@@ -20,6 +20,7 @@
       eyebrow: catLabel + ' · ' + pal.name, name: it.name, line: it.line, price: K.money(it.price), 'pal-name': pal.name,
       'logo-note': 'Where Hex goes: ' + it.placement,
       note: 'Every Kalypt piece comes in all eight palettes. Drop ' + K.drop.n + ' unlocks ' + K.drop.label + '.',
+      'worn-note': 'Shown in ' + K.byId[it.pal].name + ', worn with plain black so the piece does the talking. ' + it.placement,
     };
     $$('[data-f]').forEach(function (el) { var k = el.getAttribute('data-f'); if (F[k] != null) el.textContent = F[k]; });
   }
@@ -55,8 +56,8 @@
   function show(animate) {
     copy();
     hero.style.backgroundImage = 'url(' + PIX.glow(pal, 0.3) + ')';
-    var shot = 'item-' + it.id;
-    var cut = pal.id === it.pal && MEDIA.cut(shot), framed = !cut && pal.id === it.pal && MEDIA.ready(shot);
+    var shot = MEDIA.itemShot(it, pal.id);
+    var cut = MEDIA.cut(shot), framed = !cut && MEDIA.ready(shot);
     var usePhoto = cut || framed;
     sprite.hidden = !!usePhoto;
     photo.hidden = !usePhoto;
@@ -104,6 +105,11 @@
     a.firstChild.appendChild(c);
     others.appendChild(a);
   });
+
+  /* the worn photo is in the piece's own palette, whatever palette is picked above */
+  var worn = $('[data-worn]');
+  worn.setAttribute('data-shot', 'item-' + it.id + '-worn');
+  MEDIA.fill(worn);
 
   layout(); show(false);
   root.addEventListener('resize', layout);

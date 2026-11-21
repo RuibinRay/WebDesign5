@@ -641,3 +641,8 @@ html.bag-open { overflow: hidden; }
   .shop-sort { flex: none; }
 }
 @media (max-width: 560px) { .card__dots { display: none; } }
+
+/* item page: worn on its own */
+.ip-worn { display: grid; gap: clamp(22px, 4vw, 56px); align-items: center; }
+@media (min-width: 900px) { .ip-worn { grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr); } }
+.ip-worn__photo { --bc: var(--ui); margin: var(--px); box-shadow: var(--edge), calc(var(--px) * 3) calc(var(--px) * 3) 0 0 var(--pa); }

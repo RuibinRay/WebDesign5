@@ -64,7 +64,9 @@
 
   function thumb(pr, pal) {
     if (pr.kind === 'hoodie' && MEDIA.cut(pr.id + '-front')) return '<img src="assets/img/' + pr.id + '-front-cut-sm.webp" alt="" decoding="async">';
-    if (pr.kind === 'item' && pal.id === pr.pal && MEDIA.cut('item-' + pr.id)) return '<img src="assets/img/item-' + pr.id + '-cut-sm.webp" alt="" decoding="async">';
+    var shot = pr.kind === 'item' ? MEDIA.itemShot(K.itemById[pr.id], pal.id) : null;
+    if (shot && MEDIA.cut(shot)) return '<img src="assets/img/' + shot + '-cut-sm.webp" alt="" decoding="async">';
+    if (shot && MEDIA.ready(shot)) return '<img src="assets/img/' + shot + '-sm.webp" alt="" decoding="async">';
     var c = document.createElement('canvas');
     c.width = 96; c.height = 108;
     c.getContext('2d').drawImage(pr.kind === 'hoodie' ? PIX.hoodieCanvas(pal, 'front') : PIX.itemCanvas(K.itemById[pr.id], pal), 0, 0);

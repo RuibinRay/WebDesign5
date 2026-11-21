@@ -145,6 +145,8 @@
     ready: function (id) { return !!img[id]; },
     /* a studio shot with its backdrop removed (higgsfield/cutout.mjs): the garment alone, on transparency */
     cut: function (id) { return !!cut[id]; },
+    /* the photo id for an item in a palette: its master in its own palette, item-<id>-<pal> otherwise */
+    itemShot: function (it, palId) { return palId === it.pal ? 'item-' + it.id : 'item-' + it.id + '-' + palId; },
     cutSrc: function (id) { return 'assets/img/' + id + (root.innerWidth < 700 ? '-cut-sm' : '-cut') + '.webp'; },
   };
 })(window);
