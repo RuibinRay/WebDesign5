@@ -126,10 +126,12 @@ for (const f of S.films) {
 
 /* ── the ready list ── */
 const img = [...known].filter((id) => fs.existsSync(path.join(OUT, `${id}.webp`))).sort();
+/* cut-outs from cutout.mjs: keep every one whose file exists */
+const cut = [...known].filter((id) => fs.existsSync(path.join(OUT, `${id}-cut.webp`))).sort();
 const video = fs.existsSync(VID) ? fs.readdirSync(VID).filter((f) => f.endsWith('.mp4')).map((f) => f.slice(0, -4)).sort() : [];
 fs.writeFileSync(
   path.join(OUT, 'ready.js'),
   '/* Written by higgsfield/optimize.mjs. Lists what exists, so the site never requests a missing file. */\n' +
-    `window.KALYPT_READY = ${JSON.stringify({ img, video, film: films })};\n`
+    `window.KALYPT_READY = ${JSON.stringify({ img, video, film: films, cut })};\n`
 );
 console.log(`\n  Ready: ${img.length} of ${known.size} pictures · films: ${Object.keys(films).join(', ') || 'none'}. Reload the site.\n`);
