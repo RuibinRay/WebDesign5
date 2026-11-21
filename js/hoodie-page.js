@@ -37,7 +37,6 @@
   $('[data-add]').addEventListener('click', function () {
     var size = ($('input[name="size"]:checked') || {}).value || '02';
     UI.addToBag({ id: p.id, size: size });
-    UI.toast('Item get: ' + p.name + ', size ' + size + '. Checkout unlocks with Drop ' + K.drop.n + '.');
   });
 
   /* ── the stage ── */

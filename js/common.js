@@ -184,16 +184,11 @@
     list.push(item);
     try { localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) {}
     paintBag(true);
+    /* js/bag.js opens the inventory drawer on this */
+    try { root.dispatchEvent(new CustomEvent('kalypt:bag-add', { detail: item })); } catch (e) {}
   }
   paintBag(false);
-  $$('[data-bag]').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var list = readBag();
-      if (!list.length) { toast('Inventory empty. Pick a palette first.'); return; }
-      var names = list.map(function (i) { return K.byId[i.id].name + ' ' + i.size; });
-      toast('Inventory: ' + names.join(', ') + '. Checkout unlocks with Drop ' + K.drop.n + '.');
-    });
-  });
+  /* the Bag button opens the inventory drawer (js/bag.js) */
 
   /* ───────── Hex on the rail: he walks the page with you, one frame every few pixels ───────── */
   var rail = null, railOff = null;
@@ -244,7 +239,7 @@
 
   root.KP_UI = {
     $: $, $$: $$, onScroll: onScroll, onTick: onTick, kick: kick, clamp: clamp, smooth: smooth, reduce: reduce, testing: testing,
-    toast: toast, addToBag: addToBag, watch: watch, goTo: goTo, scrollToY: scrollToY,
+    toast: toast, addToBag: addToBag, paintBag: paintBag, watch: watch, goTo: goTo, scrollToY: scrollToY,
     setPalette: setPalette, onPalette: onPalette, palette: function () { return K.byId[palId]; },
     setRailOff: function (fn) { railOff = fn; kick(); },
     esc: function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); },

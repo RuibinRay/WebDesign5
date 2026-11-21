@@ -479,3 +479,61 @@ button { font: inherit; color: inherit; }
 .logo-badges figure { margin: 0; text-align: center; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); }
 .logo-badges span { display: block; width: 132px; height: 132px; margin-bottom: 8px; }
 @media (max-width: 560px) { .logo-badges span { width: 88px; height: 88px; } }
+
+/* ───────── pixel cursor, pixel trail, page cover (js/pixfx.js) ───────── */
+html.px-cursor, html.px-cursor body { cursor: var(--cur); }
+html.px-cursor a, html.px-cursor button, html.px-cursor label, html.px-cursor select, html.px-cursor summary, html.px-cursor [role="button"] { cursor: var(--cur-hand); }
+html.px-cursor input[type="email"], html.px-cursor input[type="text"], html.px-cursor textarea { cursor: text; }
+.px-trail { position: fixed; z-index: 90; left: 0; top: 0; pointer-events: none; image-rendering: pixelated; image-rendering: crisp-edges; }
+.px-cover { position: fixed; z-index: 95; inset: 0; width: 100vw; height: 100vh; display: none; pointer-events: none; image-rendering: pixelated; image-rendering: crisp-edges; }
+.reduce .px-trail { display: none; }
+
+/* ───────── the bag: an inventory drawer (js/bag.js) ───────── */
+.bagd { position: fixed; z-index: 80; inset: 0; }
+.bagd__veil { position: absolute; inset: 0; background: rgba(7, 6, 13, 0.72); opacity: 0; transition: opacity 0.24s steps(4); }
+.bagd.is-open .bagd__veil { opacity: 1; }
+.bagd__panel {
+  position: absolute; top: 0; right: 0; bottom: 0; width: min(460px, 100%); display: flex; flex-direction: column;
+  background: var(--panel); --bc: var(--ui); box-shadow: calc(var(--px) * -1) 0 0 0 var(--ui), calc(var(--px) * -3) 0 0 0 rgba(0, 0, 0, 0.5);
+  transform: translateX(104%); transition: transform 0.26s steps(6); outline: none;
+}
+.bagd.is-open .bagd__panel { transform: none; }
+.bagd__head { display: flex; align-items: center; gap: 14px; padding: 18px 20px; border-bottom: var(--px) solid var(--line); }
+.bagd__head .label { margin: 0 0 2px; }
+.bagd__head h2 { font-size: 34px; }
+.bagd__badge { display: block; width: 52px; height: 52px; flex: none; transform: rotate(-8deg); }
+.bagd__x { margin-left: auto; width: 40px; height: 40px; border: 0; cursor: pointer; background: transparent; --bc: var(--text); box-shadow: var(--edge); font-size: 14px; }
+.bagd__x:hover { background: var(--text); color: var(--void); }
+.bagd__list { flex: 1; overflow: auto; list-style: none; margin: 0; padding: 14px 20px; display: grid; gap: 14px; align-content: start; }
+.bagd__item { display: grid; grid-template-columns: 92px minmax(0, 1fr) auto; gap: 14px; align-items: start; padding: 12px; background: var(--void); --bc: var(--line); box-shadow: var(--edge); margin: var(--px); }
+.bagd__slot { display: grid; place-items: center; width: 92px; height: 104px; background: var(--bg2); --bc: var(--c); box-shadow: var(--edge); }
+.bagd__slot img { max-width: 84%; max-height: 92%; filter: drop-shadow(0 3px 0 rgba(0, 0, 0, 0.45)); }
+.bagd__name { margin: 0; font: 700 22px/1 var(--f-pix); text-transform: uppercase; color: var(--c); }
+.bagd__meta { margin: 6px 0 10px; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mute); }
+.bagd__ctl { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.bagd__size select { min-height: 34px; padding: 0 8px; border: 0; background: var(--panel-2); color: var(--text); font: 400 11px var(--f-mono); --bc: var(--line); box-shadow: var(--edge); margin: var(--px); }
+.bagd__q { display: inline-flex; align-items: center; gap: 2px; margin: var(--px); }
+.bagd__q button { width: 30px; height: 30px; border: 0; cursor: pointer; background: var(--panel-2); font: 700 16px/1 var(--f-pix); }
+.bagd__q button:disabled { opacity: 0.35; cursor: default; }
+.bagd__q button:not(:disabled):hover { background: var(--c); color: var(--void); }
+.bagd__q b { min-width: 26px; text-align: center; font: 700 18px/1 var(--f-pix); }
+.bagd__rm { min-height: 30px; padding: 0 8px; border: 0; background: none; cursor: pointer; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mute); text-decoration: underline; }
+.bagd__rm:hover { color: var(--text); }
+.bagd__line { margin: 0; font: 700 20px/1 var(--f-pix); }
+.bagd__empty { flex: 1; display: grid; place-content: center; justify-items: center; gap: 12px; padding: 20px; text-align: center; }
+.bagd__empty canvas { width: 144px; height: 153px; image-rendering: pixelated; image-rendering: crisp-edges; }
+.bagd__empty p { margin: 0; font: 700 22px/1 var(--f-pix); text-transform: uppercase; }
+.bagd__foot { padding: 16px 20px 20px; border-top: var(--px) solid var(--line); display: grid; gap: 12px; }
+.bagd__sum { display: flex; justify-content: space-between; margin: 0; }
+.bagd__sum div { display: grid; gap: 2px; }
+.bagd__sum dt { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mute); }
+.bagd__sum dd { margin: 0; font: 700 30px/1 var(--f-pix); }
+.bagd__go { width: calc(100% - var(--px) * 2); }
+.bagd__go:disabled { cursor: not-allowed; opacity: 0.6; }
+html.bag-open { overflow: hidden; }
+@media (max-width: 520px) {
+  .bagd__item { grid-template-columns: 72px minmax(0, 1fr); }
+  .bagd__slot { width: 72px; height: 84px; }
+  .bagd__line { grid-column: 2; }
+}
+.reduce .bagd__panel, .reduce .bagd__veil { transition: none; }
