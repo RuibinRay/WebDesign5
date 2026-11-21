@@ -21,7 +21,7 @@
 
   /* counts in the hero: 5 hoodies + 8 items × 5 palettes */
   $('[data-stat="pieces"]').textContent = K.PRODUCTS.length;
-  $('[data-stat="combos"]').textContent = K.PALETTES.length + K.ITEMS.length * K.PALETTES.length;
+  $('[data-stat="combos"]').textContent = K.PALETTES.length * (K.ITEMS.length + 1);
 
   /* controls */
   $('[data-cats]').innerHTML = K.CATS.map(function (c) {
@@ -47,31 +47,40 @@
   }
 
   function render() {
-    var list = K.PRODUCTS.filter(function (pr) {
-      if (cat !== 'all' && pr.cat !== cat) return false;
-      if (pal !== 'all' && pr.kind === 'hoodie' && pr.pal !== pal) return false;
-      return true;
+    /* one card per product and colour. "All palettes": every colour of every piece (pick Pants, see all eight pants).
+       One palette: one card per piece, in that palette. Hoodies are their own palette already. */
+    var list = [];
+    K.PRODUCTS.forEach(function (pr) {
+      if (cat !== 'all' && pr.cat !== cat) return;
+      if (pr.kind === 'hoodie') { if (pal === 'all' || pr.pal === pal) list.push({ pr: pr, p: K.byId[pr.pal] }); return; }
+      if (pal !== 'all') { list.push({ pr: pr, p: K.byId[pal] }); return; }
+      /* its photographed palette first, then the rest in palette order */
+      [K.byId[pr.pal]].concat(K.PALETTES.filter(function (q) { return q.id !== pr.pal; })).forEach(function (q) { list.push({ pr: pr, p: q }); });
     });
-    list = list.map(function (pr, i) { return { pr: pr, i: i }; });
+    list = list.map(function (o, i) { o.i = i; return o; });
     if (sort === 'low') list.sort(function (a, b) { return a.pr.price - b.pr.price || a.i - b.i; });
     if (sort === 'high') list.sort(function (a, b) { return b.pr.price - a.pr.price || a.i - b.i; });
     if (sort === 'rare') list.sort(function (a, b) { return rank[rarity(a.pr)[0]] - rank[rarity(b.pr)[0]] || b.pr.price - a.pr.price; });
 
     $('[data-grid]').innerHTML = list.map(function (o, n) {
-      var pr = o.pr, p = K.byId[pal !== 'all' && pr.kind === 'item' ? pal : pr.pal], r = rarity(pr);
+      var pr = o.pr, p = o.p, r = rarity(pr);
       var href = pr.kind === 'hoodie' ? pr.href : pr.href + '&pal=' + p.id;
       var sub = pr.kind === 'hoodie' ? 'Hoodie · ' + p.district.split(' · ')[1] : (K.itemById[pr.id].cat === 'outer' ? 'Jacket' : catName(pr.cat)) + ' · ' + p.name;
       return '<a class="card card--' + r[0] + ' rv" href="' + esc(href) + '" data-morph="' + pr.id + '" style="--c:' + p.ui + ';--a:' + p.a + ';--b:' + p.b + ';--bg:' + p.bg + ';--bg2:' + p.bg2 + ';--glow:' + p.glow + ';transition-delay:' + Math.min(n, 8) * 40 + 'ms">' +
         '<span class="card__stage"><span class="card__rar">' + r[1] + '</span>' +
-        (pr.kind === 'item' && pal === 'all' ? '<span class="card__new">New</span>' : '') +
+        (pr.kind === 'item' && p.id === pr.pal && pal === 'all' ? '<span class="card__new">New</span>' : '') +
         '<span class="card__art" data-morph-part="hoodie">' + art(pr, p) + '</span></span>' +
         '<span class="card__body"><span class="card__name" data-morph-part="name">' + esc(pr.name) + '</span>' +
         '<span class="card__sub">' + esc(sub) + '</span>' +
         '<span class="card__foot"><b class="card__price">' + K.money(pr.price) + '</b>' +
-        (pr.kind === 'item' ? '<span class="card__dots" aria-label="Comes in eight palettes">' + K.PALETTES.map(function (q) { return '<i style="background:' + q.ui + '"></i>'; }).join('') + '</span>' : '') +
+        '<span class="card__dots" aria-label="' + esc(p.name) + ', one of eight palettes">' + K.PALETTES.map(function (q) { return '<i class="' + (q.id === p.id ? 'on' : '') + '" style="background:' + q.ui + '"></i>'; }).join('') + '</span>' +
         '</span></span></a>';
     }).join('');
-    $('[data-count]').textContent = list.length + (list.length === 1 ? ' piece' : ' pieces') + (pal !== 'all' ? ' in ' + K.byId[pal].name : '');
+    var kinds = {};
+    list.forEach(function (o) { kinds[o.pr.kind === 'hoodie' ? 'hoodie' : o.pr.id] = 1; });
+    $('[data-count]').textContent = pal !== 'all'
+      ? list.length + (list.length === 1 ? ' piece' : ' pieces') + ' in ' + K.byId[pal].name
+      : list.length + ' pieces · ' + Object.keys(kinds).length + (Object.keys(kinds).length === 1 ? ' design' : ' designs') + ' in every colour';
     UI.watch($('[data-grid]'));
 
     UI.$$('[data-cat]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-cat') === cat)); });

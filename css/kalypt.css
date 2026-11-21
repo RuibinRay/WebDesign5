@@ -672,3 +672,7 @@ html.bag-open { overflow: hidden; }
 .about-sec--note { padding-top: 0; text-align: center; }
 /* phones: the about chapters sit at the top so Hex stays visible on the street below */
 @media (max-width: 700px) { .about-chap { top: calc(var(--nav-h) + 16px); bottom: auto; } .about-chap .chap__big { font-size: clamp(32px, 9vw, 44px); } }
+
+/* store cards: the dots mark which of the eight palettes this card is */
+.card__dots i { opacity: 0.35; }
+.card__dots i.on { opacity: 1; box-shadow: 0 0 0 2px var(--text); }
