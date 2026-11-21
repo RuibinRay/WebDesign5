@@ -44,9 +44,13 @@
 
   /* ───────── the palette: one call recolours the page, the letters and Hex on the rail ───────── */
   var palId = K.current, palSubs = [];
+  /* the logo, Hex in his roundel, always wears the palette of the hoodie on screen */
+  var badges = $$('[data-badge]');
+  function paintBadges(p) { badges.forEach(function (el) { el.innerHTML = PIX.badge(p, { label: false }); }); }
   function setPalette(id) {
     var p = K.byId[id];
     if (!p || (id === palId && d.getAttribute('data-pal') === id)) return;
+    paintBadges(p);
     palId = id;
     var s = d.style;
     s.setProperty('--ui', p.ui); s.setProperty('--ui-on', p.on); s.setProperty('--glow', p.glow);

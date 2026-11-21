@@ -45,23 +45,28 @@ for (const file of renders.filter((f) => /\.(png|jpe?g|webp)$/i.test(f))) {
   const id = file.replace(/\.[^.]+$/, '');
   if (!known.has(id)) { console.log(`  · ${file}: not a shot id in js/shots.js, skipped`); continue; }
   const src = path.join(SRC, file), big = path.join(OUT, `${id}.webp`);
-  if (!newer(src, big)) continue;
+  if (!newer(src, big) && !process.env.FORCE_IMAGES && fs.existsSync(path.join(OUT, `${id}-md.webp`))) continue;
   const meta = await sharp(src).metadata();
-  await sharp(src).resize({ width: Math.min(2000, meta.width) }).webp({ quality: 80, effort: 5 }).toFile(big);
-  await sharp(src).resize({ width: Math.min(900, meta.width) }).webp({ quality: 78, effort: 5 }).toFile(path.join(OUT, `${id}-sm.webp`));
+  /* three sizes, each sharpened after shrinking (a downscale softens fine knit and dither) */
+  for (const [w, suffix, q] of [[2000, '', 86], [1400, '-md', 84], [900, '-sm', 82]]) {
+    await sharp(src).resize({ width: Math.min(w, meta.width), kernel: 'lanczos3' })
+      .sharpen({ sigma: w < meta.width ? 0.7 : 0.4 })
+      .webp({ quality: q, effort: 5, smartSubsample: true }).toFile(path.join(OUT, `${id}${suffix}.webp`));
+  }
   console.log(`  ✓ ${id.padEnd(15)} ${meta.width}×${meta.height}`);
 }
 
-/* social card: the rooftop with the Eye */
+/* social card: the rooftop with the logo lockup (tools/logo.mjs), or the Eye if the lockup is missing */
+const LOCKUP = path.join(ROOT, 'assets/logo/kalypt-lockup.png');
 const hero = renderOf('city-hero');
-if (hero && newer(path.join(SRC, hero), path.join(OUT, 'og.jpg'))) {
+if (hero && (newer(path.join(SRC, hero), path.join(OUT, 'og.jpg')) || (fs.existsSync(LOCKUP) && newer(LOCKUP, path.join(OUT, 'og.jpg'))))) {
   const mark =
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 7" width="126" height="126" shape-rendering="crispEdges"><g fill="#FF2F8E">' +
     '<rect x="2" y="0" width="3" height="1"/><rect x="1" y="1" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/>' +
     '<rect x="0" y="2" width="1" height="3"/><rect x="6" y="2" width="1" height="3"/><rect x="1" y="5" width="1" height="1"/>' +
     '<rect x="5" y="5" width="1" height="1"/><rect x="2" y="6" width="3" height="1"/><rect x="3" y="3" width="2" height="2"/></g></svg>';
   await sharp(path.join(SRC, hero)).resize(1200, 630, { fit: 'cover' })
-    .composite([{ input: Buffer.from(mark), left: 64, top: 64 }]).jpeg({ quality: 84, mozjpeg: true }).toFile(path.join(OUT, 'og.jpg'));
+    .composite([fs.existsSync(LOCKUP) ? { input: await sharp(LOCKUP).resize({ width: 380, kernel: 'nearest' }).toBuffer(), left: 64, top: 64 } : { input: Buffer.from(mark), left: 64, top: 64 }]).jpeg({ quality: 84, mozjpeg: true }).toFile(path.join(OUT, 'og.jpg'));
   console.log('  ✓ og.jpg');
 }
 

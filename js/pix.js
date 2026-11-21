@@ -401,6 +401,55 @@
 
   /* ───────── the mark and the letters (SVG, crisp at any size) ───────── */
   var EYE7 = ['..###..', '.#...#.', '#.....#', '#..##.#', '#..##.#', '.#...#.', '..###..'];
+  /* ───────── THE BADGE: Hex's head in his hood, in a pixel roundel ─────────
+     Built from the same sprite as everywhere else, so it is always exactly him, in any palette.
+     The hood's peak breaks out of the top of the ring. 44 × 44 cells; returns crisp SVG. */
+  function badge(pal, o) {
+    o = o || {};
+    var S = 44, c = 21.5, R = 19.5, cols = lut(pal).css, grid = [], x, y, d;
+    var paint = function (gx, gy, col) { if (gx >= 0 && gy >= 0 && gx < S && gy < S) grid[gy * S + gx] = col; };
+    /* the disc: lit at the top, dithered down into the palette's stage colour */
+    for (y = 0; y < S; y++) for (x = 0; x < S; x++) {
+      d = Math.hypot(x + 0.5 - c, y + 0.5 - c);
+      if (d <= R + 2.2) grid[y * S + x] = pal.ink;
+      if (d <= R + 1.2) grid[y * S + x] = pal.ui;
+      if (d <= R - 0.6) grid[y * S + x] = pal.ink;
+      if (d <= R - 1.6) grid[y * S + x] = dither(x, y, (y - 4) / 30) ? pal.bg : pal.bg2;
+    }
+    /* scan lines across the disc, like the rest of the site */
+    for (y = 3; y < S; y += 4) for (x = 0; x < S; x++) {
+      d = Math.hypot(x + 0.5 - c, y + 0.5 - c);
+      if (d <= R - 1.6 && (x + y) % 2) grid[y * S + x] = mix(grid[y * S + x], pal.ink, 0.35);
+    }
+    /* Hex, hood up, hands in the pocket, piping lit; his head centred, cropped at the chest by the ring */
+    var g = hex({ walk: null, hood: 3, hands: 1, glow: true, look: [1, 0], blink: o.wink ? 2 : 0 });
+    var dx = -6, dy = 0;
+    for (y = 0; y < g.h; y++) for (x = 0; x < g.w; x++) {
+      var v = g.d[y * g.w + x];
+      if (!v) continue;
+      var bx = x + dx, by = y + dy;
+      d = Math.hypot(bx + 0.5 - c, by + 0.5 - c);
+      /* inside the ring always; above its middle the hood may break out over the rim */
+      if (d <= R - 1.6 || (by < c - 4 && d <= R + 6)) paint(bx, by, cols[v]);
+    }
+    /* an ink outline around whatever broke out of the ring */
+    var out = grid.slice();
+    for (y = 0; y < S; y++) for (x = 0; x < S; x++) {
+      if (grid[y * S + x]) continue;
+      if ([[1, 0], [-1, 0], [0, 1], [0, -1]].some(function (n) { var nx = x + n[0], ny = y + n[1]; return nx >= 0 && ny >= 0 && nx < S && ny < S && grid[ny * S + nx]; })) out[y * S + x] = pal.ink;
+    }
+    var rects = '';
+    for (y = 0; y < S; y++) for (x = 0; x < S; x++) {
+      var col = out[y * S + x];
+      if (!col) continue;
+      var x0 = x;
+      while (x + 1 < S && out[y * S + x + 1] === col) x++;
+      rects += '<rect x="' + x0 + '" y="' + y + '" width="' + (x - x0 + 1) + '" height="1" fill="' + col + '"/>';
+    }
+    return '<svg class="badge" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + S + ' ' + S + '" shape-rendering="crispEdges"' +
+      (o.label === false ? ' aria-hidden="true" focusable="false"' : ' role="img" aria-label="Hex, the Kalypt chameleon"') + '>' + rects + '</svg>';
+  }
+
   function runs(rows, cls) {
     var out = '';
     rows.forEach(function (row, y) {
@@ -647,6 +696,7 @@
   City.ROAD = ROAD_H;
 
   root.KP_PIX = {
+    badge: badge,
     mix: mix, dither: dither, hash: hash, rng: rng,
     hex: hex, hexCanvas: hexCanvas, hoodie: hoodie, hoodieCanvas: hoodieCanvas, paint: paint, lut: lut, drawMap: drawMap,
     mark: mark, wordmark: wordmark, seam: seam, glow: glow, City: City, person: person, PEOPLE: PEOPLE,

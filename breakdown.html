@@ -16,7 +16,7 @@
 <body data-rail>
   <a class="skip" href="#main">Skip to content</a>
   <header class="nav is-solid" data-nav>
-    <a class="brand" href="index.html" aria-label="Kalypt, home"><span data-mark></span><span data-wordmark></span></a>
+    <a class="brand" href="index.html" aria-label="Kalypt, home"><span data-badge></span><span data-wordmark></span></a>
     <ul class="nav__links" style="display:flex;position:static;flex-direction:row;background:none;box-shadow:none;padding:0">
       <li><a href="index.html">Site</a></li>
       <li><a href="shots.html">Shot sheet</a></li>
@@ -42,6 +42,25 @@
       <p class="note">A web search on 2026-11-20 found no hoodie or streetwear brand called Kalypt. That is a quick check, not a trademark clearance.</p>
       <div class="logo-row" style="margin-top:16px"><span data-mark></span><span data-wordmark="fade"></span><span data-wordmark></span></div>
       <p class="note" style="margin-top:10px">The Eye (a chameleon's turret eye, 7 × 7 px) and the letters (7 × 9 px each, drawn for this brand, not a font). The lower half of the letters dithers into the accent colour the way the hoodies do.</p>
+    </section>
+
+    <section>
+      <h2>The logo</h2>
+      <p>The brand logo is Hex in his roundel: the mascot's head and hood, cut at the chest by a pixel ring. It is drawn from his real sprite, so the logo and the mascot can never drift apart. It is for the web and everything around the clothes (the site's nav and tab icon, social cards, hang tags, packaging, stickers), not a print on the garments. On the clothes the brand stays quiet: only the small Eye.</p>
+      <div class="logo-badges" data-badges></div>
+      <h3>How it ties to the hoodie</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>In the logo</th><th>On the hoodie</th></tr></thead>
+          <tbody>
+            <tr><th>The hood with a tall point</th><td>The Peak: the three-panel hood cut tall like a chameleon's casque</td></tr>
+            <tr><th>The disc dithering into the dark</th><td>The fade, knitted pixel by pixel from one colour into the other</td></tr>
+            <tr><th>The ring's colour</th><td>The palette's signal colour, the one the page and the piping take</td></tr>
+            <tr><th>Five versions</th><td>Five palettes. On the site the logo in the nav always wears the palette of the hoodie on screen</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Files, written by <code>node tools/logo.mjs</code> from the same code: <a href="assets/logo/kalypt-lockup.svg">lockup SVG</a> · <a href="assets/logo/kalypt-lockup.png">lockup PNG</a> · badges as SVG and 528 px PNG: <a href="assets/logo/hex-badge-pink.svg">Pink Noise</a>, <a href="assets/logo/hex-badge-blue.svg">Blue Screen</a>, <a href="assets/logo/hex-badge-acid.svg">Acid Rain</a>, <a href="assets/logo/hex-badge-sodium.svg">Sodium</a>, <a href="assets/logo/hex-badge-static.svg">Static</a>. Keep it pixel-sharp: scale by whole numbers, never smooth.</p>
     </section>
 
     <section>
@@ -155,6 +174,9 @@
         f.appendChild(c); f.appendChild(document.createTextNode(label));
         parent.appendChild(f);
       }
+      document.querySelector('[data-badges]').innerHTML = K.PALETTES.map(function (p) {
+        return '<figure><span>' + P.badge(p) + '</span><figcaption>' + p.name + '</figcaption></figure>';
+      }).join('');
       var hs = document.querySelector('[data-hex-sheet]');
       [[{ walk: null, hoodie: 0 }, K.WILD, 'Wild'], [{ walk: 2, hoodie: 0 }, K.WILD, 'Walk'], [{ walk: null, hoodie: 0.5 }, pink, 'Equip'],
         [{ walk: null, hood: 0 }, pink, 'Hood down'], [{ walk: null, hood: 2 }, pink, 'Going up'], [{ walk: null, hood: 3 }, pink, 'The Peak'],

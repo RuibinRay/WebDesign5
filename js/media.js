@@ -87,7 +87,7 @@
     if (sm) {
       var src = document.createElement('source');
       src.media = '(max-width: 700px) and (orientation: portrait)';
-      src.srcset = 'assets/img/' + sm.id + '-sm.webp 900w, assets/img/' + sm.id + '.webp 2000w';
+      src.srcset = 'assets/img/' + sm.id + '-sm.webp 900w, assets/img/' + sm.id + '-md.webp 1400w, assets/img/' + sm.id + '.webp 2000w';
       src.sizes = '100vw';
       p.appendChild(src);
     }
@@ -99,7 +99,7 @@
     if (s.priority) { i.loading = 'eager'; i.setAttribute('fetchpriority', 'high'); } else i.loading = still ? 'eager' : 'lazy';
     /* the address goes on last: an image that has its src before loading=lazy is fetched at once */
     i.sizes = el.getAttribute('data-sizes') || '100vw';
-    i.srcset = 'assets/img/' + s.id + '-sm.webp 900w, assets/img/' + s.id + '.webp 2000w';
+    i.srcset = 'assets/img/' + s.id + '-sm.webp 900w, assets/img/' + s.id + '-md.webp 1400w, assets/img/' + s.id + '.webp 2000w';
     i.src = 'assets/img/' + s.id + '.webp';
     if (el.dataset.focus) i.style.objectPosition = el.dataset.focus;
     /* until the photograph has arrived, its pixel version holds the place; the photograph fades in over it */
@@ -140,6 +140,6 @@
     ready: function (id) { return !!img[id]; },
     /* a studio shot with its backdrop removed (higgsfield/cutout.mjs): the garment alone, on transparency */
     cut: function (id) { return !!cut[id]; },
-    cutSrc: function (id) { return 'assets/img/' + id + '-cut.webp'; },
+    cutSrc: function (id) { return 'assets/img/' + id + (root.innerWidth < 700 ? '-cut-sm' : '-cut') + '.webp'; },
   };
 })(window);

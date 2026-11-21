@@ -8,7 +8,8 @@
     "plan": "node higgsfield/generate.mjs",
     "generate": "node higgsfield/generate.mjs --go",
     "images": "node higgsfield/optimize.mjs",
-    "cutouts": "node higgsfield/cutout.mjs"
+    "cutouts": "node higgsfield/cutout.mjs",
+    "logo": "node tools/logo.mjs"
   },
   "devDependencies": {
     "sharp": "^0.35.5"

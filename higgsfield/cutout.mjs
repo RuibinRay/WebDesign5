@@ -26,7 +26,7 @@ const ids = want.length ? want : PALS.flatMap((p) => [p + '-front', p + '-back']
 
 const STEP = 7;      /* max colour change between neighbouring backdrop pixels */
 const GLOBAL = 70;   /* max distance from the backdrop's mean colour */
-const H = 1100;      /* output height */
+const H = 1600;      /* output height: sharp on high-density screens at hero size */
 
 async function cut(id) {
   const file = ['png', 'jpg', 'webp'].map((e) => path.join(SRC, `${id}.${e}`)).find((f) => fs.existsSync(f));
@@ -106,6 +106,8 @@ async function cut(id) {
   await sharp(rgba, { raw: { width: W, height: H, channels: 4 } })
     .extract({ left: x0, top: y0, width: x1 - x0 + 1, height: y1 - y0 + 1 })
     .webp({ quality: 82, alphaQuality: 90, effort: 5 }).toFile(out);
+  /* a phone-sized copy, 900 px tall */
+  await sharp(out).resize({ height: 900, kernel: 'lanczos3' }).sharpen({ sigma: 0.6 }).webp({ quality: 82, alphaQuality: 90, effort: 5 }).toFile(path.join(OUT, `${id}-cut-sm.webp`));
   const share = Math.round((bestSize / N) * 100);
   console.log(`  ✓ ${id.padEnd(14)} garment ${share}% of frame, ${label - 1} specks dropped`);
   return id;

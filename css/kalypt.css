@@ -69,6 +69,13 @@ button { font: inherit; color: inherit; }
 .nav.is-hidden { transform: translateY(-120%); }
 .brand { display: flex; align-items: center; gap: 10px; min-height: 44px; text-decoration: none; color: var(--text); }
 .brand .mark { width: 21px; height: 21px; color: var(--ui); }
+.badge { display: block; width: 100%; height: 100%; }
+.brand [data-badge] { display: block; width: 32px; height: 32px; flex: none; }
+/* the logo as a hang tag beside a hoodie's name: it comes with the hoodie, it is not printed on it */
+.tag-badge { display: inline-block; width: 48px; height: 48px; vertical-align: middle; margin-right: 12px; flex: none; transform: rotate(-8deg); }
+.hp-tag { display: flex; align-items: center; margin: 0; }
+.hp-tag .label { margin: 0; }
+@media (max-width: 860px) { .tag-badge { width: 36px; height: 36px; margin-right: 8px; } }
 .brand .wordmark { height: 14px; }
 .nav__links { display: flex; gap: clamp(14px, 2vw, 26px); list-style: none; margin: 0 0 0 auto; padding: 0; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }
 .nav__links a { display: block; padding: 12px 0; text-decoration: none; }
@@ -466,3 +473,9 @@ button { font: inherit; color: inherit; }
 
 /* the hidden attribute always wins over a display rule (the hoodie page swaps sprite and photo with it) */
 [hidden] { display: none !important; }
+
+/* breakdown: the five logo badges */
+.logo-badges { display: flex; flex-wrap: wrap; gap: 20px; margin: 18px 0 8px; }
+.logo-badges figure { margin: 0; text-align: center; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); }
+.logo-badges span { display: block; width: 132px; height: 132px; margin-bottom: 8px; }
+@media (max-width: 560px) { .logo-badges span { width: 88px; height: 88px; } }
