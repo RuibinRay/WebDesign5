@@ -4,13 +4,16 @@
  * The accent colours (--ui, --pa, --pb, --glow, --bgp, --bgp2) are set from data.js by KP_UI.setPalette.
  */
 *, *::before, *::after { box-sizing: border-box; }
+/* the pixel outline: four hard shadows that leave the corners out. Defined on every element, because a custom property
+   that uses var(--bc) is worked out where it is defined: on :root alone it would never see an element's own --bc */
+* { --edge: 0 calc(var(--px) * -1) 0 0 var(--bc), 0 var(--px) 0 0 var(--bc), calc(var(--px) * -1) 0 0 0 var(--bc), var(--px) 0 0 0 var(--bc); }
 :root {
   --void: #07060D; --panel: #100E1C; --panel-2: #1A1730; --line: #2A2644; --text: #EDEBFF; --mute: #9A95C4;
   --ui: #FF2F8E; --ui-on: #170A2B; --glow: #FFA3D2; --pa: #33186A; --pb: #FF2F8E; --bgp: #170A2B; --bgp2: #3A0F4A;
   --px: 4px; --pad: clamp(16px, 4vw, 56px); --nav-h: 56px; --rail-h: 56px;
   --f-pix: 'Pixelify Sans', ui-monospace, 'Cascadia Mono', Consolas, monospace;
   --f-mono: 'Martian Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
-  --edge: 0 calc(var(--px) * -1) 0 0 var(--bc), 0 var(--px) 0 0 var(--bc), calc(var(--px) * -1) 0 0 0 var(--bc), var(--px) 0 0 0 var(--bc);
+  --bc: var(--ui);
 }
 html { -webkit-text-size-adjust: 100%; scrollbar-color: var(--ui) var(--void); }
 html.lenis, html.lenis body { height: auto; }

@@ -91,14 +91,15 @@
       p.appendChild(src);
     }
     var i = document.createElement('img');
-    i.src = 'assets/img/' + s.id + '.webp';
-    i.srcset = 'assets/img/' + s.id + '-sm.webp 900w, assets/img/' + s.id + '.webp 2000w';
-    i.sizes = el.getAttribute('data-sizes') || '100vw';
     i.alt = s.alt;
     i.decoding = 'async';
     /* a film's two stills are needed the moment its stage pins, so they never load lazily */
     var still = el.classList.contains('film__still');
     if (s.priority) { i.loading = 'eager'; i.setAttribute('fetchpriority', 'high'); } else i.loading = still ? 'eager' : 'lazy';
+    /* the address goes on last: an image that has its src before loading=lazy is fetched at once */
+    i.sizes = el.getAttribute('data-sizes') || '100vw';
+    i.srcset = 'assets/img/' + s.id + '-sm.webp 900w, assets/img/' + s.id + '.webp 2000w';
+    i.src = 'assets/img/' + s.id + '.webp';
     if (el.dataset.focus) i.style.objectPosition = el.dataset.focus;
     /* until the photograph has arrived, its pixel version holds the place; the photograph fades in over it */
     var under = still ? null : art(s);

@@ -60,16 +60,21 @@
     }
 
     /* frames: load coarse first so scrubbing works early, then fill in */
-    var imgs = [], loaded = [], started = false;
+    var imgs = [], loaded = [], started = false, held = 0, release = function () {};
     function load() {
       if (started || !count) return;
       started = true;
       var order = [], seen = {};
-      [16, 8, 4, 2, 1].forEach(function (step) { for (var i = 0; i < count; i += step) if (!seen[i]) { seen[i] = 1; order.push(i); } });
+      /* phones stop at every second frame: half the download, still smooth at phone size (nearest() fills the gaps) */
+      (phone ? [16, 8, 4, 2] : [16, 8, 4, 2, 1]).forEach(function (step) { for (var i = 0; i < count; i += step) if (!seen[i]) { seen[i] = 1; order.push(i); } });
       if (!seen[count - 1]) order.push(count - 1);
-      var next = 0, active = 0;
+      /* only the coarse pass (every 4th frame) loads up front; the rest waits until the visitor scrolls into the film */
+      held = 0;
+      for (var k = 0; k < order.length; k++) if (order[k] % 4 === 0) held = k + 1;
+      var next = 0, active = 0, open = false;
+      release = function () { if (!open) { open = true; pump(); } };
       function pump() {
-        while (active < 6 && next < order.length) {
+        while (active < 6 && next < order.length && (open || next < held)) {
           var i = order[next++], im = new Image();
           active++;
           im.decoding = 'async';
@@ -126,6 +131,7 @@
       var r = sec.getBoundingClientRect(), span = sec.offsetHeight - root.innerHeight;
       p = span > 0 ? clamp(-r.top / span, 0, 1) : 0;
       if (r.top < root.innerHeight * 2 && r.bottom > -root.innerHeight) load();
+      if (started && r.top < root.innerHeight * 0.5 && (p > 0.002 || r.top > 0)) release();
       if (!raf) { last = performance.now(); raf = requestAnimationFrame(step); }
     }
     function step(now) {

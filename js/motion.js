@@ -14,6 +14,9 @@
   if (saved === 'reduce' || (saved === null && touch && sysReduce)) d.classList.add('reduce');
   /* ?sync: testing aid for background tabs, where animation frames never fire */
   if (/[?&]sync\b/.test(location.search)) {
+    /* every error from the first moment is kept in window.__errs */
+    window.__errs = [];
+    window.addEventListener('error', function (e) { window.__errs.push(e.message + ' @' + String(e.filename || '').split('/').pop() + ':' + e.lineno); });
     window.requestAnimationFrame = function (f) { return setTimeout(function () { f(performance.now()); }, 16); };
     window.cancelAnimationFrame = clearTimeout;
   }

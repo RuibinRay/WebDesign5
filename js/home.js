@@ -20,6 +20,8 @@
     S.size = function () {
       var r = stage.getBoundingClientRect();
       var sc = Math.max(2, Math.floor(Math.min(r.width / 110, r.height / 110)));
+      /* upright phones: bigger pixels, so Hex and the street fill the screen instead of a band at the bottom */
+      if (r.height > r.width * 1.3) sc = Math.max(2, Math.floor(r.width / 92));
       var W = Math.ceil(r.width / sc), H = Math.ceil(r.height / sc);
       if (W !== canvas.width || H !== canvas.height) { canvas.width = W; canvas.height = H; }
       canvas.style.width = W * sc + 'px'; canvas.style.height = H * sc + 'px';
@@ -163,11 +165,8 @@
     fig.appendChild(c); track.appendChild(fig);
     var it = { p: p, fig: fig, c: c, ctx: c.getContext('2d'), m: -1, src: PIX.hoodieCanvas(p, 'front'), photo: null };
     items.push(it);
-    if (MEDIA.ready(p.id + '-front')) {
-      var im = new Image();
-      im.onload = function () { it.photo = im; it.m = -1; fig.classList.add('is-photo'); layout(); paintSwap(true); };
-      im.src = 'assets/img/' + p.id + '-front-sm.webp';
-    }
+    /* the photo is fetched only when the slide comes within two screens (swapPhotos below); the sprite shows until then */
+    if (MEDIA.ready(p.id + '-front')) it.want = 'assets/img/' + p.id + '-front-sm.webp';
     var li = document.createElement('li'), b = document.createElement('button');
     b.type = 'button'; b.setAttribute('aria-label', p.name); b.style.setProperty('--c', p.ui);
     b.addEventListener('click', function () { go(i); });
@@ -175,6 +174,17 @@
   });
   var dots = $$('button', dotsEl);
 
+  var photosAsked = false;
+  function swapPhotos() {
+    if (photosAsked) return;
+    photosAsked = true;
+    items.forEach(function (it) {
+      if (!it.want) return;
+      var im = new Image();
+      im.onload = function () { it.photo = im; it.m = -1; it.fig.classList.add('is-photo'); layout(); paintSwap(true); };
+      im.src = it.want;
+    });
+  }
   function layout() {
     var r = track.getBoundingClientRect();
     k = Math.max(1, Math.floor(Math.min(r.height / 108, (r.width * 0.92) / 96)));
@@ -417,6 +427,7 @@
     }
 
     r = swapSec.getBoundingClientRect(); span = swapSpan();
+    if (r.top < vh * 2 && r.bottom > -vh) swapPhotos();
     p = span > 0 ? clamp(-r.top / span, 0, 1) : 0;
     var was = swapMid;
     swapMid = r.top <= vh * 0.5 && r.bottom > vh * 0.5;

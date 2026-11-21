@@ -108,7 +108,7 @@ for (const f of S.films) {
       const dir = path.join(base, set);
       fs.rmSync(dir, { recursive: true, force: true });
       fs.mkdirSync(dir, { recursive: true });
-      const r = spawnSync(ff, ['-v', 'error', '-y', '-i', src, '-an', '-vf', vf, '-c:v', 'libwebp', '-quality', '80', '-compression_level', '4', path.join(dir, '%04d.webp')]);
+      const r = spawnSync(ff, ['-v', 'error', '-y', '-i', src, '-an', '-vf', vf, '-c:v', 'libwebp', '-quality', set === 'm' ? '66' : '80', '-compression_level', '4', path.join(dir, '%04d.webp')]);
       if (r.status !== 0) { console.log(`  ✗ ${f.id} (${set}): ${String(r.stderr).slice(0, 200)}`); continue; }
       const frames = fs.readdirSync(dir).filter((n) => n.endsWith('.webp')).sort();
       const m0 = await sharp(fs.readFileSync(path.join(dir, frames[0]))).metadata();
