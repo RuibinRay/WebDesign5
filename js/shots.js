@@ -218,6 +218,44 @@
       BACK + ' The motif is pale pink (#FFA3D2). The hoodie: ' + hoodie(K.byId.pink) + '. ' + SAME + ' Backdrop: ' + BACKDROP.pink + '. ' + NEG,
   }));
 
+  /* ── stage 1: the rest of the wardrobe. Each takes its palette's logo badge (assets/logo, made by tools/logo.mjs)
+        as the reference image, so the real logo lands on the product. ── */
+  var LOGO = 'The logo on it is exactly the pixel-art badge in the reference image: a round badge of a cartoon chameleon head in a tall pointed hood inside a coloured ring, ' +
+    'made of crisp square pixels. Keep its shape, its pixels and its colours; do not redraw it as a smooth illustration and do not add any letters to it.';
+  var lum = function (h) { var n = parseInt(h.slice(1), 16); return 0.2126 * (n >> 16) + 0.7152 * ((n >> 8) & 255) + 0.0722 * (n & 255); };
+  var ITEM_DESC = {
+    tee: function (p) { return 'an oversized boxy heavyweight cotton T-shirt with dropped shoulders, solid ' + p.aName + ' (' + p.a + '). The bottom 6 cm of the hem changes into ' + p.bName + ' (' + p.b + ') through a printed pixel dither of small squares. A large screen-printed round badge, about 9 cm wide, sits on the chest'; },
+    shell: function (p) { return 'a lightweight rain shell jacket with a stand collar and a full-length zip, two-layer ripstop nylon in ' + p.aName + ' (' + p.a + '); from the elbows down, the sleeves change into ' + p.bName + ' (' + p.b + ') through a printed pixel dither of small squares; a thin silver reflective stripe across each sleeve; a small badge, about 4 cm wide, on the left chest'; },
+    varsity: function (p) { return 'a classic baseball varsity jacket: a ' + p.aName + ' (' + p.a + ') wool body, cream faux-leather sleeves, a collar, cuffs and hem in striped rib knit in ' + p.bName + ' (' + p.b + ') and ' + p.glow + ', square silver snap buttons down the front, and a fuzzy chenille patch of the badge, about 10 cm wide, on the left chest'; },
+    pants: function (p) { var f = lum(p.b) < lum(p.a) ? p.a : p.b, fn = lum(p.b) < lum(p.a) ? p.aName : p.bName; return 'relaxed straight-leg heavyweight fleece sweatpants, solid black (#16151C) from the waistband to well below the knee. Only on the lower shin does ' + fn + ' (' + f + ') start to knit in, as small square pixels, sparse at first and denser toward the ankle, until the ribbed cuffs are solid ' + fn + '. A small woven badge, about 3 cm wide, on the right thigh just under the pocket'; },
+    socks: function (p) { return 'a pair of off-white cotton crew socks laid flat side by side, with ribbed cuffs, toes and heels in ' + p.bName + ' (' + p.b + '), and the badge knitted into each cuff, about 3 cm wide'; },
+    cap: function (p) { return 'a six-panel baseball cap seen from the front at a slight three-quarter angle, ' + p.aName + ' (' + p.a + ') cotton twill, a curved brim whose underside fades into ' + p.bName + ' (' + p.b + ') in small square pixels, and a raised embroidered badge, about 6 cm wide, on the front panel'; },
+    beanie: function (p) { return 'a rib-knit watch cap beanie with a deep folded-up cuff, the crown rising to a soft point, ' + p.aName + ' (' + p.a + '); the folded cuff changes into ' + p.bName + ' (' + p.b + ') through knitted pixel dither, and a small woven label of the badge, about 4 cm wide, is stitched on the front of the folded cuff'; },
+    tote: function (p) { return 'a natural cream canvas tote bag with long black cotton handles; the bottom 8 cm changes into ' + p.bName + ' (' + p.b + ') through a printed pixel dither of small squares; the badge is printed large, about 22 cm wide, on the front'; },
+  };
+  K.ITEMS.forEach(function (it) {
+    var p = K.byId[it.pal];
+    shots.push(gpt({
+      id: 'item-' + it.id, stage: 1, aspect: '4:5', pal: it.pal, art: 'item', item: it.id, refs: ['assets/logo/hex-badge-' + it.pal + '.png'],
+      brief: it.name + ' in ' + p.name + ', studio shot, with the Hex badge where the real logo goes: ' + it.placement.toLowerCase(),
+      alt: 'The Kalypt ' + it.name + ' in ' + p.name + '.',
+      used: ['Store · card', 'Item page · hero'],
+      prompt: STUDIO.replace('The hoodie is shown on an invisible ghost mannequin, standing upright, perfectly centred and symmetrical, sleeves hanging slightly away from the body. ',
+        it.cat === 'accessories' ? 'The product is shown alone, centred, as a clean catalogue still life. ' : 'The garment is shown on an invisible ghost mannequin, upright, centred and symmetrical. ') +
+        ' The product: ' + ITEM_DESC[it.id](p) + '. ' + LOGO + ' Backdrop: ' + BACKDROP[p.id] + '. ' + NEG,
+    }));
+  });
+  /* one person wearing the set: the look the store opens with */
+  shots.push(gpt({
+    id: 'store-look', stage: 2, aspect: '4:5', pal: 'pink', art: 'person', refs: [ref('item-varsity'), ref('item-pants')],
+    brief: 'One person in the Level Up Varsity and the Dead Pixel Pants, full length: the set worn together.',
+    alt: 'A person wearing the Kalypt varsity jacket and pixel-fade pants, full length.',
+    used: ['Store · hero'],
+    prompt: BODY + ' Full length, from head to trainers, facing the camera, relaxed. The person: a man in his twenties, about 180 cm tall, deep-brown skin, short twists. ' +
+      'He wears the varsity jacket from the first reference image, open over a plain black T-shirt, and the pants from the second reference image instead of the black trousers. ' +
+      'Both are exactly as in their reference images, including the pixel-art badge and the pixel fade below the knee. Backdrop: ' + BACKDROP.pink + '. ' + NEG,
+  }));
+
   /* ── stage 2: details ── */
   shots.push(gpt({
     id: 'macro-dither', stage: 2, aspect: '16:9', pal: 'pink', art: 'dither', refs: [ref('pink-front')],

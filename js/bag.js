@@ -38,51 +38,59 @@
   paintBadge(UI.palette());
   UI.onPalette(paintBadge);
 
-  /* group the stored list into lines */
+  /* group the stored list into lines: one per product, palette and size */
+  var palOf = function (it) { var pr = K.productById[it.id]; return it.pal || (pr && pr.pal); };
+  var same = function (it, l) { return it.id === l.id && it.size === l.size && palOf(it) === l.pal; };
   function lines() {
     var map = {}, out = [];
     read().forEach(function (it) {
-      if (!K.byId[it.id]) return;
-      var k = it.id + '/' + it.size;
-      if (!map[k]) { map[k] = { id: it.id, size: it.size, q: 0 }; out.push(map[k]); }
+      if (!K.productById[it.id]) return;
+      var pal = palOf(it), k = it.id + '/' + pal + '/' + it.size;
+      if (!map[k]) { map[k] = { id: it.id, pal: pal, size: it.size, q: 0 }; out.push(map[k]); }
       map[k].q++;
     });
     return out;
   }
-  function setLine(id, size, q, newSize) {
-    var list = read().filter(function (it) { return !(it.id === id && it.size === size); });
-    for (var i = 0; i < q; i++) list.push({ id: id, size: newSize || size });
+  function setLine(l, q, newSize) {
+    var list = read().filter(function (it) { return !same(it, l); });
+    for (var i = 0; i < q; i++) list.push({ id: l.id, size: newSize || l.size, pal: l.pal });
     write(list);
     render();
   }
+  var sizesOf = function (pr) {
+    if (pr.kind === 'hoodie') return K.SIZES.map(function (s) { return [s.id, 'Size ' + s.id + ' · ' + s.fits]; });
+    return K.itemById[pr.id].sizes.map(function (s) { return [s, s === 'One size' ? s : 'Size ' + s]; });
+  };
 
-  function thumb(p) {
-    if (MEDIA.cut(p.id + '-front')) return '<img src="assets/img/' + p.id + '-front-cut-sm.webp" alt="" decoding="async">';
+  function thumb(pr, pal) {
+    if (pr.kind === 'hoodie' && MEDIA.cut(pr.id + '-front')) return '<img src="assets/img/' + pr.id + '-front-cut-sm.webp" alt="" decoding="async">';
+    if (pr.kind === 'item' && pal.id === pr.pal && MEDIA.cut('item-' + pr.id)) return '<img src="assets/img/item-' + pr.id + '-cut-sm.webp" alt="" decoding="async">';
     var c = document.createElement('canvas');
     c.width = 96; c.height = 108;
-    c.getContext('2d').drawImage(PIX.hoodieCanvas(p, 'front'), 0, 0);
+    c.getContext('2d').drawImage(pr.kind === 'hoodie' ? PIX.hoodieCanvas(pal, 'front') : PIX.itemCanvas(K.itemById[pr.id], pal), 0, 0);
     return '<img src="' + c.toDataURL() + '" alt="" class="px">';
   }
   function render() {
     var ls = lines(), n = 0, total = 0;
     listEl.innerHTML = ls.map(function (l, i) {
-      var p = K.byId[l.id];
-      n += l.q; total += l.q * p.price;
+      var pr = K.productById[l.id], p = K.byId[l.pal] || K.byId[pr.pal];
+      n += l.q; total += l.q * pr.price;
+      var href = pr.kind === 'hoodie' ? pr.href : pr.href + '&pal=' + p.id;
       return '<li class="bagd__item" style="--c:' + p.ui + ';--bg:' + p.bg + ';--bg2:' + p.bg2 + '" data-line="' + i + '">' +
-        '<a class="bagd__slot" href="hoodie.html?id=' + p.id + '" aria-label="View the ' + esc(p.name) + ' hoodie">' + thumb(p) + '</a>' +
-        '<div class="bagd__info"><p class="bagd__name">' + esc(p.name) + '</p>' +
-        '<p class="bagd__meta">' + esc(p.district.split(' · ')[1]) + ' · ' + K.money(p.price) + '</p>' +
+        '<a class="bagd__slot" href="' + href + '" aria-label="View the ' + esc(pr.name) + '">' + thumb(pr, p) + '</a>' +
+        '<div class="bagd__info"><p class="bagd__name">' + esc(pr.name) + '</p>' +
+        '<p class="bagd__meta">' + esc(pr.kind === 'hoodie' ? p.district.split(' · ')[1] : p.name) + ' · ' + K.money(pr.price) + '</p>' +
         '<div class="bagd__ctl">' +
-        '<label class="bagd__size"><span class="vh">Size for ' + esc(p.name) + '</span><select data-size>' +
-        K.SIZES.map(function (s) { return '<option value="' + s.id + '"' + (s.id === l.size ? ' selected' : '') + '>Size ' + s.id + ' · ' + s.fits + '</option>'; }).join('') +
+        '<label class="bagd__size"><span class="vh">Size for ' + esc(pr.name) + '</span><select data-size>' +
+        sizesOf(pr).map(function (s) { return '<option value="' + s[0] + '"' + (s[0] === l.size ? ' selected' : '') + '>' + s[1] + '</option>'; }).join('') +
         '</select></label>' +
-        '<span class="bagd__q" role="group" aria-label="Quantity of ' + esc(p.name) + '">' +
+        '<span class="bagd__q" role="group" aria-label="Quantity of ' + esc(pr.name) + '">' +
         '<button type="button" data-q="-1" aria-label="One fewer"' + (l.q <= 1 ? ' disabled' : '') + '>−</button>' +
         '<b aria-live="polite">' + l.q + '</b>' +
         '<button type="button" data-q="1" aria-label="One more"' + (l.q >= MAXQ ? ' disabled' : '') + '>+</button></span>' +
         '<button class="bagd__rm" type="button" data-rm>Drop</button>' +
         '</div></div>' +
-        '<p class="bagd__line">' + K.money(l.q * p.price) + '</p></li>';
+        '<p class="bagd__line">' + K.money(l.q * pr.price) + '</p></li>';
     }).join('');
     el.querySelector('[data-bag-n]').textContent = n;
     el.querySelector('[data-bag-total]').textContent = K.money(total);
@@ -103,10 +111,10 @@
     var l = lines()[+li.getAttribute('data-line')];
     if (!l) return;
     var q = e.target.closest('[data-q]');
-    if (q) { setLine(l.id, l.size, Math.max(1, Math.min(MAXQ, l.q + +q.getAttribute('data-q')))); focusLine(l.id, l.size, q.getAttribute('data-q')); return; }
+    if (q) { setLine(l, Math.max(1, Math.min(MAXQ, l.q + +q.getAttribute('data-q')))); focusLine(l, q.getAttribute('data-q')); return; }
     if (e.target.closest('[data-rm]')) {
-      setLine(l.id, l.size, 0);
-      UI.toast(K.byId[l.id].name + ' dropped.');
+      setLine(l, 0);
+      UI.toast(K.productById[l.id].name + ' dropped.');
       var first = listEl.querySelector('button, select') || panel;
       first.focus();
     }
@@ -117,13 +125,13 @@
     var l = lines()[+sel.closest('[data-line]').getAttribute('data-line')];
     if (!l || sel.value === l.size) return;
     /* moving to a size that is already a line merges the two */
-    var list = read().map(function (it) { return it.id === l.id && it.size === l.size ? { id: it.id, size: sel.value } : it; });
+    var list = read().map(function (it) { return same(it, l) ? { id: it.id, size: sel.value, pal: l.pal } : it; });
     write(list);
     render();
   });
-  function focusLine(id, size, dir) {
+  function focusLine(l, dir) {
     var ls = lines();
-    for (var i = 0; i < ls.length; i++) if (ls[i].id === id && ls[i].size === size) {
+    for (var i = 0; i < ls.length; i++) if (ls[i].id === l.id && ls[i].size === l.size && ls[i].pal === l.pal) {
       var b = listEl.querySelector('[data-line="' + i + '"] [data-q="' + dir + '"]');
       if (b && !b.disabled) b.focus(); else if (b) b.parentNode.querySelector('button:not([disabled])').focus();
     }

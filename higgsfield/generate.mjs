@@ -74,7 +74,9 @@ const renderOf = (id) => {
 };
 /* refs are written as higgsfield/renders/<id>.png; accept whatever extension the download had */
 const idOfRef = (ref) => path.basename(ref).replace(/\.[^.]+$/, '');
-const inputsOf = (s) => (kindOf(s) === 'film' ? [s.start, s.end] : (s.refs || []).map(idOfRef));
+const inputsOf = (s) => (kindOf(s) === 'film' ? [s.start, s.end] : (s.refs || []).map((r) => (r.startsWith('assets/') ? r : idOfRef(r))));
+/* an input is either a project file (the logo badges) or an earlier render */
+const fileOfInput = (id) => (id.startsWith('assets/') ? (fs.existsSync(path.join(ROOT, id)) ? path.join(ROOT, id) : null) : renderOf(id));
 const paramsOf = (s) => {
   const p = { ...s.params };
   if (s.model === 'gpt_image_2_6') {
@@ -134,7 +136,7 @@ if (balance != null && balance < total * 1.05) {
 
 /* ── run ── */
 async function runJob(s) {
-  const ids = inputsOf(s), files = ids.map(renderOf);
+  const ids = inputsOf(s), files = ids.map(fileOfInput);
   if (files.some((f) => !f)) throw new Error('needs ' + ids.filter((id, i) => !files[i]).join(', ') + ' first (no credits spent)');
   const started = Date.now();
   const wait = kindOf(s) === 'image' ? '15m' : '40m';

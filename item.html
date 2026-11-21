@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Item · Kalypt</title>
+  <meta name="description" content="A Kalypt piece: Hex on it somewhere, the fade on it everywhere, in five palettes.">
+  <meta property="og:image" content="assets/img/og.jpg">
+  <meta name="theme-color" content="#07060D">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wdth,wght@75..112.5,100..800&family=Pixelify+Sans:wght@400..700&display=swap">
+  <link rel="stylesheet" href="css/kalypt.css">
+  <link rel="expect" href="#vt-ready" blocking="render">
+  <script src="js/motion.js"></script>
+</head>
+<body class="item-page" data-rail>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav" data-nav>
+    <a class="brand" href="index.html" aria-label="Kalypt, home"><span data-badge></span><span data-wordmark></span></a>
+    <button class="nav__menu" type="button" data-menu aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="store.html"><b>▶</b>Store</a></li>
+      <li><a href="index.html#run"><b>01</b>Equip</a></li>
+      <li><a href="index.html#swap"><b>02</b>Swap</a></li>
+      <li><a href="index.html#fit"><b>04</b>On body</a></li>
+      <li><a href="index.html#drop">Drop 001</a></li>
+    </ul>
+    <button class="nav__bag" type="button" data-bag aria-label="Bag">Bag<span data-bag-count>00</span></button>
+  </header>
+
+  <main id="main">
+    <section class="hp-hero" data-hero>
+      <div class="hp-stage">
+        <div class="hp-fig" data-hero-fig>
+          <canvas class="hp-sprite" data-hero-sprite aria-hidden="true"></canvas>
+          <figure class="hp-cut" data-hero-photo hidden></figure>
+        </div>
+        <p class="ip-logo-note" data-f="logo-note"></p>
+      </div>
+      <div class="hp-copy">
+        <a class="hp-back" href="store.html">◀ Store</a>
+        <p class="hp-tag"><span class="tag-badge" data-badge aria-hidden="true"></span><span class="label" data-f="eyebrow"></span></p>
+        <h1 class="hp-name" data-f="name"></h1>
+        <p class="hp-line" data-f="line"></p>
+        <fieldset class="pick ip-pals">
+          <legend>Palette · <b data-f="pal-name"></b></legend>
+          <div class="pick__row" data-pal-pick></div>
+        </fieldset>
+        <dl class="specs ip-specs" data-specs></dl>
+        <fieldset class="pick">
+          <legend>Size</legend>
+          <div class="pick__row" data-pick></div>
+        </fieldset>
+        <div class="hp-buy"><span class="price" data-f="price"></span><button class="btn" type="button" data-add>Add to inventory</button></div>
+        <p class="note" data-f="note"></p>
+      </div>
+    </section>
+
+    <div class="hp-body">
+      <section aria-labelledby="ip-others-h">
+        <p class="label">Same system</p>
+        <h2 class="h2" id="ip-others-h">Complete the set.</h2>
+        <div class="others" data-others style="margin-top:28px"></div>
+        <p style="margin-top:22px"><a class="btn btn--ghost" href="store.html">Enter the store</a></p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <div class="foot__logo" data-wordmark="fade" aria-hidden="true"></div>
+    <div class="foot__row">
+      <span>© <span data-year>2026</span> Kalypt. A concept brand: prices, specs and dates are invented.</span>
+      <span class="foot__links">
+        <a href="breakdown.html">Brand breakdown</a>
+        <a href="shots.html">Shot sheet</a>
+        <button type="button" data-motion-toggle aria-pressed="false">Reduce motion</button>
+        <a href="index.html">Title screen</a>
+      </span>
+    </div>
+  </footer>
+
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
+
+  <script src="assets/img/ready.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/shots.js"></script>
+  <script src="js/pix.js"></script>
+  <script src="js/media.js"></script>
+  <script src="assets/vendor/lenis.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/pixfx.js"></script>
+  <script src="js/bag.js"></script>
+  <script src="js/item-page.js"></script>
+  <i id="vt-ready" hidden></i>
+</body>
+</html>

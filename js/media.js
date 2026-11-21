@@ -56,6 +56,11 @@
         var h = PIX.hexCanvas({ walk: null, hood: 3, hands: 1, glow: true }, pal);
         x.drawImage(h, Math.round(W * 0.5 - 26), H - PIX.City.ROAD + 2 - PIX.HEX.foot);
       }
+    } else if (s.art === 'item') {
+      H = 150; W = Math.round(H * wide);
+      c.width = W; c.height = H; x = c.getContext('2d');
+      studio();
+      x.drawImage(PIX.itemCanvas(K.itemById[s.item], pal), Math.round((W - 96) / 2), Math.round((H - 108) / 2));
     } else if (s.art === 'hex') {
       c.width = 72; c.height = 72; x = c.getContext('2d');
       for (var yy = 0; yy < 72; yy++) for (var xx = 0; xx < 72; xx++) { x.fillStyle = PIX.dither(xx, yy, 1.1 - Math.hypot(xx - 36, yy - 40) / 34) ? '#3A2466' : '#2A1848'; x.fillRect(xx, yy, 1, 1); }

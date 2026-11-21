@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Store · Kalypt</title>
+  <meta name="description" content="The Kalypt store: hoodies, tees, jackets, pants and accessories, every piece in five palettes, every piece with Hex on it somewhere.">
+  <meta property="og:image" content="assets/img/og.jpg">
+  <meta name="theme-color" content="#07060D">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wdth,wght@75..112.5,100..800&family=Pixelify+Sans:wght@400..700&display=swap">
+  <link rel="stylesheet" href="css/kalypt.css">
+  <script src="js/motion.js"></script>
+</head>
+<body class="store-page" data-rail>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav" data-nav>
+    <a class="brand" href="index.html" aria-label="Kalypt, home"><span data-badge></span><span data-wordmark></span></a>
+    <button class="nav__menu" type="button" data-menu aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="store.html" aria-current="page"><b>▶</b>Store</a></li>
+      <li><a href="index.html#run"><b>01</b>Equip</a></li>
+      <li><a href="index.html#swap"><b>02</b>Swap</a></li>
+      <li><a href="index.html#fit"><b>04</b>On body</a></li>
+      <li><a href="index.html#drop">Drop 001</a></li>
+    </ul>
+    <button class="nav__bag" type="button" data-bag aria-label="Bag">Bag<span data-bag-count>00</span></button>
+  </header>
+
+  <main id="main">
+    <section class="shop-hero" data-shop-hero>
+      <div class="shop-hero__in">
+        <span class="shop-hero__badge" data-badge aria-hidden="true"></span>
+        <div>
+          <p class="label">Item shop · Drop 001</p>
+          <h1 class="shop-hero__title">Select your gear.</h1>
+          <p class="lede">Thirteen pieces. Five palettes. One chameleon on every one of them, somewhere. Pick a palette below and the whole shop wears it.</p>
+        </div>
+        <dl class="shop-hero__stats">
+          <div><dt>Pieces</dt><dd data-stat="pieces">13</dd></div>
+          <div><dt>Palettes</dt><dd>5</dd></div>
+          <div><dt>Combos</dt><dd data-stat="combos">45</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <div class="shop-bar" data-shop-bar>
+      <div class="shop-bar__in">
+        <div class="shop-cats" role="group" aria-label="Category" data-cats></div>
+        <div class="shop-pals" role="group" aria-label="Wear it in" data-pals></div>
+        <label class="shop-sort"><span class="vh">Sort</span>
+          <select data-sort>
+            <option value="drop">Drop order</option>
+            <option value="low">Price: low to high</option>
+            <option value="high">Price: high to low</option>
+            <option value="rare">Rarity</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <section class="shop" aria-label="Products">
+      <p class="shop__count" data-count role="status"></p>
+      <div class="shop__grid" data-grid></div>
+    </section>
+
+    <section class="shop-sys" aria-labelledby="sys-h">
+      <div class="shop-sys__in">
+        <figure class="slot shop-sys__look" data-shot="store-look" data-sizes="(min-width: 900px) 30vw, 90vw"></figure>
+        <div>
+        <p class="label">The system</p>
+        <h2 class="h2" id="sys-h">Every piece follows three rules.</h2>
+        <ol class="shop-sys__rules">
+          <li><b>1 · Hex is on it.</b>The badge, somewhere that suits the piece: printed, patched, knitted, embroidered or woven in.</li>
+          <li><b>2 · The fade.</b>Every piece dithers from one colour into another, pixel by pixel. On the pants it waits until below the knee.</li>
+          <li><b>3 · Five palettes.</b>Pink Noise, Blue Screen, Acid Rain, Sodium, Static. Any piece, any palette, so anything you own goes together.</li>
+        </ol>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot__logo" data-wordmark="fade" aria-hidden="true"></div>
+    <div class="foot__row">
+      <span>© <span data-year>2026</span> Kalypt. A concept brand: prices, specs and dates are invented.</span>
+      <span class="foot__links">
+        <a href="breakdown.html">Brand breakdown</a>
+        <a href="shots.html">Shot sheet</a>
+        <button type="button" data-motion-toggle aria-pressed="false">Reduce motion</button>
+        <a href="index.html">Title screen</a>
+      </span>
+    </div>
+  </footer>
+
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
+
+  <script src="assets/img/ready.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/shots.js"></script>
+  <script src="js/pix.js"></script>
+  <script src="js/media.js"></script>
+  <script src="assets/vendor/lenis.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/pixfx.js"></script>
+  <script src="js/bag.js"></script>
+  <script src="js/store.js"></script>
+</body>
+</html>

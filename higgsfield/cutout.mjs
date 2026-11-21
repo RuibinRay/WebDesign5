@@ -22,7 +22,8 @@ const SRC = path.join(ROOT, 'higgsfield/renders');
 const OUT = path.join(ROOT, 'assets/img');
 const PALS = ['pink', 'blue', 'acid', 'sodium', 'static'];
 const want = process.argv.slice(2);
-const ids = want.length ? want : PALS.flatMap((p) => [p + '-front', p + '-back']);
+const ITEMS = ['tee', 'shell', 'varsity', 'pants', 'socks', 'cap', 'beanie', 'tote'].map((i) => 'item-' + i);
+const ids = want.length ? want : PALS.flatMap((p) => [p + '-front', p + '-back']).concat(ITEMS);
 
 const STEP = 7;      /* max colour change between neighbouring backdrop pixels */
 const GLOBAL = 70;   /* max distance from the backdrop's mean colour */

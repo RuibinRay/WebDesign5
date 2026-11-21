@@ -19,6 +19,8 @@ Or open the folder with any static server. There is no build step. In the Claude
 | Page | What it is |
 |---|---|
 | `index.html` | Title screen, four levels, stat sheet, five street looks, the name, the drop queue |
+| `store.html` | The store: every piece (5 hoodies + 8 items) with category tabs, a palette picker that recolours the whole shop, sort and rarity |
+| `item.html?id=tee&pal=blue` | One template for the eight items: pick any of five palettes, see where Hex goes on it |
 | `hoodie.html?id=pink` | One template for all five (`pink`, `blue`, `acid`, `sodium`, `static`). The page takes the hoodie's palette |
 | `breakdown.html` | The brand taken apart: idea, name, mascot, range, type, every scroll move and why |
 | `shots.html` | Every Higgsfield prompt, with copy buttons |

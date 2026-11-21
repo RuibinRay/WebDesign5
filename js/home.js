@@ -406,6 +406,21 @@
     stripC.style.width = stripC.width * sc + 'px'; stripC.style.height = stripC.height * sc + 'px';
   }
 
+  /* ═════════ the store teaser: four pieces beyond the hoodie ═════════ */
+  var teaser = $('[data-shopteaser]');
+  if (teaser) {
+    teaser.innerHTML = ['varsity', 'pants', 'tee', 'beanie'].map(function (id) {
+      var it = K.itemById[id], p = K.byId[it.pal], c = document.createElement('canvas');
+      c.width = 96; c.height = 108;
+      c.getContext('2d').drawImage(PIX.itemCanvas(it, p), 0, 0);
+      return '<a class="card rv" href="item.html?id=' + id + '&pal=' + p.id + '" data-morph="' + id + '" style="--c:' + p.ui + ';--bg:' + p.bg + ';--bg2:' + p.bg2 + ';--glow:' + p.glow + '">' +
+        '<span class="card__stage"><span class="card__new">New</span><span class="card__art" data-morph-part="hoodie"><img class="px" src="' + c.toDataURL() + '" alt=""></span></span>' +
+        '<span class="card__body"><span class="card__name" data-morph-part="name">' + esc(it.name) + '</span><span class="card__sub">' + esc(p.name) + '</span>' +
+        '<span class="card__foot"><b class="card__price">' + K.money(it.price) + '</b></span></span></a>';
+    }).join('');
+    UI.watch(teaser);
+  }
+
   /* ═════════ the drop queue (front end only) ═════════ */
   var form = $('[data-drop]'), msg = $('[data-drop-msg]');
   function queued(n) { msg.textContent = 'Player #' + ('0000' + n).slice(-4) + ' queued for Drop ' + K.drop.n + '. It unlocks ' + K.drop.label + '.'; form.classList.add('is-done'); }

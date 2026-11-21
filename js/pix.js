@@ -438,6 +438,7 @@
       if (grid[y * S + x]) continue;
       if ([[1, 0], [-1, 0], [0, 1], [0, -1]].some(function (n) { var nx = x + n[0], ny = y + n[1]; return nx >= 0 && ny >= 0 && nx < S && ny < S && grid[ny * S + nx]; })) out[y * S + x] = pal.ink;
     }
+    if (o.cells) return { S: S, cells: out };
     var rects = '';
     for (y = 0; y < S; y++) for (x = 0; x < S; x++) {
       var col = out[y * S + x];
@@ -448,6 +449,115 @@
     }
     return '<svg class="badge" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + S + ' ' + S + '" shape-rendering="crispEdges"' +
       (o.label === false ? ' aria-hidden="true" focusable="false"' : ' role="img" aria-label="Hex, the Kalypt chameleon"') + '>' + rects + '</svg>';
+  }
+
+  /* ───────── THE REST OF THE WARDROBE: tee, shell, varsity, pants, socks, cap, beanie, tote ─────────
+     Each is a 96 × 108 indexed sprite built from shapes, in any palette, with the palette's dither fade,
+     and Hex's badge stamped where the real logo goes (data.js: item.logo = [x, y, size]). */
+  var I_INK = 1, I_B = 2, I_BS = 3, I_BL = 4, I_F = 5, I_FS = 6, I_T = 7, I_M = 8, I_X = 9, I_XS = 10, I_R = 11;
+  function itemGrid(kind) {
+    var W = 96, H = 108, g = new Grid(W, H), m, mk = function () { return new Grid(W, H); }, cx = 48;
+    var mir = function (pts) { return pts.map(function (p) { return [2 * cx - p[0], p[1]]; }); };
+    var sym = function (pts) { return pts.concat(mir(pts).reverse()); };
+    var sh = function (x, y, v) { return v === I_B ? I_BS : v === I_F ? I_FS : v === I_X ? I_XS : v; };
+    var li = function (x, y, v) { return v === I_B ? I_BL : v; };
+    /* base colour that dithers into the fade colour between y0 and y1 */
+    var fade = function (y0, y1, base) { return function (x, y) { return dither(x, y, (y - y0) / (y1 - y0)) ? I_F : base || I_B; }; };
+    var rib = function (x, y) { return (x & 1) ? I_F : I_FS; };
+    var hline = function (y, x0, x1, v, only) { for (var x = x0; x <= x1; x++) if (!only || g.get(x, y)) g.set(x, y, v); };
+    if (kind === 'tee') {
+      m = mk(); poly(m, sym([[48, 19], [40, 15], [30, 19], [12, 33], [21, 48], [29, 42], [29, 100]]));
+      put(g, m, { f: fade(84, 96), s: sh, l: li, o: I_INK });
+      m = mk(); ell(m, 48, 17, 9, 5); put(g, m, { f: I_INK });
+      m = mk(); ell(m, 48, 16, 7, 3.4); put(g, m, { f: I_FS });
+      hline(99, 29, 67, I_FS, true);
+    } else if (kind === 'shell') {
+      m = mk(); poly(m, sym([[48, 16], [40, 13], [30, 18], [18, 30], [9, 92], [19, 95], [27, 52], [27, 100]]));
+      put(g, m, { f: function (x, y) { return (x < 28 || x > 68) && y > 54 && dither(x, y, (y - 56) / 30) ? I_F : I_B; }, s: sh, l: li, o: I_INK });
+      m = mk(); poly(m, [[38, 8], [58, 8], [60, 20], [36, 20]]); put(g, m, { f: I_BL, s: I_BS, o: I_INK });
+      for (var zy = 12; zy < 100; zy++) g.set(48, zy, zy % 4 ? I_M : I_INK);
+      g.set(47, 21, I_T); g.set(49, 21, I_T);
+      hline(41, 9, 26, I_T, true); hline(41, 70, 87, I_T, true);
+    } else if (kind === 'varsity') {
+      m = mk(); poly(m, sym([[48, 17], [40, 14], [30, 19], [18, 31], [10, 92], [20, 94], [27, 52], [27, 100]]));
+      put(g, m, { f: function (x, y) { return x < 28 || x > 68 ? I_X : I_B; }, s: sh, l: li, o: I_INK });
+      /* striped rib collar, cuffs and hem */
+      m = mk(); poly(m, [[36, 12], [48, 26], [60, 12], [56, 10], [48, 20], [40, 10]]); put(g, m, { f: function (x, y) { return y % 3 === 0 ? I_T : I_F; }, o: I_INK });
+      for (var ry = 92; ry < 100; ry++) hline(ry, 27, 69, ry % 3 === 0 ? I_T : I_F, true);
+      [[9, 20, 86, 94], [76, 87, 86, 94]].forEach(function (c) { for (var yy = c[2]; yy < c[3]; yy++) hline(yy, c[0], c[1], yy % 3 === 0 ? I_T : I_F, true); });
+      for (var sy = 30; sy < 90; sy += 11) { g.set(48, sy, I_M); g.set(49, sy, I_M); g.set(48, sy + 1, I_M); g.set(49, sy + 1, I_M); }
+      for (var vy = 22; vy < 92; vy++) if (g.get(48, vy) === I_B || g.get(48, vy) === I_BL) g.set(47, vy, I_BS);
+    } else if (kind === 'pants') {
+      /* black past the knee; the palette colour knits in from the lower shin, densest at the cuff */
+      var leg = fade(74, 98, I_X);
+      m = mk(); poly(m, [[24, 10], [72, 10], [73, 34], [70, 104], [52, 104], [48, 40], [44, 104], [26, 104], [23, 34]]);
+      put(g, m, { f: function (x, y) { return y > 97 ? rib(x, y) : leg(x, y); }, s: sh, o: I_INK });
+      for (var wy = 10; wy < 16; wy++) hline(wy, 24, 72, (wy & 1) ? I_XS : I_X, true);
+      for (var dy2 = 18; dy2 < 30; dy2++) g.set(48, dy2, I_XS);
+      for (var py = 22; py < 34; py++) { g.set(60 + ((py - 22) >> 2), py, I_XS); g.set(36 - ((py - 22) >> 2), py, I_XS); }
+      g.set(47, 13, I_M); g.set(49, 13, I_M);
+    } else if (kind === 'socks') {
+      [0, 40].forEach(function (ox) {
+        m = mk(); poly(m, [[14 + ox, 10], [32 + ox, 10], [32 + ox, 66], [48 + ox, 74], [50 + ox, 86], [44 + ox, 92], [24 + ox, 92], [14 + ox, 80]]);
+        put(g, m, { f: function (x, y) { if (y < 20) return rib(x, y); if (y > 80 && x > 38 + ox) return I_F; if (y > 76 && x < 24 + ox) return I_F; return I_X; }, s: sh, o: I_INK });
+      });
+    } else if (kind === 'cap') {
+      m = mk(); ell(m, 48, 70, 30, 36);
+      for (var cy2 = 70; cy2 < H; cy2++) for (var cx2 = 0; cx2 < W; cx2++) m.d[cy2 * W + cx2] = 0;
+      put(g, m, { f: I_B, s: sh, l: li, o: I_INK });
+      [[48, 35, 48, 68], [33, 42, 37, 68], [63, 42, 59, 68]].forEach(function (s) { line(s[0], s[1], s[2], s[3], function (x, y) { if (g.get(x, y) === I_B) g.set(x, y, I_BS); }); });
+      m = mk(); ell(m, 48, 35, 3, 2); put(g, m, { f: I_B, o: I_INK });
+      m = mk(); poly(m, [[18, 70], [30, 66], [48, 65], [66, 66], [78, 70], [72, 80], [48, 84], [24, 80]]); put(g, m, { f: function (x, y) { return y > 74 && dither(x, y, (y - 74) / 8) ? I_F : I_B; }, s: sh, o: I_INK });
+    } else if (kind === 'beanie') {
+      /* a watch cap with a deep fold-up cuff; the crown rises to a soft point, a nod to the casque */
+      m = mk(); poly(m, [[24, 70], [24, 46], [30, 30], [40, 18], [50, 12], [58, 18], [66, 30], [72, 46], [72, 70]]);
+      put(g, m, { f: function (x, y) { return (x % 3) ? I_B : I_BS; }, s: sh, l: li, o: I_INK });
+      /* the fold: a wider, deeper band of rib turned up over the crown, its own top edge lit, its lower half dithered into the fade */
+      m = mk(); poly(m, [[19, 62], [77, 62], [78, 96], [18, 96]]);
+      put(g, m, { f: function (x, y) { if (y > 80 && dither(x, y, (y - 80) / 14)) return I_F; return (x & 1) ? I_B : I_BS; }, s: sh, o: I_INK });
+      hline(63, 19, 77, I_BL, true);
+      hline(64, 19, 77, I_BL, true);
+      /* the fold line: where the knit turns back on itself */
+      for (var fx = 19; fx <= 77; fx++) if (g.get(fx, 96)) g.set(fx, 96, I_INK);
+    } else if (kind === 'tote') {
+      [[30, 46], [50, 66]].forEach(function (h) {
+        line(h[0], 40, h[0] + 2, 10, function (x, y) { g.set(x, y, I_INK); g.set(x + 1, y, I_X); g.set(x + 2, y, I_INK); });
+        line(h[1], 40, h[1] - 2, 10, function (x, y) { g.set(x, y, I_INK); g.set(x + 1, y, I_X); g.set(x + 2, y, I_INK); });
+        for (var hx = h[0] + 2; hx <= h[1] - 2; hx++) { g.set(hx, 9, I_INK); g.set(hx, 10, I_X); g.set(hx, 11, I_INK); }
+      });
+      m = mk(); poly(m, [[16, 38], [80, 38], [84, 104], [12, 104]]);
+      put(g, m, { f: fade(90, 102, I_R), s: function (x, y, v) { return v === I_R ? I_XS : sh(x, y, v); }, o: I_INK });
+    }
+    return g;
+  }
+  var itemCache = {};
+  function itemCanvas(it, pal) {
+    var key = it.id + '/' + pal.id;
+    if (itemCache[key]) return itemCache[key];
+    var g = itemGrid(it.art), c = document.createElement('canvas');
+    c.width = g.w; c.height = g.h;
+    var x = c.getContext('2d');
+    /* pants are black whatever the palette; the tote is raw canvas; the varsity's sleeves are cream */
+    var base = it.art === 'pants' ? '#16151C' : pal.a;
+    var alt = it.art === 'varsity' ? '#E9E3D3' : it.art === 'pants' ? '#16151C' : it.art === 'socks' ? '#E9ECF2' : '#16151C';
+    var cols = [];
+    cols[I_INK] = pal.ink; cols[I_B] = base; cols[I_BS] = mix(base, pal.ink, 0.38); cols[I_BL] = mix(base, '#FFFFFF', 0.22);
+    /* on black pants the pixels must show: use whichever palette colour is brighter */
+    var lumOf = function (h) { var n = parseInt(h.slice(1), 16); return 0.2126 * (n >> 16) + 0.7152 * ((n >> 8) & 255) + 0.0722 * (n & 255); };
+    var fadeCol = it.art === 'pants' && lumOf(pal.b) < lumOf(pal.a) ? pal.a : pal.b;
+    cols[I_F] = fadeCol; cols[I_FS] = mix(fadeCol, pal.ink, 0.34); cols[I_T] = pal.glow; cols[I_M] = '#C8CEDA';
+    cols[I_X] = alt; cols[I_XS] = mix(alt, pal.ink, it.art === 'pants' ? 0.12 : 0.3); cols[I_R] = '#E8E0CC';
+    if (it.art === 'pants') cols[I_XS] = '#2A2833';
+    for (var y = 0; y < g.h; y++) for (var i = 0; i < g.w; i++) { var v = g.d[y * g.w + i]; if (v) { x.fillStyle = cols[v]; x.fillRect(i, y, 1, 1); } }
+    /* the logo, where it goes on the real thing */
+    if (it.logo) {
+      var b = badge(pal, { cells: true }), sz = it.logo[2], k = sz / b.S;
+      for (var by = 0; by < sz; by++) for (var bx = 0; bx < sz; bx++) {
+        var col = b.cells[Math.floor(by / k) * b.S + Math.floor(bx / k)];
+        if (col) { x.fillStyle = col; x.fillRect(it.logo[0] + bx, it.logo[1] + by, 1, 1); }
+      }
+    }
+    return (itemCache[key] = c);
   }
 
   function runs(rows, cls) {
@@ -696,7 +806,7 @@
   City.ROAD = ROAD_H;
 
   root.KP_PIX = {
-    badge: badge,
+    badge: badge, itemCanvas: itemCanvas,
     mix: mix, dither: dither, hash: hash, rng: rng,
     hex: hex, hexCanvas: hexCanvas, hoodie: hoodie, hoodieCanvas: hoodieCanvas, paint: paint, lut: lut, drawMap: drawMap,
     mark: mark, wordmark: wordmark, seam: seam, glow: glow, City: City, person: person, PEOPLE: PEOPLE,

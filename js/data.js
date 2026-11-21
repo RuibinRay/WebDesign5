@@ -111,10 +111,54 @@
   var byId = {};
   PALETTES.forEach(function (p, i) { p.index = i; p.model = MODELS[p.id]; byId[p.id] = p; });
 
+  /* The rest of the wardrobe. Every item carries the logo (Hex in his roundel) somewhere that suits it,
+     and every item comes in the five palettes; `pal` is the one it is photographed in.
+     `logo` is where the badge sits on the pixel stand-in: [x, y, size] in the item's 96 × 108 grid.
+     CONCEPT VALUES: prices, fabrics and sizes are invented. */
+  var ONE = ['One size'], SML = ['S', 'M', 'L'];
+  var ITEMS = [
+    { id: 'tee', cat: 'tops', name: 'Sprite Tee', pal: 'blue', price: 58, art: 'tee', logo: [36, 36, 24], sizes: ['01', '02', '03', '04'],
+      line: 'The badge, big, where a band name would go.', placement: 'Screen-printed chest badge, 9 cm, in the palette colours; the KALYPT letters small across the back yoke.',
+      fabric: '240 gsm heavyweight cotton jersey, boxy, dropped shoulder', fade: 'The hem dithers into the fade colour, 6 cm deep.' },
+    { id: 'shell', cat: 'outer', name: 'Glitch Shell', pal: 'acid', price: 168, art: 'shell', logo: [62, 30, 12], sizes: ['01', '02', '03', '04'],
+      line: 'A rain shell that is invisible until headlights find it.', placement: 'Small badge on the left chest; a 30 cm reflective badge across the back that only shows under light.',
+      fabric: 'Two-layer ripstop nylon, taped seams, packable hood', fade: 'Sleeves dither into the fade colour from the elbow.' },
+    { id: 'varsity', cat: 'outer', name: 'Level Up Varsity', pal: 'pink', price: 240, art: 'varsity', logo: [56, 34, 20], sizes: ['01', '02', '03', '04'],
+      line: 'A baseball jacket for a team that only plays at night.', placement: 'Chenille badge patch on the left chest; KALYPT in pixel chenille letters across the back.',
+      fabric: 'Wool-blend body, faux-leather sleeves, striped rib collar, cuffs and hem, pixel snaps', fade: 'The rib stripes are the fade, in four steps.' },
+    { id: 'pants', cat: 'bottoms', name: 'Dead Pixel Pants', pal: 'pink', price: 118, art: 'pants', logo: [58, 26, 10], sizes: ['01', '02', '03', '04'],
+      line: 'Black to the knee. Then the pixels start.', placement: 'Small woven badge on the right thigh, just under the pocket.',
+      fabric: '380 gsm brushed-back fleece, relaxed straight leg, ribbed cuff', fade: 'Solid black past the knee; the palette colour knits in from the lower shin, pixel by pixel, densest at the cuff.' },
+    { id: 'socks', cat: 'accessories', name: 'Bit Socks', pal: 'sodium', price: 22, art: 'socks', logo: [24, 20, 14], sizes: SML,
+      line: 'Two pixels of personality, at the ankle.', placement: 'Hex knitted into the cuff, one on each sock.',
+      fabric: 'Combed cotton, cushioned sole, ribbed cuff', fade: 'The toe and heel are the fade colour.' },
+    { id: 'cap', cat: 'accessories', name: 'Peak Cap', pal: 'static', price: 44, art: 'cap', logo: [37, 40, 22], sizes: ONE,
+      line: 'A peak for people who left the hood at home.', placement: 'Raised embroidered badge on the front panel.',
+      fabric: 'Six-panel cotton twill, curved brim, pixel-stepped strap', fade: 'The underbrim is the fade, dithered.' },
+    { id: 'beanie', cat: 'accessories', name: 'Casque Beanie', pal: 'blue', price: 38, art: 'beanie', logo: [40, 70, 16], sizes: ONE,
+      line: 'Fold it up once. The crown still rises to a point, like a casque.', placement: 'Woven badge label stitched on the folded cuff.',
+      fabric: 'Merino-acrylic rib knit, deep fold-up cuff, softly peaked crown', fade: 'The fold-up cuff dithers into the fade colour, so the colour shows when it is turned up.' },
+    { id: 'tote', cat: 'accessories', name: 'Inventory Tote', pal: 'acid', price: 34, art: 'tote', logo: [30, 44, 36], sizes: ONE,
+      line: 'Real-life inventory. Holds more than nine items.', placement: 'The badge printed large on the front.',
+      fabric: '16 oz canvas, inside zip pocket, long handles', fade: 'The bottom 8 cm dithers into the fade colour.' },
+  ];
+  var CATS = [['all', 'Everything'], ['hoodies', 'Hoodies'], ['tops', 'Tees'], ['outer', 'Jackets'], ['bottoms', 'Pants'], ['accessories', 'Accessories']];
+  var itemById = {};
+  ITEMS.forEach(function (it) { itemById[it.id] = it; });
+  /* one shop list for the store and the bag: five hoodies plus the items */
+  var PRODUCTS = PALETTES.map(function (p) {
+    return { id: p.id, kind: 'hoodie', cat: 'hoodies', name: p.name, pal: p.id, price: p.price, line: p.line, href: 'hoodie.html?id=' + p.id };
+  }).concat(ITEMS.map(function (it) {
+    return { id: it.id, kind: 'item', cat: it.cat, name: it.name, pal: it.pal, price: it.price, line: it.line, href: 'item.html?id=' + it.id };
+  }));
+  var productById = {};
+  PRODUCTS.forEach(function (pr) { productById[pr.id] = pr; });
+
   var q = /[?&]id=([a-z]+)/.exec(root.location ? root.location.search : '');
   root.KALYPT = {
     name: 'KALYPT',
     PALETTES: PALETTES, WILD: WILD, byId: byId, RUN: RUN, SPECS: SPECS, SIZES: SIZES, FIT: FIT,
+    ITEMS: ITEMS, itemById: itemById, CATS: CATS, PRODUCTS: PRODUCTS, productById: productById,
     current: q && byId[q[1]] ? q[1] : 'pink',
     money: function (n) { return '$' + n; },
     drop: { n: '001', date: '2027-01-16', label: '16 January 2027' },
