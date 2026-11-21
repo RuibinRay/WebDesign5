@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shot sheet · Kalypt</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#07060D">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wdth,wght@75..112.5,100..800&family=Pixelify+Sans:wght@400..700&display=swap">
+  <link rel="stylesheet" href="css/kalypt.css">
+  <script src="js/motion.js"></script>
+  <style>
+    .stats-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .stat { padding: 8px 12px; background: var(--panel); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
+    .stat b { margin-right: 6px; font: 700 22px/1 var(--f-pix); color: var(--ui); letter-spacing: 0; }
+    .routes { display: grid; gap: 12px; }
+    @media (min-width: 900px) { .routes { grid-template-columns: 1fr 1fr; } }
+    .route { padding: 18px 20px; background: var(--panel); }
+    .route h2 { margin: 0 0 10px; font-size: 24px; }
+    .route ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 13px; }
+    details.bible { background: var(--panel); }
+    details.bible summary { padding: 14px 20px; cursor: pointer; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    details.bible dl { margin: 0; padding: 0 20px 20px; display: grid; gap: 12px; }
+    details.bible dt { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ui); }
+    details.bible dd { margin: 0; font-size: 12.5px; }
+    .filters { display: flex; flex-wrap: wrap; gap: 4px; margin: 28px 0 18px; }
+    .shots { display: grid; gap: 14px; }
+    .shot { display: grid; gap: 20px; padding: 16px; background: var(--panel); }
+    @media (min-width: 980px) { .shot { grid-template-columns: 240px minmax(0, 1fr); } }
+    .shot .slot { width: 100%; max-height: 320px; }
+    .shot .slot__note { display: none; }
+    .shot__meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 10px; }
+    .shot__id { margin-right: 8px; font: 700 26px/1 var(--f-pix); text-transform: uppercase; }
+    .chip { padding: 3px 8px; background: var(--panel-2); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
+    .chip--ready { background: #B8FF3C; color: #0C120A; }
+    .chip--pending { background: var(--ui); color: var(--ui-on); }
+    .shot__brief { margin: 0 0 6px; }
+    .shot__used, .shot__file { margin: 0 0 8px; font-size: 12px; color: var(--mute); }
+    .shot pre { margin: 0; max-height: 170px; overflow: auto; padding: 12px; background: var(--void); white-space: pre-wrap; word-break: break-word; font: 12px/1.6 var(--f-mono); }
+    .shot__actions { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav is-solid" data-nav>
+    <a class="brand" href="index.html" aria-label="Kalypt, home"><span data-mark></span><span data-wordmark></span></a>
+    <ul class="nav__links" style="display:flex;position:static;flex-direction:row;background:none;box-shadow:none;padding:0">
+      <li><a href="index.html">Site</a></li>
+      <li><a href="breakdown.html">Breakdown</a></li>
+    </ul>
+  </header>
+
+  <main class="doc" id="main">
+    <div class="doc__head">
+      <p class="label">Shot sheet</p>
+      <h1>Every picture, every prompt.</h1>
+      <p class="lede">Everything the Kalypt site needs from Higgsfield. Each prompt carries the same look blocks and the same description of the hoodie, word for word, and every later shot takes an earlier one as its reference image, so the same hoodie (and the same person) appears throughout. No prompt asks for text in the picture: type is always HTML.</p>
+      <div class="stats-row" data-stats></div>
+      <div class="routes">
+        <div class="route">
+          <h2>Automatic (Higgsfield CLI)</h2>
+          <ol>
+            <li><code>npm install</code> once (for the image optimiser).</li>
+            <li><code>node higgsfield/generate.mjs</code> prints the plan, the price of every job and the balance. It spends nothing.</li>
+            <li><code>node higgsfield/generate.mjs --go</code> runs stage 1 to 4 in order, then the optimiser.</li>
+            <li>One group or one id: <code>node higgsfield/generate.mjs images --go</code>, <code>… pink-fit --go</code>. Re-roll with <code>--force</code>.</li>
+          </ol>
+        </div>
+        <div class="route">
+          <h2>By hand (Higgsfield app)</h2>
+          <ol>
+            <li>Copy a prompt below. Use the model and ratio it shows, and attach the named reference image.</li>
+            <li>Save the download as <code>higgsfield/renders/&lt;id&gt;.png</code> (films: <code>.mp4</code>).</li>
+            <li>Run <code>node higgsfield/optimize.mjs</code> and reload the site.</li>
+          </ol>
+        </div>
+      </div>
+      <details class="bible"><summary>The look bible (shared prompt blocks)</summary><dl data-look></dl></details>
+    </div>
+    <div class="filters" role="group" aria-label="Filter shots" data-filters>
+      <button class="btn btn--sm btn--ghost" type="button" data-filter="all" aria-pressed="true">All</button>
+      <button class="btn btn--sm btn--ghost" type="button" data-filter="1" aria-pressed="false">Stage 1</button>
+      <button class="btn btn--sm btn--ghost" type="button" data-filter="2" aria-pressed="false">Stage 2</button>
+      <button class="btn btn--sm btn--ghost" type="button" data-filter="3" aria-pressed="false">Stage 3</button>
+      <button class="btn btn--sm btn--ghost" type="button" data-filter="4" aria-pressed="false">Films</button>
+      <button class="btn btn--sm btn--ghost" type="button" data-filter="body" aria-pressed="false">On a person</button>
+      <button class="btn btn--sm btn--ghost" type="button" data-filter="pending" aria-pressed="false">Not made yet</button>
+    </div>
+    <div class="shots" data-shots></div>
+  </main>
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
+
+  <script src="assets/img/ready.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/shots.js"></script>
+  <script src="js/pix.js"></script>
+  <script src="js/media.js"></script>
+  <script>
+    (function () {
+      var S = window.KALYPT_SHOTS, R = window.KALYPT_READY || {}, ready = {};
+      (R.img || []).forEach(function (id) { ready[id] = 1; });
+      S.films.forEach(function (f) { if ((R.film || {})[f.name]) ready[f.id] = 1; });
+      var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+      /* credits quoted on 2026-11-20; generate.mjs re-prices live before it spends */
+      var rate = function (s) { return s.kind === 'film' ? (s.params.duration === 10 ? 37.5 : 18.75) : s.model === 'soul_cinematic' ? 0.12 : 2; };
+      var cost = S.all.reduce(function (a, s) { return a + rate(s); }, 0);
+      var made = S.all.filter(function (s) { return ready[s.id]; }).length;
+      document.querySelector('[data-stats]').innerHTML =
+        '<span class="stat"><b>' + S.shots.length + '</b>pictures</span><span class="stat"><b>' + S.films.length + '</b>films</span>' +
+        '<span class="stat"><b>' + made + '</b>made</span><span class="stat"><b>≈ ' + Math.round(cost) + '</b>credits (2026-11-20 prices)</span>';
+      document.querySelector('[data-look]').innerHTML = Object.keys(S.look).map(function (k) { return '<dt>' + k + '</dt><dd>' + esc(S.look[k]) + '</dd>'; }).join('') +
+        Object.keys(S.hoodie).map(function (k) { return '<dt>The hoodie · ' + esc(k) + '</dt><dd>' + esc(S.hoodie[k]) + '</dd>'; }).join('');
+      document.querySelector('[data-shots]').innerHTML = S.all.map(function (s) {
+        var film = s.kind === 'film', p = s.params || {}, ext = film ? 'mp4' : 'png';
+        var refs = film ? [s.start, s.end] : (s.refs || []).map(function (r) { return r.split('/').pop().replace(/\.[^.]+$/, ''); });
+        return '<article class="shot" data-stage="' + s.stage + '" data-ready="' + (ready[s.id] ? 1 : 0) + '" data-body="' + (/person/.test(s.art || '') || /-city$/.test(s.id) ? 1 : 0) + '" id="' + s.id + '">' +
+          (film ? '<div class="slot" data-shot="' + s.start + '"></div>' : '<div class="slot" data-shot="' + s.id + '"></div>') + '<div>' +
+          '<div class="shot__meta"><span class="shot__id">' + s.id + '</span>' +
+          '<span class="chip ' + (ready[s.id] ? 'chip--ready">Made' : 'chip--pending">Not made') + '</span>' +
+          '<span class="chip">Stage ' + s.stage + '</span><span class="chip">' + s.model + '</span><span class="chip">' + s.aspect + '</span>' +
+          '<span class="chip">' + (film ? p.duration + ' s · ' + p.resolution : [p.resolution, p.quality].filter(Boolean).join(' ')) + '</span><span class="chip">≈ ' + rate(s) + ' cr</span></div>' +
+          '<p class="shot__brief">' + esc(s.brief) + '</p>' +
+          '<p class="shot__used">Used on: ' + esc(s.used.join(' · ')) + '</p>' +
+          '<p class="shot__file">Save as <code>higgsfield/renders/' + s.id + '.' + ext + '</code>' +
+          (refs.length ? ' · ' + (film ? 'First and last frame: ' : 'Reference: ') + refs.map(function (r) { return '<code>' + r + '</code>'; }).join(' ') : '') + '</p>' +
+          '<pre>' + esc(s.prompt) + '</pre>' +
+          '<div class="shot__actions"><button class="btn btn--sm" type="button" data-copy="prompt">Copy prompt</button><button class="btn btn--sm btn--ghost" type="button" data-copy="file">Copy file name</button></div>' +
+          '</div></article>';
+      }).join('');
+      window.KP_MEDIA.all();
+      document.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-copy]');
+        if (!b) return;
+        var s = S.byId[b.closest('.shot').id];
+        var text = b.getAttribute('data-copy') === 'prompt' ? s.prompt : s.id + (s.kind === 'film' ? '.mp4' : '.png');
+        (navigator.clipboard ? navigator.clipboard.writeText(text) : Promise.reject()).then(function () {
+          var t = b.textContent; b.textContent = 'Copied';
+          setTimeout(function () { b.textContent = t; }, 1400);
+        }).catch(function () { window.prompt('Copy:', text); });
+      });
+      var fb = document.querySelectorAll('[data-filter]');
+      Array.prototype.forEach.call(fb, function (b) {
+        b.addEventListener('click', function () {
+          var f = b.getAttribute('data-filter');
+          Array.prototype.forEach.call(fb, function (o) { o.setAttribute('aria-pressed', String(o === b)); });
+          Array.prototype.forEach.call(document.querySelectorAll('.shot'), function (el) {
+            el.hidden = !(f === 'all' || el.getAttribute('data-stage') === f || (f === 'pending' && el.getAttribute('data-ready') === '0') || (f === 'body' && el.getAttribute('data-body') === '1'));
+          });
+        });
+      });
+    })();
+  </script>
+  <script src="js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brand breakdown · Kalypt</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#07060D">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wdth,wght@75..112.5,100..800&family=Pixelify+Sans:wght@400..700&display=swap">
+  <link rel="stylesheet" href="css/kalypt.css">
+  <script src="js/motion.js"></script>
+</head>
+<body data-rail>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav is-solid" data-nav>
+    <a class="brand" href="index.html" aria-label="Kalypt, home"><span data-mark></span><span data-wordmark></span></a>
+    <ul class="nav__links" style="display:flex;position:static;flex-direction:row;background:none;box-shadow:none;padding:0">
+      <li><a href="index.html">Site</a></li>
+      <li><a href="shots.html">Shot sheet</a></li>
+    </ul>
+  </header>
+
+  <main class="doc" id="main">
+    <div class="doc__head">
+      <p class="label">Brand breakdown</p>
+      <h1>Kalypt, taken apart.</h1>
+      <p class="lede">A concept hoodie brand in pixels. One cut, five palettes, and a chameleon named Hex who walks the site with you. This page says what every part is and why it is there. Everything pixel is drawn by the page; the photographs and two films are the only things left to make.</p>
+    </div>
+
+    <section>
+      <h2>The one idea</h2>
+      <p><b>Palette swap.</b> In old games, a new character was often the same sprite in new colours. Kalypt is one cut of hoodie, recoloured five times. Every part of the site does the same trick: the hoodies, the mascot, the city's signs and the page's own accent colour all read from one palette and swap together.</p>
+      <p>The second rule: <b>scrolling is the controller.</b> Nothing plays on a timer except rain and stars. Scroll to walk Hex, to slide the hoodies, to turn the cut round.</p>
+    </section>
+
+    <section>
+      <h2>The name</h2>
+      <p><b>Kalypt</b> comes from the Greek <i>kalyptein</i>, to cover. An apocalypse (<i>apo-kalypsis</i>) is an un-covering. A hood is the opposite. The mascot is a veiled chameleon, <i>Chamaeleo calyptratus</i>: the species name comes from <i>kalyptra</i>, a veil or cover, for the casque on its head. A hooded animal that swaps palettes.</p>
+      <p class="note">A web search on 2026-11-20 found no hoodie or streetwear brand called Kalypt. That is a quick check, not a trademark clearance.</p>
+      <div class="logo-row" style="margin-top:16px"><span data-mark></span><span data-wordmark="fade"></span><span data-wordmark></span></div>
+      <p class="note" style="margin-top:10px">The Eye (a chameleon's turret eye, 7 × 7 px) and the letters (7 × 9 px each, drawn for this brand, not a font). The lower half of the letters dithers into the accent colour the way the hoodies do.</p>
+    </section>
+
+    <section>
+      <h2>The mascot: Hex</h2>
+      <p>Hex is a veiled chameleon, 48 × 51 px, named for hex colour codes. He is not a set of drawings. He is built from parts every time he is needed (tail spiral, two legs, body, head with casque, turret eye, arm, and the hoodie's body, hood, sleeve, pocket and cord), so any pose is one call and any palette is free.</p>
+      <div class="scroll-x"><div class="sheet-row" data-hex-sheet></div></div>
+      <h3>Level 01, frame by frame</h3>
+      <p>Scroll position picks one of 132 frames. Each frame is a pose, a palette and a few props.</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Frames</th><th>What happens</th><th>What it shows</th></tr></thead>
+          <tbody>
+            <tr><th>1–12</th><td>Hex walks in, no hoodie, wild green</td><td>Player 1</td></tr>
+            <tr><th>13–20</th><td>He spots a hoodie, shoots his tongue, pulls it in</td><td>Item get</td></tr>
+            <tr><th>21–28</th><td>The hoodie lands on him from the top down, one eighth per frame. He takes its palette</td><td>The Cut</td></tr>
+            <tr><th>37–48</th><td>The rain builds. The hood goes up in three stages</td><td>The Peak</td></tr>
+            <tr><th>61–70</th><td>A coin: tongue, grab, hands into the pocket</td><td>Step Pocket</td></tr>
+            <tr><th>85–91</th><td>A car passes. The piping flickers on in its headlights</td><td>Pixel Piping</td></tr>
+            <tr><th>101–120</th><td>Five palettes, four frames each. The first frame of each flashes white</td><td>Palette Swap</td></tr>
+            <tr><th>130–131</th><td>He winks</td><td>Level 02 is next</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Between those beats he walks: an eight-frame cycle, and the street moves two pixels per frame so his feet do not slide.</p>
+    </section>
+
+    <section>
+      <h2>The range</h2>
+      <p>Each palette is two colours (upper and fade), a glow for the piping, and the colours the page takes when that hoodie is on screen. Each is named for something a city does after dark.</p>
+      <div class="pal-grid" data-pals></div>
+      <div class="scroll-x"><div class="sheet-row" data-hood-sheet style="margin-top:18px"></div></div>
+      <p class="note">The fade is ordered dither (a 4 × 4 Bayer grid) in four palettes and noise in Static. On the real garment that is a jacquard knit, not a print.</p>
+    </section>
+
+    <section>
+      <h2>Type and colour</h2>
+      <div class="type-spec">
+        <p class="pix">Pixelify Sans 700</p>
+        <p>Anything that shouts: headings, prices, buttons, numbers. Always uppercase.</p>
+        <p style="font-size:18px">Martian Mono, width 87.5</p>
+        <p>Everything else: body copy, labels, the HUD. A monospace built on a grid, so it sits next to pixels without pretending to be them.</p>
+      </div>
+      <p style="margin-top:14px">Page colours: void <code>#07060D</code>, panel <code>#100E1C</code>, line <code>#2A2644</code>, text <code>#EDEBFF</code>, mute <code>#9A95C4</code>. The accent is never fixed: it is whichever palette is on screen.</p>
+    </section>
+
+    <section>
+      <h2>What scrolling does, section by section</h2>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Where</th><th>What scroll does</th><th>Why</th><th>Before Higgsfield</th><th>After</th></tr></thead>
+          <tbody>
+            <tr><th>Title</th><td>The camera falls from a rooftop to the street. Three lines of copy pass. Hex walks in</td><td>A game's opening cutscene, and scroll is the start button</td><td>The pixel city does the descent</td><td>The film plays, breaks into bigger and bigger pixels, and becomes the pixel street</td></tr>
+            <tr><th>Level 01</th><td>Picks one of 132 frames of Hex. The card types itself out. Five pips fill</td><td>The features land on the mascot one at a time, so you see each one happen</td><td colspan="2">Finished. All code</td></tr>
+            <tr><th>Level 02</th><td>One hoodie slides out, the next slides in, both through a mosaic. The stage wipes to the new colour in sixteen blocks. The name scrambles. Hex flashes and swaps</td><td>The palette swap is the product, so it is the biggest move on the page</td><td>Hoodie sprites</td><td>Studio photographs resolve out of the mosaic</td></tr>
+            <tr><th>Level 03</th><td>The hoodie turns from front to back. Callouts change sides</td><td>The back carries the big Eye. You should have to turn it</td><td>The sprite spins in sixteen steps</td><td>The turn film, frame by frame</td></tr>
+            <tr><th>Level 04</th><td>Not scroll: five buttons swap the person and the page</td><td>Sprites are not proof. People are</td><td>Pixel people, five heights</td><td>On-body photographs</td></tr>
+            <tr><th>The strip</th><td>All 132 frames slide past sideways</td><td>Shows that the animation is frames, and that the page drew them</td><td colspan="2">Finished. All code</td></tr>
+            <tr><th>The rail</th><td>Hex walks along the bottom edge: one step every 22 px, turning round when you scroll up. The line behind him is how far down the page you are</td><td>The mascot links every section, and replaces a progress bar</td><td colspan="2">Finished. All code</td></tr>
+            <tr><th>Between pages</th><td>The hoodie you clicked flies into its page and its name follows</td><td>Selecting a character should feel like selecting</td><td>Sprite to sprite</td><td>Photograph to photograph</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Section edges are dither bands, the same pattern as the hoodie's fade. Reduced motion (the button in the footer) turns off the rain, the blinking, smooth scroll and page transitions. Things you scroll still follow your scroll.</p>
+    </section>
+
+    <section>
+      <h2>Pages</h2>
+      <ul>
+        <li><a href="index.html">index.html</a>: title, four levels, stat sheet, five street looks, the name, the drop queue.</li>
+        <li><a href="hoodie.html?id=pink">hoodie.html?id=pink</a> (also blue, acid, sodium, static): one template. The page takes the hoodie's palette.</li>
+        <li><a href="shots.html">shots.html</a>: every prompt, with copy buttons.</li>
+        <li>breakdown.html: this page.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>What is left to make</h2>
+      <p data-count></p>
+      <div class="tablewrap"><table><thead><tr><th>Stage</th><th>What</th><th>Count</th><th>Credits</th></tr></thead><tbody data-stages></tbody></table></div>
+      <p class="note">Prices are the ones quoted on 2026-11-20. <code>node higgsfield/generate.mjs</code> re-prices everything for free before any spend, and spends nothing without <code>--go</code>.</p>
+    </section>
+
+    <section>
+      <h2>Invented, replace before anything is real</h2>
+      <ul>
+        <li>Prices ($128, $118), fabric weights (480 and 380 gsm), the size chart and the fit measurements.</li>
+        <li>The stat bars (Heat, Stealth, Glow). They are a joke with numbers on it.</li>
+        <li>The model heights and sizes in Level 04.</li>
+        <li>Drop 001 and its date, 16 January 2027. The queue number is made up in your browser and nothing is sent anywhere.</li>
+        <li>The arcade score line on the title screen.</li>
+      </ul>
+    </section>
+  </main>
+
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
+
+  <script src="assets/img/ready.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/shots.js"></script>
+  <script src="js/pix.js"></script>
+  <script src="js/media.js"></script>
+  <script src="js/common.js"></script>
+  <script>
+    (function () {
+      var K = window.KALYPT, P = window.KP_PIX, S = window.KALYPT_SHOTS, pink = K.byId.pink;
+      function fig(parent, src, scale, label) {
+        var f = document.createElement('figure'), c = document.createElement('canvas');
+        c.width = src.width; c.height = src.height;
+        c.getContext('2d').drawImage(src, 0, 0);
+        c.style.width = src.width * scale + 'px'; c.style.height = src.height * scale + 'px';
+        f.appendChild(c); f.appendChild(document.createTextNode(label));
+        parent.appendChild(f);
+      }
+      var hs = document.querySelector('[data-hex-sheet]');
+      [[{ walk: null, hoodie: 0 }, K.WILD, 'Wild'], [{ walk: 2, hoodie: 0 }, K.WILD, 'Walk'], [{ walk: null, hoodie: 0.5 }, pink, 'Equip'],
+        [{ walk: null, hood: 0 }, pink, 'Hood down'], [{ walk: null, hood: 2 }, pink, 'Going up'], [{ walk: null, hood: 3 }, pink, 'The Peak'],
+        [{ walk: null, hood: 3, hands: 1 }, pink, 'Pocket'], [{ walk: 5, hood: 3, hands: 1, glow: true }, pink, 'Piping lit'],
+        [{ walk: null, hood: 3, hands: 1, glow: true, blink: 2 }, pink, 'Wink']].forEach(function (v) { fig(hs, P.hexCanvas(v[0], v[1]), 3, v[2]); });
+      K.PALETTES.slice(1).forEach(function (p) { fig(hs, P.hexCanvas({ walk: null, hood: 3, hands: 1, glow: true }, p), 3, p.name); });
+      var hd = document.querySelector('[data-hood-sheet]');
+      K.PALETTES.forEach(function (p) { fig(hd, P.hoodieCanvas(p, 'front'), 2, p.name); });
+      fig(hd, P.hoodieCanvas(pink, 'back'), 2, 'Back');
+      fig(hd, P.person(pink), 2, 'On body');
+      document.querySelector('[data-pals]').innerHTML = K.PALETTES.map(function (p) {
+        return '<div class="pal-card" style="--c:' + p.ui + '"><b>' + p.n + ' ' + p.name + '</b><ul>' +
+          [[p.a, p.aName], [p.b, p.bName], [p.glow, 'piping glow'], [p.skin, 'Hex'], [p.bg, 'stage']].map(function (c) { return '<li><i style="background:' + c[0] + '"></i>' + c[0] + ' ' + c[1] + '</li>'; }).join('') +
+          '<li>' + p.gsm + ' gsm · ' + K.money(p.price) + '</li></ul></div>';
+      }).join('');
+      var RATE = function (s) { return s.kind === 'film' ? (s.params.duration === 10 ? 37.5 : 18.75) : s.model === 'soul_cinematic' ? 0.12 : 2; };
+      var WHAT = { 1: 'Five studio masters, the city from a rooftop, the Hex charm', 2: 'Everything with a reference: backs, street looks, on-body, the film stills, details', 3: 'Two more on-body views of the same person', 4: 'The two scroll films' };
+      var total = 0;
+      document.querySelector('[data-stages]').innerHTML = [1, 2, 3, 4].map(function (st) {
+        var list = S.all.filter(function (s) { return s.stage === st; }), c = list.reduce(function (a, s) { return a + RATE(s); }, 0);
+        total += c;
+        return '<tr><th>' + st + '</th><td>' + WHAT[st] + '</td><td>' + list.length + '</td><td>≈ ' + c.toFixed(1) + '</td></tr>';
+      }).join('');
+      var made = ((window.KALYPT_READY || {}).img || []).length;
+      document.querySelector('[data-count]').innerHTML = '<b>' + S.shots.length + ' pictures and ' + S.films.length + ' films</b>, about ' + Math.round(total) + ' credits in all. ' + made + ' made so far. Until a picture exists, its place shows the pixel version of the same picture, so the site is whole either way. The prompts are in <a href="shots.html">the shot sheet</a>.';
+    })();
+  </script>
+</body>
+</html>

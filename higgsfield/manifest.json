@@ -1,0 +1,551 @@
+{
+  "images": {
+    "sodium-front": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [],
+      "job_id": "b71ea1ec-b42c-4a9e-8d02-3ed1ee03e15a",
+      "file": "higgsfield/renders/sodium-front.png",
+      "seconds": 34,
+      "at": "2026-11-21T00:31:15.508Z"
+    },
+    "pink-front": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [],
+      "job_id": "c9f55205-07c6-44e1-ad81-e5314b990393",
+      "file": "higgsfield/renders/pink-front.png",
+      "seconds": 35,
+      "at": "2026-11-21T00:31:17.033Z"
+    },
+    "acid-front": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [],
+      "job_id": "f0ee4db1-baa7-4d35-b444-127fde4f6d0f",
+      "file": "higgsfield/renders/acid-front.png",
+      "seconds": 36,
+      "at": "2026-11-21T00:31:17.727Z"
+    },
+    "blue-front": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [],
+      "job_id": "0099bfeb-0b45-46e7-b70a-71c43221b390",
+      "file": "higgsfield/renders/blue-front.png",
+      "seconds": 36,
+      "at": "2026-11-21T00:31:17.970Z"
+    },
+    "static-front": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [],
+      "job_id": "cac465ae-fdba-474f-85f5-a9cbaed51a01",
+      "file": "higgsfield/renders/static-front.png",
+      "seconds": 35,
+      "at": "2026-11-21T00:31:50.952Z"
+    },
+    "sodium-fit": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "sodium-front"
+      ],
+      "job_id": "84c29a66-fe99-4bdb-a77d-4bb7bf0fda73",
+      "file": "higgsfield/renders/sodium-fit.png",
+      "seconds": 40,
+      "at": "2026-11-21T00:32:30.516Z"
+    },
+    "pink-fit": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "pink-front"
+      ],
+      "job_id": "6837ae45-d598-472b-85f1-2f99dc16e3a9",
+      "file": "higgsfield/renders/pink-fit.png",
+      "seconds": 42,
+      "at": "2026-11-21T00:32:32.499Z"
+    },
+    "blue-fit": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "blue-front"
+      ],
+      "job_id": "eac07056-894d-48e9-842e-9af6fbe99636",
+      "file": "higgsfield/renders/blue-fit.png",
+      "seconds": 43,
+      "at": "2026-11-21T00:32:33.978Z"
+    },
+    "acid-fit": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "acid-front"
+      ],
+      "job_id": "e2d2a180-94c9-448f-9652-b518724ecf09",
+      "file": "higgsfield/renders/acid-fit.png",
+      "seconds": 44,
+      "at": "2026-11-21T00:32:34.860Z"
+    },
+    "static-fit": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "static-front"
+      ],
+      "job_id": "3e1aa9f3-b6a6-4d26-ad2c-d6e1284e67ff",
+      "file": "higgsfield/renders/static-fit.png",
+      "seconds": 40,
+      "at": "2026-11-21T00:33:10.500Z"
+    },
+    "fit-back": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "pink-fit"
+      ],
+      "job_id": "b151de98-6680-489a-937c-804b3fe35e7e",
+      "file": "higgsfield/renders/fit-back.png",
+      "seconds": 38,
+      "at": "2026-11-21T00:33:48.168Z"
+    },
+    "fit-hood": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "pink-fit"
+      ],
+      "job_id": "b0f4a4e6-6e17-4e73-980d-aa29033ea6d8",
+      "file": "higgsfield/renders/fit-hood.png",
+      "seconds": 40,
+      "at": "2026-11-21T00:33:50.239Z"
+    },
+    "city-hero": {
+      "status": "done",
+      "kind": "image",
+      "model": "soul_cinematic",
+      "params": {
+        "quality": "2k"
+      },
+      "aspect": "16:9",
+      "inputs": [],
+      "job_id": "ac66090d-6a8a-4325-aa72-d7d6fcc6bcd9",
+      "file": "higgsfield/renders/city-hero.png",
+      "seconds": 17,
+      "at": "2026-11-21T00:46:06.175Z"
+    },
+    "city-hero-m": {
+      "status": "done",
+      "kind": "image",
+      "model": "soul_cinematic",
+      "params": {
+        "quality": "2k"
+      },
+      "aspect": "9:16",
+      "inputs": [],
+      "job_id": "f00dee68-9774-44af-8ee0-8392d8c55d64",
+      "file": "higgsfield/renders/city-hero-m.png",
+      "seconds": 18,
+      "at": "2026-11-21T00:46:07.143Z"
+    },
+    "hex-charm": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "1:1",
+      "inputs": [],
+      "job_id": "d0e645fa-52d4-48e0-b36d-8b18663b8ad7",
+      "file": "higgsfield/renders/hex-charm.png",
+      "seconds": 41,
+      "at": "2026-11-21T00:46:29.733Z"
+    },
+    "turn-front": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "16:9",
+      "inputs": [
+        "pink-front"
+      ],
+      "job_id": "f3661f8b-1e69-4222-abc6-c86b3cbf62f0",
+      "file": "higgsfield/renders/turn-front.png",
+      "seconds": 40,
+      "at": "2026-11-21T00:47:09.970Z"
+    },
+    "city-street": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "16:9",
+      "inputs": [
+        "city-hero"
+      ],
+      "job_id": "d543a74b-94f9-4888-8c62-a593cafcc4ac",
+      "file": "higgsfield/renders/city-street.png",
+      "seconds": 45,
+      "at": "2026-11-21T00:47:14.621Z"
+    },
+    "pink-back": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "pink-front"
+      ],
+      "job_id": "90701b80-c971-4986-aead-5f3bf0f67373",
+      "file": "higgsfield/renders/pink-back.png",
+      "seconds": 45,
+      "at": "2026-11-21T01:21:12.689Z"
+    },
+    "turn-back": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "16:9",
+      "inputs": [
+        "pink-back"
+      ],
+      "job_id": "fea36d1f-08a6-42d2-b752-d3f18a8074a6",
+      "file": "higgsfield/renders/turn-back.png",
+      "seconds": 41,
+      "at": "2026-11-21T01:39:19.574Z"
+    },
+    "pink-city": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "pink-front"
+      ],
+      "job_id": "ed24dbcc-e092-4b6b-a466-5a9023edf496",
+      "file": "higgsfield/renders/pink-city.png",
+      "seconds": 49,
+      "at": "2026-11-21T00:47:58.800Z"
+    },
+    "blue-back": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "blue-front"
+      ],
+      "job_id": "84fa4fd2-9653-4799-b712-b3cd8301ff7c",
+      "file": "higgsfield/renders/blue-back.png",
+      "seconds": 46,
+      "at": "2026-11-21T00:48:00.417Z"
+    },
+    "blue-city": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "blue-front"
+      ],
+      "job_id": "d8c820b6-815b-45eb-bd89-24eb5328e3b4",
+      "file": "higgsfield/renders/blue-city.png",
+      "seconds": 87,
+      "at": "2026-11-21T00:48:45.827Z"
+    },
+    "acid-back": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "acid-front"
+      ],
+      "job_id": "db358bac-5c3a-41fc-810d-ee230a31703a",
+      "file": "higgsfield/renders/acid-back.png",
+      "seconds": 58,
+      "at": "2026-11-21T00:48:50.083Z"
+    },
+    "acid-city": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "acid-front"
+      ],
+      "job_id": "64d45958-0c8d-44b4-ae93-1ec8c35c2320",
+      "file": "higgsfield/renders/acid-city.png",
+      "seconds": 93,
+      "at": "2026-11-21T00:49:31.859Z"
+    },
+    "sodium-back": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "sodium-front"
+      ],
+      "job_id": "bc6aac2f-bf2d-4097-8ad1-b21f222cdaaa",
+      "file": "higgsfield/renders/sodium-back.png",
+      "seconds": 91,
+      "at": "2026-11-21T00:49:31.903Z"
+    },
+    "static-back": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "static-front"
+      ],
+      "job_id": "b8e38dd5-453d-4b55-b39f-090be11a91f6",
+      "file": "higgsfield/renders/static-back.png",
+      "seconds": 48,
+      "at": "2026-11-21T00:49:38.263Z"
+    },
+    "sodium-city": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "sodium-front"
+      ],
+      "job_id": "3c33da83-3b79-4fa1-884d-b973029c5fce",
+      "file": "higgsfield/renders/sodium-city.png",
+      "seconds": 55,
+      "at": "2026-11-21T00:49:41.227Z"
+    },
+    "macro-dither": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "16:9",
+      "inputs": [
+        "pink-front"
+      ],
+      "job_id": "a8518061-8315-4d88-951b-d269f68023be",
+      "file": "higgsfield/renders/macro-dither.png",
+      "seconds": 39,
+      "at": "2026-11-21T00:50:10.463Z"
+    },
+    "static-city": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "static-front"
+      ],
+      "job_id": "dc9a106f-909f-4c98-9e43-4d9e657089f4",
+      "file": "higgsfield/renders/static-city.png",
+      "seconds": 50,
+      "at": "2026-11-21T00:50:22.293Z"
+    },
+    "detail-pocket": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "pink-front"
+      ],
+      "job_id": "080bc78c-9b6a-43c8-b409-e0e5412b215c",
+      "file": "higgsfield/renders/detail-pocket.png",
+      "seconds": 42,
+      "at": "2026-11-21T00:50:22.997Z"
+    },
+    "detail-hood": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "pink-front"
+      ],
+      "job_id": "036844c7-4965-4d58-889b-e6d06c51906d",
+      "file": "higgsfield/renders/detail-hood.png",
+      "seconds": 46,
+      "at": "2026-11-21T00:50:23.824Z"
+    },
+    "film-turn": {
+      "status": "done",
+      "kind": "film",
+      "model": "kling4_0",
+      "params": {
+        "mode": "image-to-video",
+        "duration": 5,
+        "resolution": "1080p"
+      },
+      "aspect": "16:9",
+      "inputs": [
+        "turn-front",
+        "turn-back"
+      ],
+      "job_id": "027f6852-7c39-4892-9a52-77e52ec52931",
+      "file": "higgsfield/renders/film-turn.mp4",
+      "seconds": 210,
+      "at": "2026-11-21T01:42:59.532Z"
+    },
+    "film-descent": {
+      "status": "done",
+      "kind": "film",
+      "model": "kling4_0",
+      "params": {
+        "mode": "image-to-video",
+        "duration": 10,
+        "resolution": "1080p"
+      },
+      "aspect": "16:9",
+      "inputs": [
+        "city-hero",
+        "city-street"
+      ],
+      "job_id": "fc5b9ece-f037-4955-b1e8-453f2268fd9b",
+      "file": "higgsfield/renders/film-descent.mp4",
+      "seconds": 277,
+      "at": "2026-11-21T01:01:17.034Z"
+    }
+  }
+}

@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kalypt · Cover up. Palette-swap hoodies</title>
+  <meta name="description" content="Kalypt: one cut of hoodie, five palettes, and a pixel chameleon named Hex. Scroll to walk him through the city.">
+  <meta property="og:title" content="Kalypt · Cover up">
+  <meta property="og:description" content="One cut of hoodie. Five palettes. A chameleon named Hex.">
+  <meta property="og:image" content="assets/img/og.jpg">
+  <meta name="theme-color" content="#07060D">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wdth,wght@75..112.5,100..800&family=Pixelify+Sans:wght@400..700&display=swap">
+  <link rel="stylesheet" href="css/kalypt.css">
+  <script src="js/motion.js"></script>
+</head>
+<body class="home" data-rail>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav" data-nav>
+    <a class="brand" href="index.html" aria-label="Kalypt, home"><span data-mark></span><span data-wordmark></span></a>
+    <button class="nav__menu" type="button" data-menu aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="#run"><b>01</b>Equip</a></li>
+      <li><a href="#swap"><b>02</b>Swap</a></li>
+      <li><a href="#cut"><b>03</b>The cut</a></li>
+      <li><a href="#fit"><b>04</b>On body</a></li>
+      <li><a href="#city">Night shift</a></li>
+      <li><a href="#drop">Drop 001</a></li>
+    </ul>
+    <button class="nav__bag" type="button" data-bag aria-label="Bag">Bag<span data-bag-count>00</span></button>
+  </header>
+
+  <main id="main">
+    <!-- ═════════ TITLE SCREEN: the opening film (rooftop to street) ═════════ -->
+    <section class="film title" id="title" data-film="descent" data-zone="pink" style="--len:230" aria-label="Kalypt">
+      <div class="film__stage">
+        <canvas class="scene" data-scene="title" aria-hidden="true"></canvas>
+        <div class="film__media" aria-hidden="true">
+          <figure class="slot slot--fill film__still" data-shot="city-hero" data-shot-m="city-hero-m"></figure>
+          <figure class="slot slot--fill film__still film__still--end" data-shot="city-street"></figure>
+          <canvas class="film__canvas"></canvas>
+        </div>
+        <div class="scan" aria-hidden="true"></div>
+        <div class="title__hud" aria-hidden="true"><span>1UP 000000</span><span>HI 048000</span><span>CREDIT 01</span></div>
+
+        <div class="chap title__main" data-in="0" data-out=".3">
+          <p class="label">Palette-swap hoodies · Drop 001</p>
+          <h1 class="title__logo"><span class="vh">Kalypt</span><span data-wordmark="fade"></span></h1>
+          <p class="title__tag">Cover up.</p>
+          <p class="title__sub">A city that never turns off. One cut of hoodie. Five palettes. And a chameleon named Hex.</p>
+          <p class="title__start"><a class="btn" href="#run"><i>▼</i> Scroll to start</a><a class="btn btn--ghost" href="#swap">Skip to select</a></p>
+        </div>
+        <div class="chap chap--mid" data-in=".38" data-out=".62">
+          <p class="chap__big">The city never turns off.</p>
+          <p class="chap__small">Signs, screens, headlights, rain. Something is always looking at you.</p>
+        </div>
+        <div class="chap chap--mid" data-in=".68" data-out=".9">
+          <p class="chap__big">So cover up.</p>
+          <p class="chap__small">Kalypt, from the Greek kalyptein: to cover. The opposite of an apocalypse.</p>
+        </div>
+
+        <div class="film__hud" aria-hidden="true">
+          <div class="film__row"><span class="film__tag"></span><span class="film__beat"></span></div>
+          <div class="film__row"><span class="film__track"><span class="film__bar"><i></i></span><span class="film__ticks"></span></span><span class="film__tc"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ LEVEL 01: Hex, frame by frame ═════════ -->
+    <section class="run" id="run" style="--len:560" aria-labelledby="run-h">
+      <div class="run__stage">
+        <canvas class="scene" data-scene="run" aria-hidden="true"></canvas>
+        <div class="scan" aria-hidden="true"></div>
+        <div class="run__top">
+          <header class="run__head">
+            <p class="label">Level 01</p>
+            <h2 class="run__title" id="run-h">Equip</h2>
+          </header>
+          <div class="run__card pxbox" data-card aria-hidden="true">
+            <p class="run__tag" data-card-tag></p>
+            <h3 class="run__name" data-card-title></h3>
+            <p class="run__text" data-card-text></p>
+          </div>
+        </div>
+        <div class="run__hud" aria-hidden="true">
+          <span class="run__frame">Frame<b data-frame>001</b>/ 132</span>
+          <ol class="run__pips" data-pips></ol>
+          <span class="run__hint">Scroll = walk</span>
+        </div>
+        <ol class="vh" data-run-list></ol>
+      </div>
+    </section>
+
+    <!-- ═════════ LEVEL 02: palette swap ═════════ -->
+    <section class="swap" id="swap" style="--len:520" aria-labelledby="swap-h">
+      <div class="swap__stage">
+        <div class="swap__bgs" data-swap-bgs aria-hidden="true"></div>
+        <header class="swap__head">
+          <p class="label">Level 02</p>
+          <h2 id="swap-h">Palette swap</h2>
+        </header>
+        <div class="swap__track" data-swap-track aria-hidden="true">
+          <canvas class="swap__hex" data-swap-hex></canvas>
+        </div>
+        <div class="swap__info" data-swap-info>
+          <p class="swap__n"><b data-swap-n>01</b>/ 05<span data-swap-district></span></p>
+          <h3 class="swap__name" data-swap-name data-morph-part="name">Pink Noise</h3>
+          <p class="swap__blurb" data-swap-blurb></p>
+          <ul class="chips" data-swap-chips aria-label="Palette"></ul>
+          <dl class="stats" data-swap-stats></dl>
+          <p class="swap__buy"><span class="price" data-swap-price></span><a class="btn" data-swap-link href="hoodie.html?id=pink">View hoodie</a></p>
+        </div>
+        <div class="swap__nav">
+          <button type="button" data-swap-prev aria-label="Previous palette">◀</button>
+          <ol class="swap__dots" data-swap-dots></ol>
+          <button type="button" data-swap-next aria-label="Next palette">▶</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker" data-ticker aria-hidden="true"><div class="ticker__in"><span>One cut</span>◆<span>Five palettes</span>◆<span>Cover up</span>◆<span>Same sprite, new colours</span>◆<span>Hood up, world off</span>◆<span>Knitted in, not printed on</span>◆</div></div>
+
+    <!-- ═════════ LEVEL 03: the cut (the turn film) ═════════ -->
+    <section class="film cut" id="cut" data-film="turn" data-zone="pink" style="--len:300" aria-labelledby="cut-h">
+      <div class="film__stage" data-cut-stage>
+        <canvas class="cut__sprite" data-cut-sprite aria-hidden="true"></canvas>
+        <div class="film__media" aria-hidden="true">
+          <figure class="slot slot--fill film__still" data-shot="turn-front"></figure>
+          <figure class="slot slot--fill film__still film__still--end" data-shot="turn-back"></figure>
+          <canvas class="film__canvas"></canvas>
+        </div>
+        <div class="scan" aria-hidden="true"></div>
+        <div class="chap chap--l" data-in="0" data-out=".4">
+          <p class="label">Level 03</p>
+          <h2 id="cut-h">The cut</h2>
+          <ul class="calls">
+            <li><b>The Peak</b>Three-panel hood, lined in the fade colour. Stands up on its own.</li>
+            <li><b>Cords</b>Flat woven, with square metal aglets. Pixels you can chew.</li>
+            <li><b>Step Pocket</b>Stair-step openings and a zipped cell inside.</li>
+          </ul>
+        </div>
+        <div class="chap chap--r" data-in=".6" data-out="1">
+          <p class="label">Turn it round</p>
+          <p class="chap__big">Player 2 side.</p>
+          <ul class="calls">
+            <li><b>The Eye</b>13 × 13 px between the shoulders. Hex is watching your back.</li>
+            <li><b>Hood down</b>The Peak folds flat to a point.</li>
+            <li><b>The fade</b>Dithered pixel by pixel in the knit. Nothing is printed.</li>
+          </ul>
+        </div>
+        <div class="film__hud" aria-hidden="true">
+          <div class="film__row"><span class="film__tag"></span><span class="film__beat"></span></div>
+          <div class="film__row"><span class="film__track"><span class="film__bar"><i></i></span><span class="film__ticks"></span></span><span class="film__tc"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ stat sheet ═════════ -->
+    <section class="sheet" id="sheet" data-zone="pink" aria-labelledby="sheet-h">
+      <header class="sheet__head">
+        <p class="label">Stat sheet</p>
+        <h2 class="h2" id="sheet-h">One cut. Read the stats.</h2>
+      </header>
+      <dl class="specs rv" data-specs></dl>
+      <div class="sheet__side">
+        <figure class="slot rv" data-shot="macro-dither" data-sizes="(min-width: 980px) 46vw, 92vw"></figure>
+        <div class="rv">
+          <table class="sizes" data-size-table aria-label="Sizes, garment laid flat"></table>
+          <p class="note">Four sizes, cut boxy. Between two? Take the smaller one.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ LEVEL 04: on a real person ═════════ -->
+    <section class="fit" id="fit" data-zone="pink" aria-labelledby="fit-h">
+      <header class="fit__head">
+        <p class="label">Level 04</p>
+        <h2 class="h2" id="fit-h">On a real person.</h2>
+        <p class="lede">Sprites are easy. Here is the same cut on five actual humans: five heights, four sizes, no pins in the back. Pick a palette to swap the player.</p>
+        <div class="fit__tabs" role="group" aria-label="Palette worn" data-fit-tabs></div>
+      </header>
+      <div class="fit__in" data-fit data-morph="pink">
+        <div class="fit__stage">
+          <figure class="slot fit__main" data-fit-main data-morph-part="hoodie" data-sizes="(min-width: 980px) 40vw, 92vw"></figure>
+          <p class="fit__model" data-fit-model></p>
+        </div>
+        <div class="fit__copy">
+          <p class="label">How it sits</p>
+          <dl class="specs" data-fit-notes></dl>
+          <div class="fit__more">
+            <figure class="slot rv" data-shot="fit-hood" data-sizes="(min-width: 980px) 24vw, 46vw"></figure>
+            <figure class="slot rv" data-shot="fit-back" data-sizes="(min-width: 980px) 24vw, 46vw"></figure>
+          </div>
+          <p class="fit__foot"><span class="note">Hood up and back view are shown in Pink Noise, on Player 01.</span><a class="btn" data-fit-link href="hoodie.html?id=pink">View this hoodie</a></p>
+        </div>
+      </div>
+    </section>
+
+    <div class="seam" data-seam="#07060D,#100E1C" aria-hidden="true"></div>
+
+    <!-- ═════════ night shift ═════════ -->
+    <div style="background:#100E1C">
+      <section class="city" id="city" aria-labelledby="city-h">
+        <header class="city__head">
+          <p class="label">Night shift</p>
+          <h2 class="h2" id="city-h">Five sectors. Five palettes.</h2>
+          <p class="lede">Each palette is named for something the city does after dark. Point at one and the whole page swaps with it.</p>
+        </header>
+        <div class="city__grid" data-city></div>
+      </section>
+    </div>
+
+    <div class="seam" data-seam="#100E1C,#07060D" aria-hidden="true"></div>
+
+    <!-- ═════════ the name ═════════ -->
+    <section class="name" id="name" data-zone="pink" aria-labelledby="name-h">
+      <div class="name__in">
+        <div class="name__copy rv">
+          <p class="label">The name</p>
+          <h2 class="h2" id="name-h">The opposite of an apocalypse.</h2>
+          <dl class="ety">
+            <div><dt>kalyptein</dt><dd>Greek. To cover.</dd></div>
+            <div><dt>apo·kalypsis</dt><dd>An un-covering. The end of the world, more or less.</dd></div>
+            <div><dt>calyptratus</dt><dd>The veiled chameleon, named for the casque on its head: a hood it is born with. That is Hex.</dd></div>
+            <div><dt>Kalypt</dt><dd>A hood you choose.</dd></div>
+          </dl>
+          <p class="lede">A chameleon does not change colour to hide. It changes to say something: warm, cold, back off, come here. Same animal, different palette. That is the whole range.</p>
+        </div>
+        <figure class="slot rv" data-shot="hex-charm" data-sizes="(min-width: 980px) 34vw, 92vw"></figure>
+      </div>
+      <div class="strip" data-strip aria-hidden="true"><canvas></canvas></div>
+      <p class="strip__cap">Level 01, all 132 frames. Every one is drawn by the page, not loaded.</p>
+    </section>
+
+    <!-- ═════════ the drop ═════════ -->
+    <section class="drop" id="drop" data-zone="pink" aria-labelledby="drop-h">
+      <p class="label">Drop 001 · 16 January 2027</p>
+      <h2 id="drop-h">Insert email. Press start.</h2>
+      <p class="lede">Drop 001 unlocks once. Join the queue now and pick your palette on the day.</p>
+      <form data-drop novalidate>
+        <label class="vh" for="drop-email">Email address</label>
+        <input id="drop-email" type="email" name="email" required autocomplete="email" placeholder="you@thecity.net">
+        <button class="btn" type="submit">Press start</button>
+      </form>
+      <p class="drop__msg" data-drop-msg role="status"></p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot__logo" data-wordmark="fade" aria-hidden="true"></div>
+    <div class="foot__row">
+      <span>© <span data-year>2026</span> Kalypt. A concept brand: prices, specs and dates are invented.</span>
+      <span class="foot__links">
+        <a href="breakdown.html">Brand breakdown</a>
+        <a href="shots.html">Shot sheet</a>
+        <button type="button" data-motion-toggle aria-pressed="false">Reduce motion</button>
+        <a href="#title">Continue? ▲</a>
+      </span>
+    </div>
+  </footer>
+
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
+
+  <script src="assets/img/ready.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/shots.js"></script>
+  <script src="js/pix.js"></script>
+  <script src="js/media.js"></script>
+  <script src="assets/vendor/lenis.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/film.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>
