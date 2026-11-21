@@ -301,6 +301,29 @@
     }));
   });
 
+  /* ── the about page's origin film: Hex as the voxel figure from the zip-charm photo, in a miniature night city ── */
+  var DIORAMA = 'Photoreal macro photography of a detailed miniature diorama, 100mm macro lens, shallow depth of field, cinematic night lighting, fine film grain. ' +
+    'The miniature is a dense near-future night city street after rain: stacked blank glowing signs with no writing, a vending machine, cables, steam, wet reflective asphalt. ' +
+    'The character is exactly the voxel figurine in the reference image: a cartoon veiled chameleon built from tiny square blocks, tall pointed crest, one big round turret eye, tail curled into a spiral, ' +
+    'hot pink skin (#FF74B4), a hooded sweatshirt deep ultraviolet (#33186A) on top fading to hot pink (#FF2F8E) at the hem in square pixels. ';
+  shots.push(gpt({
+    id: 'about-start', stage: 2, aspect: '16:9', pal: 'pink', art: 'sky', refs: [ref('hex-charm')],
+    brief: 'Hex, the voxel figure, asleep on top of a glowing billboard high above the miniature night city. First frame of the origin film.',
+    alt: 'A small voxel chameleon asleep on top of a glowing billboard above a miniature night city.',
+    used: ['About · origin film, first frame'],
+    prompt: DIORAMA + 'Wide shot from slightly above: the character lies curled up asleep on top of a large rooftop billboard that glows magenta with a simple ring-with-a-dot shape on it, ' +
+      'its hood down, eye closed, high above the miniature street; the towers of the miniature city behind under a pale full moon, light rain. ' + NEG,
+  }));
+  shots.push(gpt({
+    id: 'about-end', stage: 3, aspect: '16:9', pal: 'pink', art: 'street', refs: [ref('about-start'), ref('hex-charm')],
+    brief: 'Hex standing on the wet miniature street, hood up, looking at the camera, a shop window of folded hoodies behind. Last frame of the origin film.',
+    alt: 'A small voxel chameleon in a hooded sweatshirt standing on a wet miniature street at night, looking at the camera.',
+    used: ['About · origin film, last frame'],
+    prompt: DIORAMA + 'The same miniature city as the first reference image, now at street level, eye height with the character. The character stands on the wet street in the centre, ' +
+      'facing the camera, its tall pointed hood pulled up over its crest, hands in the front pocket, its eye looking straight into the lens. Behind it, a small shop window glows with neat stacks of folded hoodies ' +
+      'in pink, blue, lime, teal and purple-and-gold. The billboard from the first image glows above, out of focus. ' + NEG,
+  }));
+
   /* one person wearing the set: the look the store opens with */
   shots.push(gpt({
     id: 'store-look', stage: 2, aspect: '4:5', pal: 'pink', art: 'person', refs: [ref('item-varsity'), ref('item-pants')],
@@ -341,6 +364,20 @@
 
   /* ───────────── FILMS (image to video between two stills; cut into scroll frames by optimize.mjs) ───────────── */
   var films = [
+    {
+      id: 'film-about', kind: 'film', name: 'origin', stage: 4, aspect: '16:9', model: 'kling4_0', params: { mode: 'image-to-video', duration: 10, resolution: '1080p' },
+      start: 'about-start', end: 'about-end', focus: 0.5,
+      brief: 'Hex wakes on the billboard, climbs down to the street and pulls his hood up. Scroll plays it.',
+      used: ['About · origin film'],
+      beats: [
+        { at: 0, text: 'Asleep on top of the billboard. The sign never switches off.' },
+        { at: 0.25, text: 'He wakes, stretches, looks down at the street.' },
+        { at: 0.55, text: 'Down the fire escape, block by block.' },
+        { at: 0.82, text: 'On the street. Hood up. He looks right at you.' },
+      ],
+      prompt: 'One continuous shot of the miniature diorama, no cuts. The small voxel chameleon wakes up on top of the glowing billboard, stretches, hops down a fire escape ladder step by step to the wet street, ' +
+        'walks a few steps toward the camera and pulls its pointed hood up, ending face to face with the lens. The camera follows it smoothly down from rooftop height to street level. Light rain, glowing signs, nothing else moves fast. No writing appears anywhere.',
+    },
     {
       id: 'film-descent', kind: 'film', name: 'descent', stage: 4, aspect: '16:9', model: 'kling4_0', params: { mode: 'image-to-video', duration: 10, resolution: '1080p' },
       start: 'city-hero', end: 'city-street', focus: 0.5,

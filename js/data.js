@@ -182,6 +182,8 @@
   root.KALYPT = {
     name: 'KALYPT',
     PALETTES: PALETTES, WILD: WILD, byId: byId, RUN: RUN, SPECS: SPECS, SIZES: SIZES, FIT: FIT,
+    /* the five the home page shows, the most distinct of the eight; Sodium, Static and Red Shift are store-only */
+    HOME: ['pink', 'blue', 'acid', 'coolant', 'royal'].map(function (id) { return byId[id]; }),
     ITEMS: ITEMS, itemById: itemById, CATS: CATS, PRODUCTS: PRODUCTS, productById: productById,
     current: q && byId[q[1]] ? q[1] : 'pink',
     money: function (n) { return '$' + n; },

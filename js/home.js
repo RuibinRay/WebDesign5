@@ -90,8 +90,8 @@
     if (f >= 85) s.pose.glow = f !== 86;
     /* 5 · palette swap: four frames each */
     if (f >= 100 && f <= 119) {
-      var pn = K.PALETTES.length, pi = Math.min(pn - 1, Math.floor(((f - 100) * pn) / 20));
-      s.pal = K.PALETTES[pi]; s.flash = pi !== Math.min(pn - 1, Math.floor(((f - 101) * pn) / 20)) || f === 100; s.pose.look = [f & 2 ? 1 : 0, 1];
+      var pn = K.HOME.length, pi = Math.min(pn - 1, Math.floor(((f - 100) * pn) / 20));
+      s.pal = K.HOME[pi]; s.flash = pi !== Math.min(pn - 1, Math.floor(((f - 101) * pn) / 20)) || f === 100; s.pose.look = [f & 2 ? 1 : 0, 1];
     }
     /* 6 · a wink on the way out */
     if (f === 129 || f === 130) s.pose.blink = 2;
@@ -150,7 +150,7 @@
 
   /* ═════════ LEVEL 02: palette swap ═════════ */
   var swapSec = $('#swap'), track = $('[data-swap-track]'), bgs = $('[data-swap-bgs]'), info = $('[data-swap-info]');
-  var P = K.PALETTES, N2 = P.length, cur = -1, sf = 0, swapMid = false, items = [], bgEls = [], k = 4;
+  var P = K.HOME, N2 = P.length, cur = -1, sf = 0, swapMid = false, items = [], bgEls = [], k = 4;
   var sName = $('[data-swap-name]'), sN = $('[data-swap-n]'), sDistrict = $('[data-swap-district]'), sBlurb = $('[data-swap-blurb]');
   var sChips = $('[data-swap-chips]'), sStats = $('[data-swap-stats]'), sPrice = $('[data-swap-price]'), sLink = $('[data-swap-link]');
   var dotsEl = $('[data-swap-dots]'), sHex = $('[data-swap-hex]'), sHexCtx = sHex.getContext('2d'), tmp = document.createElement('canvas'), tctx = tmp.getContext('2d');
@@ -249,7 +249,7 @@
   function showInfo(i) {
     var p = P[i];
     cur = i;
-    sN.textContent = p.n; sDistrict.textContent = p.district; sBlurb.textContent = p.blurb;
+    sN.textContent = ('0' + (i + 1)).slice(-2); sDistrict.textContent = p.district.split(' · ')[1]; sBlurb.textContent = p.blurb;
     sPrice.textContent = K.money(p.price);
     sLink.href = 'hoodie.html?id=' + p.id;
     sLink.setAttribute('aria-label', 'View the ' + p.name + ' hoodie');
@@ -356,7 +356,7 @@
     fitMain.setAttribute('data-shot', id + '-fit');
     MEDIA.fill(fitMain);
     if (byUser && !UI.reduce()) { void fitMain.offsetWidth; fitMain.classList.add('wipe'); }
-    fitModel.innerHTML = '<b>Player ' + p.n + '</b><span>' + p.model.cm + ' cm tall</span><span>Wears size ' + p.model.size + '</span><span>' + esc(p.name) + '</span>';
+    fitModel.innerHTML = '<b>Player ' + ('0' + (P.indexOf(p) + 1)).slice(-2) + '</b><span>' + p.model.cm + ' cm tall</span><span>Wears size ' + p.model.size + '</span><span>' + esc(p.name) + '</span>';
     $$('[data-fit-tab]', fitTabs).forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-fit-tab') === id)); });
     fitLink.href = 'hoodie.html?id=' + id;
     fitLink.setAttribute('aria-label', 'View the ' + p.name + ' hoodie');
@@ -369,11 +369,11 @@
 
   /* ═════════ night shift: five looks ═════════ */
   var cityEl = $('[data-city]');
-  cityEl.innerHTML = P.map(function (p) {
+  cityEl.innerHTML = P.map(function (p, pi) {
     return '<a class="look rv" href="hoodie.html?id=' + p.id + '" data-look="' + p.id + '" data-morph="' + p.id + '" style="--c:' + p.ui + '">' +
       '<figure class="slot" data-shot="' + p.id + '-city" data-morph-part="hoodie" data-sizes="(min-width: 900px) 30vw, 90vw"></figure>' +
-      '<span class="look__cap"><span class="look__n">' + p.n + '</span><span class="look__name" data-morph-part="name">' + esc(p.name) + '</span>' +
-      '<span class="look__where">' + esc(p.district) + '</span><span class="look__line">' + esc(p.line) + '</span></span></a>';
+      '<span class="look__cap"><span class="look__n">' + ('0' + (pi + 1)).slice(-2) + '</span><span class="look__name" data-morph-part="name">' + esc(p.name) + '</span>' +
+      '<span class="look__where">' + esc(p.district.split(' · ')[1]) + '</span><span class="look__line">' + esc(p.line) + '</span></span></a>';
   }).join('');
   MEDIA.all(cityEl);
   UI.watch(cityEl);
@@ -407,6 +407,15 @@
     }
     var sc = root.innerWidth < 700 ? 2 : 3;
     stripC.style.width = stripC.width * sc + 'px'; stripC.style.height = stripC.height * sc + 'px';
+  }
+
+  /* ═════════ the three palettes kept for the store ═════════ */
+  var morePals = $('[data-more-pals]');
+  if (morePals) {
+    var rest = K.PALETTES.filter(function (p) { return K.HOME.indexOf(p) < 0; });
+    morePals.innerHTML = '<span>Three more in the store:</span> ' + rest.map(function (p) {
+      return '<a href="store.html?pal=' + p.id + '" style="--c:' + p.ui + '"><i style="background:linear-gradient(180deg,' + p.a + ' 0 50%,' + p.b + ' 50% 100%)"></i>' + esc(p.name) + '</a>';
+    }).join('');
   }
 
   /* ═════════ the store teaser: four pieces beyond the hoodie ═════════ */

@@ -19,6 +19,7 @@ Or open the folder with any static server. There is no build step. In the Claude
 | Page | What it is |
 |---|---|
 | `index.html` | Title screen, four levels, stat sheet, five street looks, the name, the drop queue |
+| `about.html` | About: the origin film (Hex wakes on a billboard and comes down to the street, played by scroll; a pixel version until the film exists), the idea, four rules, the mascot |
 | `store.html` | The store: every piece (5 hoodies + 8 items) with category tabs, a palette picker that recolours the whole shop, sort and rarity |
 | `item.html?id=tee&pal=blue` | One template for the eight items: pick any of eight palettes, see where Hex goes on it |
 | `hoodie.html?id=pink` | One template for all five (`pink`, `blue`, `acid`, `sodium`, `static`). The page takes the hoodie's palette |

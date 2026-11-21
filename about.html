@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About · Kalypt</title>
+  <meta name="description" content="About Kalypt: a chameleon called Hex, one cut of hoodie, and a city that never turns off.">
+  <meta property="og:image" content="assets/img/og.jpg">
+  <meta name="theme-color" content="#07060D">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wdth,wght@75..112.5,100..800&family=Pixelify+Sans:wght@400..700&display=swap">
+  <link rel="stylesheet" href="css/kalypt.css">
+  <script src="js/motion.js"></script>
+</head>
+<body class="about-page" data-rail>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav" data-nav>
+    <a class="brand" href="index.html" aria-label="Kalypt, home"><span data-badge></span><span data-wordmark></span></a>
+    <button class="nav__menu" type="button" data-menu aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="store.html"><b>▶</b>Store</a></li>
+      <li><a href="about.html" aria-current="page">About</a></li>
+      <li><a href="index.html#run"><b>01</b>Equip</a></li>
+      <li><a href="index.html#swap"><b>02</b>Swap</a></li>
+      <li><a href="index.html#drop">Drop 001</a></li>
+    </ul>
+    <button class="nav__bag" type="button" data-bag aria-label="Bag">Bag<span data-bag-count>00</span></button>
+  </header>
+
+  <main id="main">
+    <!-- ═════════ the origin film: Hex wakes on the billboard and comes down to the street ═════════ -->
+    <section class="film about-film" id="origin" data-film="origin" style="--len:420" aria-labelledby="about-h">
+      <div class="film__stage">
+        <canvas class="scene" data-scene="about" aria-hidden="true"></canvas>
+        <div class="film__media" aria-hidden="true">
+          <figure class="slot slot--fill film__still" data-shot="about-start"></figure>
+          <figure class="slot slot--fill film__still film__still--end" data-shot="about-end"></figure>
+          <canvas class="film__canvas"></canvas>
+        </div>
+        <div class="scan" aria-hidden="true"></div>
+
+        <div class="chap about-chap" data-in="0" data-out=".18">
+          <p class="label">About Kalypt</p>
+          <h1 class="chap__big" id="about-h">Hex was born under a sign.</h1>
+          <p class="chap__small">A veiled chameleon, asleep on top of a billboard that never switches off. Scroll to wake him.</p>
+        </div>
+        <div class="chap about-chap" data-in=".24" data-out=".44">
+          <p class="chap__big">A chameleon doesn't change colour to hide.</p>
+          <p class="chap__small">It changes to say something: warm, cold, back off, come here. Same animal, different palette.</p>
+        </div>
+        <div class="chap about-chap" data-in=".5" data-out=".7">
+          <p class="chap__big">The city never turns off.</p>
+          <p class="chap__small">Signs, screens, headlights, rain. Something is always looking at you. So he came down to meet it.</p>
+        </div>
+        <div class="chap about-chap" data-in=".76" data-out="1">
+          <p class="chap__big">So we made him a hood.</p>
+          <p class="chap__small">Kalypt, from the Greek kalyptein: to cover. One cut, the colour of whatever you want to say.</p>
+        </div>
+
+        <div class="film__hud" aria-hidden="true">
+          <div class="film__row"><span class="film__tag"></span><span class="film__beat"></span></div>
+          <div class="film__row"><span class="film__track"><span class="film__bar"><i></i></span><span class="film__ticks"></span></span><span class="film__tc"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-sec" aria-labelledby="idea-h">
+      <div class="about-sec__in">
+        <span class="about-badge" data-badge aria-hidden="true"></span>
+        <div>
+          <p class="label">The idea</p>
+          <h2 class="h2" id="idea-h">Same sprite. New colours.</h2>
+          <p class="lede">In old video games a new character was often the old one in a new palette. Kalypt works the same way: one cut of hoodie, knitted in eight palettes, each named for something the city does after dark. Everything else, the tee, the jackets, the pants, the socks, the caps, follows the same palettes, so whatever you own goes together.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-sec about-sec--rules" aria-labelledby="made-h">
+      <div class="about-sec__wide">
+        <p class="label">How it's made</p>
+        <h2 class="h2" id="made-h">Four rules, no exceptions.</h2>
+        <ol class="about-rules">
+          <li><b>Knitted, not printed.</b>The fade is jacquard-knitted pixel by pixel. It does not crack, peel or wash out.</li>
+          <li><b>One cut.</b>Boxy, dropped shoulder, cropped at the hip, a hood that stands up on its own. We change the colour, never the cut.</li>
+          <li><b>Hex is on it.</b>Somewhere that suits the piece: a chest badge, a patch, a woven label, the cuff of a sock.</li>
+          <li><b>Every palette, every piece.</b>Pick any colour and any piece; they were made to be worn together.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="about-sec" aria-labelledby="hex-h">
+      <div class="about-sec__in about-sec__in--flip">
+        <div>
+          <p class="label">The mascot</p>
+          <h2 class="h2" id="hex-h">48 × 51 pixels of attitude.</h2>
+          <p class="lede">Hex is drawn in code, not in a picture editor: tail, legs, body, head, hood, turret eye and arm are built every time he appears, so he can wear any palette and strike any pose. On this site he walks along the bottom of every page with you. In real life he comes in the box with every hoodie, as a voxel zip charm.</p>
+          <p><a class="btn" href="store.html">Enter the store</a> <a class="btn btn--ghost" href="index.html#run">Watch him equip</a></p>
+        </div>
+        <figure class="slot about-charm" data-shot="hex-charm" data-sizes="(min-width: 900px) 34vw, 90vw"></figure>
+      </div>
+    </section>
+
+    <section class="about-sec about-sec--note" aria-label="Note">
+      <p class="note">Kalypt is a concept brand. The story, prices, specs and drop date are invented; the pixels are real.</p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot__logo" data-wordmark="fade" aria-hidden="true"></div>
+    <div class="foot__row">
+      <span>© <span data-year>2026</span> Kalypt. A concept brand: prices, specs and dates are invented.</span>
+      <span class="foot__links">
+        <a href="breakdown.html">Brand breakdown</a>
+        <a href="shots.html">Shot sheet</a>
+        <button type="button" data-motion-toggle aria-pressed="false">Reduce motion</button>
+        <a href="index.html">Title screen</a>
+      </span>
+    </div>
+  </footer>
+
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
+
+  <script src="assets/img/ready.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/shots.js"></script>
+  <script src="js/pix.js"></script>
+  <script src="js/media.js"></script>
+  <script src="assets/vendor/lenis.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/pixfx.js"></script>
+  <script src="js/bag.js"></script>
+  <script src="js/film.js"></script>
+  <script src="js/about.js"></script>
+</body>
+</html>
