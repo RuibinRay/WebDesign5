@@ -89,7 +89,10 @@
     if (f >= 84 && f <= 90) s.car = (f - 84) / 6;
     if (f >= 85) s.pose.glow = f !== 86;
     /* 5 · palette swap: four frames each */
-    if (f >= 100 && f <= 119) { s.pal = K.PALETTES[Math.floor((f - 100) / 4)]; s.flash = (f - 100) % 4 === 0; s.pose.look = [f & 2 ? 1 : 0, 1]; }
+    if (f >= 100 && f <= 119) {
+      var pn = K.PALETTES.length, pi = Math.min(pn - 1, Math.floor(((f - 100) * pn) / 20));
+      s.pal = K.PALETTES[pi]; s.flash = pi !== Math.min(pn - 1, Math.floor(((f - 101) * pn) / 20)) || f === 100; s.pose.look = [f & 2 ? 1 : 0, 1];
+    }
     /* 6 · a wink on the way out */
     if (f === 129 || f === 130) s.pose.blink = 2;
     return s;

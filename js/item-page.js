@@ -19,7 +19,7 @@
     var F = {
       eyebrow: catLabel + ' · ' + pal.name, name: it.name, line: it.line, price: K.money(it.price), 'pal-name': pal.name,
       'logo-note': 'Where Hex goes: ' + it.placement,
-      note: 'Every Kalypt piece comes in all five palettes. Drop ' + K.drop.n + ' unlocks ' + K.drop.label + '.',
+      note: 'Every Kalypt piece comes in all eight palettes. Drop ' + K.drop.n + ' unlocks ' + K.drop.label + '.',
     };
     $$('[data-f]').forEach(function (el) { var k = el.getAttribute('data-f'); if (F[k] != null) el.textContent = F[k]; });
   }

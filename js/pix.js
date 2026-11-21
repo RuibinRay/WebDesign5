@@ -317,13 +317,16 @@
   }
 
   /* ───────── a person in the cut: the stand-in for the on-body photographs ─────────
-     The hoodie sprite with a head, hands, legs and trainers. Five people, five heights. */
+     The hoodie sprite with a head, hands, legs and trainers. Five people, eight heights. */
   var PEOPLE = [
     { skin: '#B9794F', shade: '#8E5636', hair: '#17131C', tall: 0, cm: 172 },
     { skin: '#F1C9A5', shade: '#C99A77', hair: '#E9DFA8', tall: 6, cm: 183 },
     { skin: '#E8B98F', shade: '#BD8C66', hair: '#1B1620', tall: -6, cm: 160 },
     { skin: '#6B442E', shade: '#4A2D1D', hair: '#120E10', tall: 10, cm: 190 },
     { skin: '#D7A77E', shade: '#AC7F5B', hair: '#C9CED8', tall: -3, cm: 168 },
+    { skin: '#7A4A2E', shade: '#56331F', hair: '#16110F', tall: 3, cm: 176 },
+    { skin: '#F3CDB2', shade: '#CDA185', hair: '#121014', tall: -5, cm: 164 },
+    { skin: '#F6D4BE', shade: '#D2A88E', hair: '#B5471E', tall: 8, cm: 186 },
   ];
   var personCache = {};
   function person(pal, back) {

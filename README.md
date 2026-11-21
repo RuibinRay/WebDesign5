@@ -1,6 +1,6 @@
 # Kalypt
 
-**Cover up.** A concept hoodie brand in cyberpunk pixels. One cut of hoodie, five palettes, and a mascot: Hex, a veiled chameleon who walks the site with you, one frame per scroll step.
+**Cover up.** A concept hoodie brand in cyberpunk pixels. One cut of hoodie, eight palettes, and a mascot: Hex, a veiled chameleon who walks the site with you, one frame per scroll step.
 
 The name comes from the Greek *kalyptein*, to cover. An apocalypse is an un-covering; a hood is the opposite. The veiled chameleon's Latin name, *calyptratus*, has the same root.
 
@@ -20,7 +20,7 @@ Or open the folder with any static server. There is no build step. In the Claude
 |---|---|
 | `index.html` | Title screen, four levels, stat sheet, five street looks, the name, the drop queue |
 | `store.html` | The store: every piece (5 hoodies + 8 items) with category tabs, a palette picker that recolours the whole shop, sort and rarity |
-| `item.html?id=tee&pal=blue` | One template for the eight items: pick any of five palettes, see where Hex goes on it |
+| `item.html?id=tee&pal=blue` | One template for the eight items: pick any of eight palettes, see where Hex goes on it |
 | `hoodie.html?id=pink` | One template for all five (`pink`, `blue`, `acid`, `sodium`, `static`). The page takes the hoodie's palette |
 | `breakdown.html` | The brand taken apart: idea, name, mascot, range, type, every scroll move and why |
 | `shots.html` | Every Higgsfield prompt, with copy buttons |
@@ -33,7 +33,7 @@ Or open the folder with any static server. There is no build step. In the Claude
 | Level 01 · Equip | Picks one of 132 frames of Hex. He finds the hoodie, the hood goes up, hands in the pocket, piping lights, palettes swap | Finished (code) | Same |
 | Level 02 · Palette swap | Slides one hoodie out and the next in through a mosaic; the page, stage and Hex swap palette | Hoodie sprites | Studio photographs |
 | Level 03 · The cut | Turns the hoodie front to back | The sprite spins in 16 steps | The turn film, frame by frame |
-| Level 04 · On a real person | Five buttons (not scroll) swap the person and the page | Pixel people, five heights | On-body photographs |
+| Level 04 · On a real person | Five buttons (not scroll) swap the person and the page | Pixel people, eight heights | On-body photographs |
 | The rail | Hex walks along the bottom of the screen as you scroll, and turns round when you scroll up | Finished (code) | Same |
 
 ## How it is built
@@ -42,7 +42,7 @@ Plain HTML, CSS and JavaScript. No framework, no build.
 
 | File | Job |
 |---|---|
-| `js/data.js` | The brand as data: five palettes, copy, specs, sizes, the Level 01 cards. Change a colour here and the sprites, the page and the prompts all change |
+| `js/data.js` | The brand as data: eight palettes, copy, specs, sizes, the Level 01 cards. Change a colour here and the sprites, the page and the prompts all change |
 | `js/pix.js` | The pixel engine. Hex is built from parts (tail, legs, body, head, hood, eye, arm) so any pose is one call. The hoodie, the pixel people, the city, the mark and the letters are drawn here too. Sprites are indexed, so a palette swap is a lookup, not a redraw |
 | `js/home.js` | The home page: the frame script for Level 01 (`state(f)`), the hoodie slide, the turn, the fit check |
 | `js/film.js` | Scroll films with three tiers: frames, two stills, or the page's own pixel cut |

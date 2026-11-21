@@ -1,5 +1,5 @@
 /*
- * KALYPT hoodie page: one template for all five (hoodie.html?id=pink | blue | acid | sodium | static).
+ * KALYPT hoodie page: one template for every palette (hoodie.html?id=pink | blue | acid | sodium | static | coolant | redshift | royal).
  *
  * The page takes the hoodie's palette. The stage shows the hoodie sprite (or the studio photograph once
  * it exists) and turns it front to back in 16 steps. Below: the hoodie on a real person, the details,
@@ -15,7 +15,7 @@
   var meta = $('meta[name="description"]');
   if (meta) meta.setAttribute('content', 'The Kalypt hoodie in ' + p.name + ': ' + p.blurb);
   var F = {
-    eyebrow: 'Palette ' + p.n + ' / 05 · ' + p.district, name: p.name, line: p.line, blurb: p.blurb, price: K.money(p.price),
+    eyebrow: 'Palette ' + p.n + ' / 08 · ' + p.district, name: p.name, line: p.line, blurb: p.blurb, price: K.money(p.price),
     note: p.gsm + ' gsm. Ships with a palette-matched Hex zip charm. Drop ' + K.drop.n + ' unlocks ' + K.drop.label + '.',
     model: 'Player ' + p.n + ' is ' + p.model.cm + ' cm tall and wears size ' + p.model.size + '. The cut is meant to sit big: shoulder seam down the arm, hem at the hip.',
   };

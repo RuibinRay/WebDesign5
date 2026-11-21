@@ -66,10 +66,14 @@
   var BACKDROP = {
     pink: 'smoky violet-grey (#5B4A7D)', blue: 'deep navy (#101A4A)', acid: 'slate green-grey (#5C6B55)',
     sodium: 'warm taupe (#7A5F47)', static: 'mid grey (#6E7280)',
+    coolant: 'dark slate teal (#2F4F55)', redshift: 'dusty rose-grey (#6E4F55)', royal: 'muted plum (#5A4A72)',
   };
 
   /* What lights the street, and where the wearer stands, per palette. */
   var LIGHT = {
+    coolant: 'The street is lit almost only by cold mint-cyan light (#3CF2D6) from server-room windows, with deep teal shadows.',
+    redshift: 'The street is lit almost only by long red streaks of tail lights (#FF3B3B) on wet asphalt, with maroon-black shadows.',
+    royal: 'The street is lit almost only by warm gold casino light (#FFC83D), with deep purple shadows.',
     pink: 'The street is lit almost only by magenta-pink sign light (#FF2F8E), with deep violet shadows.',
     blue: 'The street is lit almost only by cold electric-blue screen light (#2346FF) and ice-white panels.',
     acid: 'The street is lit almost only by acid-lime light (#B8FF3C) bouncing off wet asphalt, with grey-green shadows.',
@@ -77,6 +81,9 @@
     static: 'The street is lit by flat white fluorescent light and the grey flicker of television static. Almost monochrome.',
   };
   var PLACE = {
+    coolant: 'outside a data centre loading bay, cooling vents breathing steam',
+    redshift: 'on a footbridge over a ring road, traffic streaking past below',
+    royal: 'under a giant blank casino sign of gold bulbs',
     pink: 'under a wall of blank magenta signs outside a noodle bar, steam drifting past',
     blue: 'in the doorway of an arcade, rows of blank blue screens glowing behind',
     acid: 'under a concrete overpass, lime light rippling up from the puddles',
@@ -84,13 +91,16 @@
     static: 'in front of a shop window stacked with old televisions showing white noise',
   };
 
-  /* Five people, five heights: who wears each palette in the fit photographs (heights and sizes are in data.js). */
+  /* Five people, eight heights: who wears each palette in the fit photographs (heights and sizes are in data.js). */
   var WHO = {
     pink: 'a woman in her twenties, about 172 cm tall, medium-brown skin, a black bob haircut',
     blue: 'a man in his twenties, about 183 cm tall, pale skin, short bleached-blond hair',
     acid: 'a woman in her thirties, about 160 cm tall, light-tan skin, long black hair tied back',
     sodium: 'a man in his thirties, about 190 cm tall, dark-brown skin, a shaved head and a short beard',
     static: 'a person in their twenties, about 168 cm tall, olive skin, cropped silver-grey hair',
+    coolant: 'a woman in her twenties, about 176 cm tall, dark-brown skin, short natural curls',
+    redshift: 'a man in his twenties, about 164 cm tall, light skin, a black buzz cut',
+    royal: 'a woman in her thirties, about 186 cm tall, pale freckled skin, long copper-red hair',
   };
 
   var gpt = function (o, quality) { o.model = 'gpt_image_2_6'; o.params = { resolution: '2k', quality: quality || 'high' }; return o; };

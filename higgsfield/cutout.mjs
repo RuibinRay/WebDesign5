@@ -20,7 +20,7 @@ import sharp from 'sharp';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = path.join(ROOT, 'higgsfield/renders');
 const OUT = path.join(ROOT, 'assets/img');
-const PALS = ['pink', 'blue', 'acid', 'sodium', 'static'];
+const PALS = ['pink', 'blue', 'acid', 'sodium', 'static', 'coolant', 'redshift', 'royal'];
 const want = process.argv.slice(2);
 const ITEMS = ['tee', 'shell', 'varsity', 'pants', 'socks', 'cap', 'beanie', 'tote'].map((i) => 'item-' + i);
 const ids = want.length ? want : PALS.flatMap((p) => [p + '-front', p + '-back']).concat(ITEMS.filter((i) => !SKIP.includes(i)));

@@ -632,3 +632,12 @@ html.bag-open { overflow: hidden; }
 /* item photos without a cut-out: the studio shot fills the card / sits framed on the item page */
 .card__art .card__photo { width: 100%; height: 100%; max-width: none; max-height: none; object-fit: cover; filter: none; }
 .hp-fig .ip-photo { width: min(100%, calc(var(--cut-h, 60vh) * 0.8)); --bc: var(--text); box-shadow: var(--edge); margin: var(--px); }
+/* phones with eight palettes: the swatches scroll sideways beside the sort menu; the price keeps its room on cards */
+@media (max-width: 700px) {
+  .shop-bar__in { flex-wrap: wrap; }
+  .shop-pals { flex: 1 1 0; min-width: 0; overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; }
+  .shop-pals::-webkit-scrollbar { display: none; }
+  .shop-sw { flex: none; }
+  .shop-sort { flex: none; }
+}
+@media (max-width: 560px) { .card__dots { display: none; } }

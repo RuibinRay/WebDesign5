@@ -67,7 +67,7 @@
         '<span class="card__body"><span class="card__name" data-morph-part="name">' + esc(pr.name) + '</span>' +
         '<span class="card__sub">' + esc(sub) + '</span>' +
         '<span class="card__foot"><b class="card__price">' + K.money(pr.price) + '</b>' +
-        (pr.kind === 'item' ? '<span class="card__dots" aria-label="Comes in five palettes">' + K.PALETTES.map(function (q) { return '<i style="background:' + q.ui + '"></i>'; }).join('') + '</span>' : '') +
+        (pr.kind === 'item' ? '<span class="card__dots" aria-label="Comes in eight palettes">' + K.PALETTES.map(function (q) { return '<i style="background:' + q.ui + '"></i>'; }).join('') + '</span>' : '') +
         '</span></span></a>';
     }).join('');
     $('[data-count]').textContent = list.length + (list.length === 1 ? ' piece' : ' pieces') + (pal !== 'all' ? ' in ' + K.byId[pal].name : '');

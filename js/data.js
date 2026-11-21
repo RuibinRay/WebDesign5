@@ -8,7 +8,7 @@
  * for the draft. Replace them before anything real ships.
  */
 (function (root) {
-  /* One cut, five palettes. a = upper colour, b = the colour it dithers into at the hem and cuffs. */
+  /* One cut, eight palettes. a = upper colour, b = the colour it dithers into at the hem and cuffs. */
   var PALETTES = [
     {
       id: 'pink', n: '01', name: 'Pink Noise', a: '#33186A', b: '#FF2F8E', glow: '#FFA3D2', skin: '#FF74B4',
@@ -50,6 +50,30 @@
       blurb: 'Bone white breaking up into black, knitted as noise instead of a grid. The quiet one, in loopback.',
       district: 'Sector 05 · Dead Channel', stats: { heat: 6, stealth: 5, glow: 4 }, gsm: 380, price: 118, dither: 'noise',
     },
+    {
+      id: 'coolant', n: '06', name: 'Coolant', a: '#0E3B44', b: '#3CF2D6', glow: '#B8FFF2', skin: '#62E8D2',
+      ink: '#041214', bg: '#061A1E', bg2: '#0C3A40', ui: '#3CF2D6', on: '#061A1E',
+      aName: 'deep coolant teal', bName: 'mint cyan',
+      line: 'The glow from a server room that never sleeps.',
+      blurb: 'Deep teal running cold into mint cyan. The calm one, until it overheats.',
+      district: 'Sector 06 · Server Farm', stats: { heat: 7, stealth: 6, glow: 8 }, gsm: 480, price: 128, dither: 'bayer',
+    },
+    {
+      id: 'redshift', n: '07', name: 'Red Shift', a: '#2A070E', b: '#FF3B3B', glow: '#FFB0A8', skin: '#FF7A6E',
+      ink: '#100306', bg: '#16050A', bg2: '#3C0B14', ui: '#FF3B3B', on: '#16050A',
+      aName: 'night maroon', bName: 'alarm red',
+      line: 'Tail lights stretching out on a wet ring road.',
+      blurb: 'Night maroon pulled into alarm red. Everything moving away from you, fast.',
+      district: 'Sector 07 · Ring Road', stats: { heat: 9, stealth: 5, glow: 8 }, gsm: 480, price: 128, dither: 'bayer',
+    },
+    {
+      id: 'royal', n: '08', name: 'Royal Flush', a: '#3A1478', b: '#FFC83D', glow: '#FFE9A6', skin: '#FFD978',
+      ink: '#0E0620', bg: '#140A2A', bg2: '#33165E', ui: '#FFC83D', on: '#140A2A',
+      aName: 'royal purple', bName: 'casino gold',
+      line: 'A casino sign that has never once lost.',
+      blurb: 'Royal purple dealt into casino gold. The lucky one.',
+      district: 'Sector 08 · The Strip', stats: { heat: 8, stealth: 3, glow: 9 }, gsm: 480, price: 128, dither: 'bayer',
+    },
   ];
 
   /* Hex before the hoodie: a plain veiled chameleon. */
@@ -70,7 +94,7 @@
       { at: 84, tag: 'Light', title: 'Pixel Piping', key: 'piping',
         text: 'Retroreflective piping along the hood edge and the sleeve. Dark until headlights find it.' },
       { at: 100, tag: 'Swap', title: 'Palette Swap', key: 'swap',
-        text: 'Same sprite, new colours. One cut, five palettes. Hex changes. The cut does not.' },
+        text: 'Same sprite, new colours. One cut, eight palettes. Hex changes. The cut does not.' },
     ],
     pips: [
       { key: 'cut', label: 'Cut', at: 27 }, { key: 'peak', label: 'Peak', at: 47 }, { key: 'pocket', label: 'Pocket', at: 70 },
@@ -100,7 +124,7 @@
   ];
 
   /* Fit check: who wears each palette in the on-body photographs, and how the cut sits. */
-  var MODELS = { pink: { cm: 172, size: '02' }, blue: { cm: 183, size: '03' }, acid: { cm: 160, size: '01' }, sodium: { cm: 190, size: '04' }, static: { cm: 168, size: '02' } };
+  var MODELS = { pink: { cm: 172, size: '02' }, blue: { cm: 183, size: '03' }, acid: { cm: 160, size: '01' }, sodium: { cm: 190, size: '04' }, static: { cm: 168, size: '02' }, coolant: { cm: 176, size: '03' }, redshift: { cm: 164, size: '01' }, royal: { cm: 186, size: '04' } };
   var FIT = [
     ['Shoulder', 'The seam sits about 6 cm down the arm. That is the boxy part.'],
     ['Hem', 'Lands at the hip bone. Cropped, not short.'],
@@ -112,7 +136,7 @@
   PALETTES.forEach(function (p, i) { p.index = i; p.model = MODELS[p.id]; byId[p.id] = p; });
 
   /* The rest of the wardrobe. Every item carries the logo (Hex in his roundel) somewhere that suits it,
-     and every item comes in the five palettes; `pal` is the one it is photographed in.
+     and every item comes in the eight palettes; `pal` is the one it is photographed in.
      `logo` is where the badge sits on the pixel stand-in: [x, y, size] in the item's 96 × 108 grid.
      CONCEPT VALUES: prices, fabrics and sizes are invented. */
   var ONE = ['One size'], SML = ['S', 'M', 'L'];
