@@ -202,6 +202,7 @@ button { font: inherit; color: inherit; }
 .swap__item { position: absolute; left: 50%; top: 50%; margin: 0; transform: translate(-50%, -50%); will-change: transform; filter: drop-shadow(0 calc(var(--px) * 3) 0 rgba(0, 0, 0, 0.4)); }
 .swap__item canvas { display: block; width: 100%; height: 100%; }
 .swap__item.is-photo { --bc: var(--text); box-shadow: var(--edge); filter: none; }
+.swap__item.is-cut { filter: drop-shadow(0 calc(var(--px) * 4) 0 rgba(0, 0, 0, 0.45)); }
 .swap__hex { position: absolute; left: 0; bottom: 0; z-index: 1; }
 .swap__info { grid-column: 2; grid-row: 2; align-self: center; display: grid; gap: 14px; max-width: 540px; }
 .swap__n { margin: 0; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text); }
@@ -371,6 +372,8 @@ button { font: inherit; color: inherit; }
 .hp-fig { position: relative; margin: 0; }
 .hp-sprite { display: block; filter: drop-shadow(0 calc(var(--px) * 3) 0 rgba(0, 0, 0, 0.4)); }
 .hp-fig .slot { --bc: var(--text); box-shadow: var(--edge); }
+.hp-fig .hp-cut { width: auto !important; margin: 0; }
+.hp-cut img { display: block; height: var(--cut-h, 60vh); width: auto; max-width: 100%; object-fit: contain; filter: drop-shadow(0 calc(var(--px) * 4) 0 rgba(0, 0, 0, 0.45)); }
 .hp-hex { position: absolute; z-index: 2; left: -8%; bottom: -2%; }
 .hp-views { display: flex; gap: 6px; }
 .hp-copy { display: grid; gap: 14px; max-width: 560px; }

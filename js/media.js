@@ -12,7 +12,8 @@
 (function (root) {
   var K = root.KALYPT, SHOTS = root.KALYPT_SHOTS, PIX = root.KP_PIX;
   var READY = root.KALYPT_READY || { img: [], video: [] };
-  var img = {};
+  var img = {}, cut = {};
+  (READY.cut || []).forEach(function (id) { cut[id] = 1; });
   (READY.img || []).forEach(function (id) { img[id] = 1; });
 
   var ratio = function (a) { var p = a.split(':'); return p[0] + ' / ' + p[1]; };
@@ -137,5 +138,8 @@
     fill: fill,
     all: function (scope) { Array.prototype.forEach.call((scope || document).querySelectorAll('[data-shot]'), fill); },
     ready: function (id) { return !!img[id]; },
+    /* a studio shot with its backdrop removed (higgsfield/cutout.mjs): the garment alone, on transparency */
+    cut: function (id) { return !!cut[id]; },
+    cutSrc: function (id) { return 'assets/img/' + id + '-cut.webp'; },
   };
 })(window);

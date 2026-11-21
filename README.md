@@ -101,3 +101,7 @@ Full motion by default on desktop; phones follow the system setting. The footer 
 Replace before anything is real: prices ($128, $118), fabric weights, the size chart and fit measurements, the stat bars, the model heights and sizes, Drop 001 and its date (16 January 2027), the queue number (made in your browser; nothing is sent anywhere), the arcade score line. A web search on 2026-11-20 found no hoodie brand called Kalypt, which is not a trademark clearance.
 
 Lenis (smooth scroll) is vendored under `assets/vendor/`, MIT licence. Fonts are Pixelify Sans and Martian Mono from Google Fonts.
+
+## Cut-outs
+
+`node higgsfield/cutout.mjs` removes the flat studio backdrop from every `<palette>-front` and `<palette>-back` render, on this machine and for free, and writes `assets/img/<id>-cut.webp` with transparency (listed as `cut` in `ready.js`). The palette-swap slide and the hoodie page heroes use them, so the real hoodie stands on the pixel stage with no frame. Run it again after re-rolling a studio shot.

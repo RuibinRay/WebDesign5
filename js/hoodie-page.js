@@ -65,7 +65,13 @@
     var usePhoto = hasPhoto[view];
     sprite.hidden = !!usePhoto;
     photo.hidden = !usePhoto;
-    if (usePhoto) {
+    if (usePhoto && MEDIA.cut(p.id + '-' + view)) {
+      /* the studio shot with its backdrop removed: the hoodie stands on the page's own pixel stage, no frame */
+      photo.className = 'hp-cut';
+      photo.removeAttribute('data-shot'); photo.removeAttribute('role'); photo.removeAttribute('aria-label');
+      photo.style.aspectRatio = '';
+      photo.innerHTML = '<img src="' + MEDIA.cutSrc(p.id + '-' + view) + '" alt="The Kalypt hoodie in ' + esc(p.name) + ', seen from the ' + view + '." decoding="async">';
+    } else if (usePhoto) {
       photo.className = 'slot';
       photo.setAttribute('data-shot', p.id + '-' + view);
       MEDIA.fill(photo);
@@ -77,6 +83,9 @@
     var k = Math.max(2, Math.floor(Math.min((root.innerHeight * (wide ? 0.62 : 0.4)) / 108, (st.width * 0.86) / 96)));
     sprite.style.width = 96 * k + 'px'; sprite.style.height = 108 * k + 'px';
     photo.style.width = Math.round(108 * k * 0.8) + 'px';
+    /* a cut-out is a photo, not a sprite: give it the full stage height the sprite's whole-pixel steps would waste */
+    var ch = Math.round(Math.min(root.innerHeight * (wide ? 0.7 : 0.48), (st.width * 0.9) / 0.9));
+    photo.style.setProperty('--cut-h', ch + 'px');
     var hk = Math.max(2, Math.round(k * 0.5));
     hexC.style.width = 48 * hk + 'px'; hexC.style.height = 51 * hk + 'px';
   }

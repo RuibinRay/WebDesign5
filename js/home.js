@@ -166,7 +166,8 @@
     var it = { p: p, fig: fig, c: c, ctx: c.getContext('2d'), m: -1, src: PIX.hoodieCanvas(p, 'front'), photo: null };
     items.push(it);
     /* the photo is fetched only when the slide comes within two screens (swapPhotos below); the sprite shows until then */
-    if (MEDIA.ready(p.id + '-front')) it.want = 'assets/img/' + p.id + '-front-sm.webp';
+    if (MEDIA.cut(p.id + '-front')) { it.want = MEDIA.cutSrc(p.id + '-front'); it.isCut = true; }
+    else if (MEDIA.ready(p.id + '-front')) it.want = 'assets/img/' + p.id + '-front-sm.webp';
     var li = document.createElement('li'), b = document.createElement('button');
     b.type = 'button'; b.setAttribute('aria-label', p.name); b.style.setProperty('--c', p.ui);
     b.addEventListener('click', function () { go(i); });
@@ -181,7 +182,7 @@
     items.forEach(function (it) {
       if (!it.want) return;
       var im = new Image();
-      im.onload = function () { it.photo = im; it.m = -1; it.fig.classList.add('is-photo'); layout(); paintSwap(true); };
+      im.onload = function () { it.photo = im; it.m = -1; it.fig.classList.add(it.isCut ? 'is-cut' : 'is-photo'); layout(); paintSwap(true); };
       im.src = it.want;
     });
   }
@@ -190,6 +191,12 @@
     k = Math.max(1, Math.floor(Math.min(r.height / 108, (r.width * 0.92) / 96)));
     items.forEach(function (it) {
       var w = it.photo ? Math.round(108 * k * 0.8) : 96 * k, h = 108 * k;
+      if (it.photo && it.isCut) {
+        /* a cut-out is a real photo, not a sprite: it fills the stage height instead of a whole-pixel multiple */
+        var ar = it.photo.naturalWidth / it.photo.naturalHeight;
+        h = Math.round(Math.min(r.height * 0.97, (r.width * 0.92) / ar)); w = Math.round(h * ar);
+      }
+      it.pw = w; it.ph = h;
       it.fig.style.width = w + 'px'; it.fig.style.height = h + 'px';
       it.m = -1;
     });
@@ -200,13 +207,17 @@
   function drawItem(it, m) {
     var c = it.c, x = it.ctx, w, h, tw, th;
     if (it.photo) {
-      w = Math.round(108 * k * 0.8); h = 108 * k;
+      var im = it.photo;
+      h = it.ph || 108 * k; w = it.pw || Math.round(h * 0.8);
       if (c.width !== w || c.height !== h) { c.width = w; c.height = h; }
-      var im = it.photo, s = Math.max(w / im.naturalWidth, h / im.naturalHeight), iw = im.naturalWidth * s, ih = im.naturalHeight * s;
+      var s = it.isCut ? Math.min(w / im.naturalWidth, h / im.naturalHeight) : Math.max(w / im.naturalWidth, h / im.naturalHeight);
+      var iw = im.naturalWidth * s, ih = im.naturalHeight * s;
       var block = m === 1 ? 1 : Math.max(2, Math.round((m * k) / 2));
+      x.clearRect(0, 0, w, h);
       if (block === 1) { x.imageSmoothingEnabled = true; x.drawImage(im, (w - iw) / 2, (h - ih) / 2, iw, ih); }
       else {
         tw = Math.ceil(w / block); th = Math.ceil(h / block); tmp.width = tw; tmp.height = th;
+        tctx.clearRect(0, 0, tw, th);
         tctx.drawImage(im, (w - iw) / 2 / block, (h - ih) / 2 / block, iw / block, ih / block);
         x.imageSmoothingEnabled = false; x.drawImage(tmp, 0, 0, tw, th, 0, 0, tw * block, th * block);
       }

@@ -7,7 +7,8 @@
     "serve": "node tools/serve.mjs",
     "plan": "node higgsfield/generate.mjs",
     "generate": "node higgsfield/generate.mjs --go",
-    "images": "node higgsfield/optimize.mjs"
+    "images": "node higgsfield/optimize.mjs",
+    "cutouts": "node higgsfield/cutout.mjs"
   },
   "devDependencies": {
     "sharp": "^0.35.5"
