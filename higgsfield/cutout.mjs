@@ -23,13 +23,21 @@ const OUT = path.join(ROOT, 'assets/img');
 const PALS = ['pink', 'blue', 'acid', 'sodium', 'static'];
 const want = process.argv.slice(2);
 const ITEMS = ['tee', 'shell', 'varsity', 'pants', 'socks', 'cap', 'beanie', 'tote'].map((i) => 'item-' + i);
-const ids = want.length ? want : PALS.flatMap((p) => [p + '-front', p + '-back']).concat(ITEMS);
+const ids = want.length ? want : PALS.flatMap((p) => [p + '-front', p + '-back']).concat(ITEMS.filter((i) => !SKIP.includes(i)));
 
 const STEP = 7;      /* max colour change between neighbouring backdrop pixels */
 const GLOBAL = 70;   /* max distance from the backdrop's mean colour */
+/* shots whose backdrop falls off hard from a lit centre to dark corners */
+/* holes: shots where backdrop shows through a closed gap (the tote's handles). Off elsewhere: a print or patch
+   close to the backdrop colour would be cut out as a hole (it took the badge off the tee). */
+const TUNE = { 'item-tote': { holes: true } };
+/* left out: the tee and the shell sit on backdrops that fall off too hard, or too close to the garment, for this
+   method; the site shows their studio photo instead. A paid background removal would do them. */
+const SKIP = ['item-tee', 'item-shell'];
 const H = 1600;      /* output height: sharp on high-density screens at hero size */
 
 async function cut(id) {
+  const tune = TUNE[id] || {}, step = tune.step || STEP, glob = tune.global || GLOBAL;
   const file = ['png', 'jpg', 'webp'].map((e) => path.join(SRC, `${id}.${e}`)).find((f) => fs.existsSync(f));
   if (!file) { console.log(`  · ${id}: no render`); return null; }
   const { data, info } = await sharp(file).resize({ height: H }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
@@ -48,7 +56,7 @@ async function cut(id) {
   /* grow the backdrop from the edge */
   const bg = new Uint8Array(N), queue = new Int32Array(N);
   let head = 0, tail = 0;
-  edge.forEach((i) => { if (!bg[i] && dist(px(i), mean) < GLOBAL) { bg[i] = 1; queue[tail++] = i; } });
+  edge.forEach((i) => { if (!bg[i] && dist(px(i), mean) < glob) { bg[i] = 1; queue[tail++] = i; } });
   while (head < tail) {
     const i = queue[head++], c = px(i), x = i % W, y = (i / W) | 0;
     for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
@@ -57,11 +65,33 @@ async function cut(id) {
       const j = ny * W + nx;
       if (bg[j]) continue;
       const cj = px(j);
-      if (dist(cj, c) < STEP && dist(cj, mean) < GLOBAL) { bg[j] = 1; queue[tail++] = j; }
+      if (dist(cj, c) < step && dist(cj, mean) < glob) { bg[j] = 1; queue[tail++] = j; }
     }
   }
 
-  /* keep only the largest garment region (drops specks the fill missed) */
+  /* backdrop seen through holes: regions of near-backdrop colour enclosed by the garment */
+  if (tune.holes) {
+    const seen = new Uint8Array(N), q2 = new Int32Array(N);
+    for (let s = 0; s < N; s++) {
+      if (bg[s] || seen[s] || dist(px(s), mean) > glob * 0.55) continue;
+      let h = 0, tl = 0;
+      q2[tl++] = s; seen[s] = 1;
+      while (h < tl) {
+        const i = q2[h++], c = px(i), x = i % W, y = (i / W) | 0;
+        for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+          const nx = x + dx, ny = y + dy;
+          if (nx < 0 || ny < 0 || nx >= W || ny >= H) continue;
+          const j = ny * W + nx;
+          if (bg[j] || seen[j]) continue;
+          if (dist(px(j), c) < step && dist(px(j), mean) < glob * 0.55) { seen[j] = 1; q2[tl++] = j; }
+        }
+      }
+      /* only clear holes of some size: a small patch of backdrop colour is more likely part of the print */
+      if (tl > N * 0.004) for (let k = 0; k < tl; k++) bg[q2[k]] = 1;
+    }
+  }
+
+  /* keep every garment region that is a real part (a second sock), drop specks the fill missed */
   const lab = new Int32Array(N).fill(-1);
   let best = -1, bestSize = 0, label = 0;
   for (let s = 0; s < N; s++) {
@@ -83,7 +113,10 @@ async function cut(id) {
 
   /* alpha: garment 255, rim feathered over one pixel, everything else 0 */
   const alpha = new Uint8Array(N);
-  for (let i = 0; i < N; i++) alpha[i] = lab[i] === best ? 255 : 0;
+  /* region sizes, then keep any region at least 8% the size of the biggest */
+  const sizes = new Int32Array(label);
+  for (let i = 0; i < N; i++) if (lab[i] >= 0) sizes[lab[i]]++;
+  for (let i = 0; i < N; i++) alpha[i] = lab[i] >= 0 && sizes[lab[i]] >= bestSize * 0.08 ? 255 : 0;
   const soft = new Uint8Array(N);
   for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
     const i = y * W + x;

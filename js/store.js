@@ -36,6 +36,8 @@
   function art(pr, p) {
     if (pr.kind === 'hoodie' && MEDIA.cut(pr.id + '-front')) return '<img src="' + MEDIA.cutSrc(pr.id + '-front') + '" alt="" decoding="async" loading="lazy">';
     if (pr.kind === 'item' && p.id === pr.pal && MEDIA.cut('item-' + pr.id)) return '<img src="' + MEDIA.cutSrc('item-' + pr.id) + '" alt="" decoding="async" loading="lazy">';
+    /* a photo without a clean cut-out fills the card on its own studio backdrop */
+    if (pr.kind === 'item' && p.id === pr.pal && MEDIA.ready('item-' + pr.id)) return '<img class="card__photo" src="assets/img/item-' + pr.id + '-sm.webp" alt="" decoding="async" loading="lazy">';
     var src = pr.kind === 'hoodie' ? PIX.hoodieCanvas(p, 'front') : PIX.itemCanvas(K.itemById[pr.id], p);
     var c = document.createElement('canvas');
     c.width = src.width; c.height = src.height;

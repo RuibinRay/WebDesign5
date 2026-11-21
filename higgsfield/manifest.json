@@ -546,6 +546,160 @@
       "file": "higgsfield/renders/film-descent.mp4",
       "seconds": 277,
       "at": "2026-11-21T01:01:17.034Z"
+    },
+    "item-varsity": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "assets/logo/hex-badge-pink.png"
+      ],
+      "job_id": "772bbd73-17cd-43ad-96d5-a38c13ab6223",
+      "file": "higgsfield/renders/item-varsity.png",
+      "seconds": 40,
+      "at": "2026-11-21T02:47:44.553Z"
+    },
+    "item-pants": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "assets/logo/hex-badge-pink.png"
+      ],
+      "job_id": "8961275a-9cb5-4654-b959-1ff098a32bce",
+      "file": "higgsfield/renders/item-pants.png",
+      "seconds": 40,
+      "at": "2026-11-21T02:47:44.613Z"
+    },
+    "item-tee": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "assets/logo/hex-badge-blue.png"
+      ],
+      "job_id": "05e6c96d-b204-47b6-a09a-1312882d6c7b",
+      "file": "higgsfield/renders/item-tee.png",
+      "seconds": 40,
+      "at": "2026-11-21T02:47:44.911Z"
+    },
+    "item-shell": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "assets/logo/hex-badge-acid.png"
+      ],
+      "job_id": "2b3fa192-941b-4903-aaac-a2eef15d807d",
+      "file": "higgsfield/renders/item-shell.png",
+      "seconds": 45,
+      "at": "2026-11-21T02:47:49.373Z"
+    },
+    "item-socks": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "assets/logo/hex-badge-sodium.png"
+      ],
+      "job_id": "00c4cd84-2d4c-4783-81ea-41defeedee86",
+      "file": "higgsfield/renders/item-socks.png",
+      "seconds": 37,
+      "at": "2026-11-21T02:48:21.547Z"
+    },
+    "item-beanie": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "assets/logo/hex-badge-blue.png"
+      ],
+      "job_id": "877f039a-45d9-4996-9199-fada2cfb9445",
+      "file": "higgsfield/renders/item-beanie.png",
+      "seconds": 38,
+      "at": "2026-11-21T02:48:22.822Z"
+    },
+    "item-cap": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "assets/logo/hex-badge-static.png"
+      ],
+      "job_id": "1aeef84d-028d-45f1-9db1-d4d6442c336b",
+      "file": "higgsfield/renders/item-cap.png",
+      "seconds": 39,
+      "at": "2026-11-21T02:48:24.001Z"
+    },
+    "item-tote": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "assets/logo/hex-badge-acid.png"
+      ],
+      "job_id": "4db8f6b5-b444-44f8-b409-4f6ca47b481f",
+      "file": "higgsfield/renders/item-tote.png",
+      "seconds": 39,
+      "at": "2026-11-21T02:48:28.001Z"
+    },
+    "store-look": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-varsity",
+        "item-pants"
+      ],
+      "job_id": "79109bd7-c6f4-49ea-8249-05957fba0807",
+      "file": "higgsfield/renders/store-look.png",
+      "seconds": 42,
+      "at": "2026-11-21T02:49:09.894Z"
     }
   }
 }

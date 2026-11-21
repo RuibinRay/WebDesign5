@@ -56,10 +56,13 @@
     copy();
     hero.style.backgroundImage = 'url(' + PIX.glow(pal, 0.3) + ')';
     var shot = 'item-' + it.id;
-    var usePhoto = pal.id === it.pal && MEDIA.cut(shot);
+    var cut = pal.id === it.pal && MEDIA.cut(shot), framed = !cut && pal.id === it.pal && MEDIA.ready(shot);
+    var usePhoto = cut || framed;
     sprite.hidden = !!usePhoto;
     photo.hidden = !usePhoto;
-    if (usePhoto) photo.innerHTML = '<img src="' + MEDIA.cutSrc(shot) + '" alt="The ' + esc(it.name) + ' in ' + esc(pal.name) + '." decoding="async">';
+    if (cut) { photo.className = 'hp-cut'; photo.removeAttribute('data-shot'); photo.style.aspectRatio = ''; photo.innerHTML = '<img src="' + MEDIA.cutSrc(shot) + '" alt="The ' + esc(it.name) + ' in ' + esc(pal.name) + '." decoding="async">'; }
+    /* no clean cut-out: the studio photo, framed like the other photos on the site */
+    else if (framed) { photo.className = 'slot ip-photo'; photo.setAttribute('data-shot', shot); MEDIA.fill(photo); }
     else {
       sx.imageSmoothingEnabled = false;
       sx.clearRect(0, 0, 96, 108);
