@@ -898,6 +898,1150 @@
       "file": "higgsfield/renders/royal-fit.png",
       "seconds": 40,
       "at": "2026-11-21T03:11:03.124Z"
+    },
+    "item-tee-acid": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-tee",
+        "assets/logo/hex-badge-acid.png"
+      ],
+      "job_id": "e415cf69-4763-409e-aede-7caffaad9007",
+      "file": "higgsfield/renders/item-tee-acid.png",
+      "seconds": 46,
+      "at": "2026-11-21T03:22:59.679Z"
+    },
+    "item-tee-static": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-tee",
+        "assets/logo/hex-badge-static.png"
+      ],
+      "job_id": "97f6b5c3-84d3-4bff-a1b3-37da23474833",
+      "file": "higgsfield/renders/item-tee-static.png",
+      "seconds": 47,
+      "at": "2026-11-21T03:23:00.237Z"
+    },
+    "item-tee-pink": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-tee",
+        "assets/logo/hex-badge-pink.png"
+      ],
+      "job_id": "cb92252b-84e6-4c4c-a609-c1dcb8e66829",
+      "file": "higgsfield/renders/item-tee-pink.png",
+      "seconds": 47,
+      "at": "2026-11-21T03:23:00.804Z"
+    },
+    "item-tee-sodium": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-tee",
+        "assets/logo/hex-badge-sodium.png"
+      ],
+      "job_id": "b69bfbed-aee7-4785-9828-df6b7a4a78fd",
+      "file": "higgsfield/renders/item-tee-sodium.png",
+      "seconds": 54,
+      "at": "2026-11-21T03:23:07.489Z"
+    },
+    "item-tee-royal": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-tee",
+        "assets/logo/hex-badge-royal.png"
+      ],
+      "job_id": "10bf8a9c-a350-4c3f-bc9a-d1bb5ecf3b6d",
+      "file": "higgsfield/renders/item-tee-royal.png",
+      "seconds": 43,
+      "at": "2026-11-21T03:23:43.441Z"
+    },
+    "item-tee-coolant": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-tee",
+        "assets/logo/hex-badge-coolant.png"
+      ],
+      "job_id": "65de90b8-3053-4128-b544-134e447ef3c0",
+      "file": "higgsfield/renders/item-tee-coolant.png",
+      "seconds": 45,
+      "at": "2026-11-21T03:23:44.478Z"
+    },
+    "item-tee-redshift": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-tee",
+        "assets/logo/hex-badge-redshift.png"
+      ],
+      "job_id": "a3a75787-de6e-485c-bd42-be61bb6b12c8",
+      "file": "higgsfield/renders/item-tee-redshift.png",
+      "seconds": 45,
+      "at": "2026-11-21T03:23:45.363Z"
+    },
+    "item-shell-pink": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-shell",
+        "assets/logo/hex-badge-pink.png"
+      ],
+      "job_id": "ce13b448-6dfc-40f4-8095-78572b8f393a",
+      "file": "higgsfield/renders/item-shell-pink.png",
+      "seconds": 42,
+      "at": "2026-11-21T03:23:49.185Z"
+    },
+    "item-shell-blue": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-shell",
+        "assets/logo/hex-badge-blue.png"
+      ],
+      "job_id": "9ce2c719-6e86-43bc-b465-7df78f905445",
+      "file": "higgsfield/renders/item-shell-blue.png",
+      "seconds": 45,
+      "at": "2026-11-21T03:24:28.250Z"
+    },
+    "item-shell-static": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-shell",
+        "assets/logo/hex-badge-static.png"
+      ],
+      "job_id": "69bfb263-dc39-4a24-bf8c-8e6a96cb56e2",
+      "file": "higgsfield/renders/item-shell-static.png",
+      "seconds": 44,
+      "at": "2026-11-21T03:24:29.200Z"
+    },
+    "item-shell-sodium": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-shell",
+        "assets/logo/hex-badge-sodium.png"
+      ],
+      "job_id": "316e4914-3a98-47f3-889a-c7988e707ea3",
+      "file": "higgsfield/renders/item-shell-sodium.png",
+      "seconds": 47,
+      "at": "2026-11-21T03:24:31.402Z"
+    },
+    "item-shell-coolant": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-shell",
+        "assets/logo/hex-badge-coolant.png"
+      ],
+      "job_id": "62ece8ca-0485-4c72-a934-f1f8456c3841",
+      "file": "higgsfield/renders/item-shell-coolant.png",
+      "seconds": 45,
+      "at": "2026-11-21T03:24:33.846Z"
+    },
+    "item-shell-royal": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-shell",
+        "assets/logo/hex-badge-royal.png"
+      ],
+      "job_id": "7162510d-bb83-4411-ae11-be35a918621b",
+      "file": "higgsfield/renders/item-shell-royal.png",
+      "seconds": 41,
+      "at": "2026-11-21T03:25:10.316Z"
+    },
+    "item-varsity-blue": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-varsity",
+        "assets/logo/hex-badge-blue.png"
+      ],
+      "job_id": "bcb3e122-fe07-4771-bb46-869e181d7442",
+      "file": "higgsfield/renders/item-varsity-blue.png",
+      "seconds": 44,
+      "at": "2026-11-21T03:25:15.120Z"
+    },
+    "item-shell-redshift": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-shell",
+        "assets/logo/hex-badge-redshift.png"
+      ],
+      "job_id": "88d46e36-9553-4e08-952f-2c9014696e29",
+      "file": "higgsfield/renders/item-shell-redshift.png",
+      "seconds": 48,
+      "at": "2026-11-21T03:25:16.459Z"
+    },
+    "item-varsity-acid": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-varsity",
+        "assets/logo/hex-badge-acid.png"
+      ],
+      "job_id": "3d56f89e-07de-45f1-ae5a-cec74a0cce9c",
+      "file": "higgsfield/renders/item-varsity-acid.png",
+      "seconds": 49,
+      "at": "2026-11-21T03:25:22.912Z"
+    },
+    "item-varsity-sodium": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-varsity",
+        "assets/logo/hex-badge-sodium.png"
+      ],
+      "job_id": "39bd191b-3d95-4947-9022-2e4418bee60f",
+      "file": "higgsfield/renders/item-varsity-sodium.png",
+      "seconds": 47,
+      "at": "2026-11-21T03:25:57.772Z"
+    },
+    "item-varsity-coolant": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-varsity",
+        "assets/logo/hex-badge-coolant.png"
+      ],
+      "job_id": "2dcb6836-6049-4a5f-b5cf-93a36f990c1c",
+      "file": "higgsfield/renders/item-varsity-coolant.png",
+      "seconds": 45,
+      "at": "2026-11-21T03:26:01.537Z"
+    },
+    "item-varsity-static": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-varsity",
+        "assets/logo/hex-badge-static.png"
+      ],
+      "job_id": "7689f71f-16f7-44d9-9f43-7266c1c88830",
+      "file": "higgsfield/renders/item-varsity-static.png",
+      "seconds": 48,
+      "at": "2026-11-21T03:26:02.765Z"
+    },
+    "item-varsity-redshift": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-varsity",
+        "assets/logo/hex-badge-redshift.png"
+      ],
+      "job_id": "877caf3f-fd75-4f47-83fa-ce5ed8d46bb6",
+      "file": "higgsfield/renders/item-varsity-redshift.png",
+      "seconds": 44,
+      "at": "2026-11-21T03:26:06.494Z"
+    },
+    "item-varsity-royal": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-varsity",
+        "assets/logo/hex-badge-royal.png"
+      ],
+      "job_id": "e0cb4d97-ca05-40b0-ae70-6382aa943940",
+      "file": "higgsfield/renders/item-varsity-royal.png",
+      "seconds": 45,
+      "at": "2026-11-21T03:26:42.623Z"
+    },
+    "item-pants-acid": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-pants",
+        "assets/logo/hex-badge-acid.png"
+      ],
+      "job_id": "6c1b9203-4edf-4b6b-9fc0-78acd58d63d2",
+      "file": "higgsfield/renders/item-pants-acid.png",
+      "seconds": 41,
+      "at": "2026-11-21T03:26:43.520Z"
+    },
+    "item-pants-blue": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-pants",
+        "assets/logo/hex-badge-blue.png"
+      ],
+      "job_id": "4d5da717-25a0-43a3-8954-3e5580bbb14c",
+      "file": "higgsfield/renders/item-pants-blue.png",
+      "seconds": 44,
+      "at": "2026-11-21T03:26:45.517Z"
+    },
+    "item-pants-sodium": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-pants",
+        "assets/logo/hex-badge-sodium.png"
+      ],
+      "job_id": "2401aed7-a751-46b6-8fd5-c37e22373fa6",
+      "file": "higgsfield/renders/item-pants-sodium.png",
+      "seconds": 40,
+      "at": "2026-11-21T03:26:46.179Z"
+    },
+    "item-pants-redshift": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-pants",
+        "assets/logo/hex-badge-redshift.png"
+      ],
+      "job_id": "b6d6b809-399a-41dd-8744-af08ed5078af",
+      "file": "higgsfield/renders/item-pants-redshift.png",
+      "seconds": 40,
+      "at": "2026-11-21T03:27:25.942Z"
+    },
+    "item-pants-coolant": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-pants",
+        "assets/logo/hex-badge-coolant.png"
+      ],
+      "job_id": "893dad28-5449-418a-b684-a91bdcaa55a1",
+      "file": "higgsfield/renders/item-pants-coolant.png",
+      "seconds": 44,
+      "at": "2026-11-21T03:27:27.179Z"
+    },
+    "item-pants-static": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-pants",
+        "assets/logo/hex-badge-static.png"
+      ],
+      "job_id": "db50bb97-5bd0-4a81-9232-f08cd5d1503e",
+      "file": "higgsfield/renders/item-pants-static.png",
+      "seconds": 47,
+      "at": "2026-11-21T03:27:29.573Z"
+    },
+    "item-pants-royal": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-pants",
+        "assets/logo/hex-badge-royal.png"
+      ],
+      "job_id": "090ee63e-100e-4a74-bc59-4153336e3227",
+      "file": "higgsfield/renders/item-pants-royal.png",
+      "seconds": 47,
+      "at": "2026-11-21T03:27:32.721Z"
+    },
+    "item-socks-acid": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-socks",
+        "assets/logo/hex-badge-acid.png"
+      ],
+      "job_id": "dd13e22e-5531-459a-bcc9-68340c01deea",
+      "file": "higgsfield/renders/item-socks-acid.png",
+      "seconds": 42,
+      "at": "2026-11-21T03:28:11.432Z"
+    },
+    "item-socks-blue": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-socks",
+        "assets/logo/hex-badge-blue.png"
+      ],
+      "job_id": "17541ed4-7ff3-4137-8f0e-59de1644d28c",
+      "file": "higgsfield/renders/item-socks-blue.png",
+      "seconds": 45,
+      "at": "2026-11-21T03:28:12.060Z"
+    },
+    "item-socks-pink": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-socks",
+        "assets/logo/hex-badge-pink.png"
+      ],
+      "job_id": "14b85b13-5966-4d50-8ef1-22dd3ff89a1a",
+      "file": "higgsfield/renders/item-socks-pink.png",
+      "seconds": 48,
+      "at": "2026-11-21T03:28:14.056Z"
+    },
+    "item-socks-static": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-socks",
+        "assets/logo/hex-badge-static.png"
+      ],
+      "job_id": "20c45bb2-a784-4378-aaf6-77dbc60cefd2",
+      "file": "higgsfield/renders/item-socks-static.png",
+      "seconds": 43,
+      "at": "2026-11-21T03:28:15.950Z"
+    },
+    "item-socks-coolant": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-socks",
+        "assets/logo/hex-badge-coolant.png"
+      ],
+      "job_id": "be0e2988-8386-4a9d-8cc0-a4409c579015",
+      "file": "higgsfield/renders/item-socks-coolant.png",
+      "seconds": 42,
+      "at": "2026-11-21T03:28:53.540Z"
+    },
+    "item-socks-redshift": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-socks",
+        "assets/logo/hex-badge-redshift.png"
+      ],
+      "job_id": "0f54c698-514b-4c84-86a3-03baeacf9d5d",
+      "file": "higgsfield/renders/item-socks-redshift.png",
+      "seconds": 41,
+      "at": "2026-11-21T03:28:53.557Z"
+    },
+    "item-socks-royal": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-socks",
+        "assets/logo/hex-badge-royal.png"
+      ],
+      "job_id": "4c0b143d-0b37-4329-8677-800c3000e547",
+      "file": "higgsfield/renders/item-socks-royal.png",
+      "seconds": 45,
+      "at": "2026-11-21T03:28:59.477Z"
+    },
+    "item-cap-pink": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-cap",
+        "assets/logo/hex-badge-pink.png"
+      ],
+      "job_id": "6cf7880d-3d24-434e-a87e-ef9e28381014",
+      "file": "higgsfield/renders/item-cap-pink.png",
+      "seconds": 44,
+      "at": "2026-11-21T03:28:59.752Z"
+    },
+    "item-cap-blue": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-cap",
+        "assets/logo/hex-badge-blue.png"
+      ],
+      "job_id": "3ef24a93-8cda-441e-b1c4-5491bef566de",
+      "file": "higgsfield/renders/item-cap-blue.png",
+      "seconds": 45,
+      "at": "2026-11-21T03:29:38.599Z"
+    },
+    "item-cap-acid": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-cap",
+        "assets/logo/hex-badge-acid.png"
+      ],
+      "job_id": "a19d1305-8c01-497e-89aa-13bdc00647b5",
+      "file": "higgsfield/renders/item-cap-acid.png",
+      "seconds": 45,
+      "at": "2026-11-21T03:29:38.907Z"
+    },
+    "item-cap-sodium": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-cap",
+        "assets/logo/hex-badge-sodium.png"
+      ],
+      "job_id": "1a08c190-065d-40f1-a8e6-90e10faacbf6",
+      "file": "higgsfield/renders/item-cap-sodium.png",
+      "seconds": 44,
+      "at": "2026-11-21T03:29:43.008Z"
+    },
+    "item-cap-coolant": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-cap",
+        "assets/logo/hex-badge-coolant.png"
+      ],
+      "job_id": "b2b5959d-7c4c-4099-a0b5-cb9875e35662",
+      "file": "higgsfield/renders/item-cap-coolant.png",
+      "seconds": 47,
+      "at": "2026-11-21T03:29:46.470Z"
+    },
+    "item-cap-royal": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-cap",
+        "assets/logo/hex-badge-royal.png"
+      ],
+      "job_id": "73440c15-6ff6-43ed-8f96-67078e9c3f09",
+      "file": "higgsfield/renders/item-cap-royal.png",
+      "seconds": 42,
+      "at": "2026-11-21T03:30:21.196Z"
+    },
+    "item-beanie-pink": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-beanie",
+        "assets/logo/hex-badge-pink.png"
+      ],
+      "job_id": "8952f0af-f9f0-4e57-b5b2-69685648d2d6",
+      "file": "higgsfield/renders/item-beanie-pink.png",
+      "seconds": 43,
+      "at": "2026-11-21T03:30:25.759Z"
+    },
+    "item-cap-redshift": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-cap",
+        "assets/logo/hex-badge-redshift.png"
+      ],
+      "job_id": "b93adf96-0417-4e49-9c20-1ea80c5078e3",
+      "file": "higgsfield/renders/item-cap-redshift.png",
+      "seconds": 48,
+      "at": "2026-11-21T03:30:26.417Z"
+    },
+    "item-beanie-acid": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-beanie",
+        "assets/logo/hex-badge-acid.png"
+      ],
+      "job_id": "a494f755-f74e-444e-80d2-520b82036d86",
+      "file": "higgsfield/renders/item-beanie-acid.png",
+      "seconds": 44,
+      "at": "2026-11-21T03:30:30.633Z"
+    },
+    "item-beanie-static": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-beanie",
+        "assets/logo/hex-badge-static.png"
+      ],
+      "job_id": "236b0765-8bf5-45e9-9f2a-71c7e5bd5500",
+      "file": "higgsfield/renders/item-beanie-static.png",
+      "seconds": 41,
+      "at": "2026-11-21T03:31:06.434Z"
+    },
+    "item-beanie-coolant": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-beanie",
+        "assets/logo/hex-badge-coolant.png"
+      ],
+      "job_id": "4568aab1-597c-4ee1-a759-b14d25d72e39",
+      "file": "higgsfield/renders/item-beanie-coolant.png",
+      "seconds": 42,
+      "at": "2026-11-21T03:31:08.344Z"
+    },
+    "item-beanie-sodium": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-beanie",
+        "assets/logo/hex-badge-sodium.png"
+      ],
+      "job_id": "0f6cac3b-66b4-4264-b412-0d96430b91a2",
+      "file": "higgsfield/renders/item-beanie-sodium.png",
+      "seconds": 47,
+      "at": "2026-11-21T03:31:08.565Z"
+    },
+    "item-beanie-redshift": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-beanie",
+        "assets/logo/hex-badge-redshift.png"
+      ],
+      "job_id": "e7c18780-c148-4ea1-baa7-7e3806fa3652",
+      "file": "higgsfield/renders/item-beanie-redshift.png",
+      "seconds": 47,
+      "at": "2026-11-21T03:31:18.128Z"
+    },
+    "item-tote-blue": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-tote",
+        "assets/logo/hex-badge-blue.png"
+      ],
+      "job_id": "b6ebe8d5-6124-4d4c-9572-369c7e4798a1",
+      "file": "higgsfield/renders/item-tote-blue.png",
+      "seconds": 41,
+      "at": "2026-11-21T03:31:49.789Z"
+    },
+    "item-tote-pink": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-tote",
+        "assets/logo/hex-badge-pink.png"
+      ],
+      "job_id": "4ed9fe90-8a1d-4074-8f1b-f3aaf663d2bb",
+      "file": "higgsfield/renders/item-tote-pink.png",
+      "seconds": 47,
+      "at": "2026-11-21T03:31:55.526Z"
+    },
+    "item-tote-coolant": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-tote",
+        "assets/logo/hex-badge-coolant.png"
+      ],
+      "job_id": "fa223c71-33fa-4314-9cfa-dcd6cd0a2ae4",
+      "file": "higgsfield/renders/item-tote-coolant.png",
+      "seconds": 45,
+      "at": "2026-11-21T03:37:05.893Z"
+    },
+    "item-beanie-royal": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-beanie",
+        "assets/logo/hex-badge-royal.png"
+      ],
+      "job_id": "f2ba28d8-efd7-4822-85af-9fcdd96a23bf",
+      "file": "higgsfield/renders/item-beanie-royal.png",
+      "seconds": 57,
+      "at": "2026-11-21T03:32:03.209Z"
+    },
+    "item-tote-sodium": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-tote",
+        "assets/logo/hex-badge-sodium.png"
+      ],
+      "job_id": "09516312-49e0-4ae7-a865-410e7414408e",
+      "file": "higgsfield/renders/item-tote-sodium.png",
+      "seconds": 46,
+      "at": "2026-11-21T03:32:03.720Z"
+    },
+    "item-tote-static": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-tote",
+        "assets/logo/hex-badge-static.png"
+      ],
+      "job_id": "8612e16e-5287-49e5-8993-3343d53d3e36",
+      "file": "higgsfield/renders/item-tote-static.png",
+      "seconds": 45,
+      "at": "2026-11-21T03:32:34.569Z"
+    },
+    "item-tote-redshift": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-tote",
+        "assets/logo/hex-badge-redshift.png"
+      ],
+      "job_id": "f97348d8-63bd-4959-95f1-312138c38d2d",
+      "file": "higgsfield/renders/item-tote-redshift.png",
+      "seconds": 44,
+      "at": "2026-11-21T03:32:40.387Z"
+    },
+    "item-tee-worn": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-tee"
+      ],
+      "job_id": "4595df2a-1a60-4c75-84ed-bd0366e78cb3",
+      "file": "higgsfield/renders/item-tee-worn.png",
+      "seconds": 41,
+      "at": "2026-11-21T03:32:44.497Z"
+    },
+    "item-pants-worn": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-pants"
+      ],
+      "job_id": "5adc919b-c2ee-477f-b47a-a6fe399990ef",
+      "file": "higgsfield/renders/item-pants-worn.png",
+      "seconds": 38,
+      "at": "2026-11-21T03:36:58.939Z"
+    },
+    "item-tote-royal": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-tote",
+        "assets/logo/hex-badge-royal.png"
+      ],
+      "job_id": "a5fbed1d-7305-4e40-a3bb-32cea3e20343",
+      "file": "higgsfield/renders/item-tote-royal.png",
+      "seconds": 45,
+      "at": "2026-11-21T03:32:47.872Z"
+    },
+    "item-shell-worn": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-shell"
+      ],
+      "job_id": "8a779f8b-74b5-4489-8d4b-b4d047fc6398",
+      "file": "higgsfield/renders/item-shell-worn.png",
+      "seconds": 37,
+      "at": "2026-11-21T03:33:11.743Z"
+    },
+    "item-varsity-worn": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-varsity"
+      ],
+      "job_id": "ee431538-f487-41c4-a034-45e03dd36b51",
+      "file": "higgsfield/renders/item-varsity-worn.png",
+      "seconds": 39,
+      "at": "2026-11-21T03:33:19.856Z"
+    },
+    "item-socks-worn": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-socks"
+      ],
+      "job_id": "8cf01e85-b6f5-4767-b16b-4733812ba83c",
+      "file": "higgsfield/renders/item-socks-worn.png",
+      "seconds": 40,
+      "at": "2026-11-21T03:33:25.217Z"
+    },
+    "item-cap-worn": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-cap"
+      ],
+      "job_id": "730331f6-0be6-40ad-a7bc-00d3a26879e1",
+      "file": "higgsfield/renders/item-cap-worn.png",
+      "seconds": 40,
+      "at": "2026-11-21T03:33:27.568Z"
+    },
+    "item-beanie-worn": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-beanie"
+      ],
+      "job_id": "c837e53e-ecad-4609-bea5-6e0a6c8f7680",
+      "file": "higgsfield/renders/item-beanie-worn.png",
+      "seconds": 39,
+      "at": "2026-11-21T03:33:51.217Z"
+    },
+    "item-tote-worn": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "item-tote"
+      ],
+      "job_id": "c5c9bfc0-f85d-45a1-9e99-66e052e89f56",
+      "file": "higgsfield/renders/item-tote-worn.png",
+      "seconds": 43,
+      "at": "2026-11-21T03:34:02.725Z"
     }
   }
 }

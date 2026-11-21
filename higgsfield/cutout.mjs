@@ -32,14 +32,16 @@ const GLOBAL = 70;   /* max distance from the backdrop's mean colour */
 /* shots whose backdrop falls off hard from a lit centre to dark corners */
 /* holes: shots where backdrop shows through a closed gap (the tote's handles). Off elsewhere: a print or patch
    close to the backdrop colour would be cut out as a hole (it took the badge off the tee). */
-const TUNE = { 'item-tote': { holes: true } };
+const TUNE = { 'item-tote': { holes: true }, 'item-pants': { holes: true } };
+/* a shot takes the tuning of its master too: item-tote-coolant uses item-tote's */
+const tuneOf = (id) => TUNE[id] || TUNE[Object.keys(TUNE).find((k) => id.startsWith(k + '-')) || ''] || {};
 /* left out: the tee and the shell sit on backdrops that fall off too hard, or too close to the garment, for this
    method; the site shows their studio photo instead. A paid background removal would do them. */
-const SKIP = ['item-tee', 'item-shell'];
+const SKIP = ['item-tee', 'item-shell', 'item-pants-blue'];
 const H = 1600;      /* output height: sharp on high-density screens at hero size */
 
 async function cut(id) {
-  const tune = TUNE[id] || {}, step = tune.step || STEP, glob = tune.global || GLOBAL;
+  const tune = tuneOf(id), step = tune.step || STEP, glob = tune.global || GLOBAL;
   const file = ['png', 'jpg', 'webp'].map((e) => path.join(SRC, `${id}.${e}`)).find((f) => fs.existsSync(f));
   if (!file) { console.log(`  · ${id}: no render`); return null; }
   const { data, info } = await sharp(file).resize({ height: H }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
